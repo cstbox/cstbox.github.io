@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSTBox - Key points</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/cstbox.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/scrollspy.js"></script>
+    <script src="js/affix.js"></script>
+    <script src="js/jquery.jcarousel.min.js"></script>
+    <script src="js/jcarousel.basic.js"> </script>
+    <script src="js/cstbox.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar" id="key">
+    <header>
+        <h1>Key points</h1>
+        <p>What makes CSTBox different and attractive.</p>
+    </header>
+
+    <div class="container wide">
+
+      <div class="row">
+
+        <div id="docsnav">
+            <ul>
+              <li href='#hwindep'>Hardware independence</li>
+              <li href='#modularity'>Modularity</li>
+              <li href='#extens'>Extensibility</li>
+              <li href='#freedom'>Freedom</li>
+              <li href='#open'>Openness</li>
+              <li href='#semantic'>Semantic model</li>
+              <li href='#services'>Integrated services</li>
+            </ul>
+        </div>
+
+        <div class="span9">
+
+          <section id="hwindep">
+              <div class="page-header">
+                <h1>Hardware independence</h1>
+              </div>
+              <p class="lead">
+                The CSTBox framework allows using at the same time various devices, including
+                sensors, actuators, user interaction devices,&hellip; provided by different makers and
+                using different communication protocols.
+                <p>
+                This make possible to assemble a
+                configuration taking advantage of the most suited components, whatever they
+                are.
+                <p>
+                In addition, information collected from sensors or sent to
+                actuators is defined using a neutral model, fully decoupled
+                from the involved hardware. It is thus possible to swap a given
+                device by a functionally equivalent one without changing
+                anything to the rest of the application. Such a feature is
+                based on the concept of <strong>drivers</strong>, which role is
+                to translate proprietary communications to and from neutral
+                ones. Supporting a new kind of device is just a matter of
+                developing a component implementing the services of a driver
+                and adding it to the application.
+            </section>
+
+          <section id="modularity">
+              <div class="page-header">
+                <h1>Modularity</h1>
+              </div>
+              <p class="lead">
+              An application is the assembly of a collection of building
+              blocks, called <em>software components</em> or more simply <em>components</em>.
+              <p>
+              Among them, we can mention :
+              <ul>
+                  <li>core system level ones, which are present in all applications</li>
+                  <li>general purpose services : local data logging, data upload, web application
+                  server,&hellip;</li>
+                  <li>administration console plugins, implementing dedicated Web based
+                  user-interfaces for configuring and managing installed features</li>
+                  <li>hardware abstraction layer components, aka drivers, which handle
+                  the connectivity between the application and the hardware devices used
+                  by the application
+              </ul>
+                <p>
+                One key advantage of such an architecture is
+                to allow subdividing complex functionalities into simple building
+                blocks, easier to develop and maintain, since handling a limited
+                set of concerns.
+                <p>
+                Another advantage of such a strong decomposition is allowing to
+                swap an implementation of a given feature by another one, more
+                efficient for instance, by just replacing a component by another
+                one implementing the same services.
+
+        </section>
+
+        <section id="extens">
+            <div class="page-header">
+                <h1>Extensibility</h1>
+            </div>
+            <p class="lead">
+            Since an application is just an assembly of components, it is easy
+            to extend its features by adding the appropriate ones.
+            <p>
+            Even better, one can imaging deploying the full set of components,
+            covering the maximum extent of the application features, but just
+            activating some of them based on configuration settings. This makes
+            then possible to activate (or deactivate) features on the field,
+            without having to modify installed softwares.
+        </section>
+
+        <section id="freedom">
+            <div class="page-header">
+                <h1>Freedom</h1>
+            </div>
+            <p class="lead">
+            Unlike many frameworks, you are not tied to a given programming language. Just use the
+            one which is more suited to your needs and/or your taste.
+            <p>
+            The previous version of our framework was based on OSGi, and thus was 100% Java written.
+            All in all, this worked quite well and we have had no special grief, but we finally draw 
+            a couple of conclusions which were pointing some flaws with this orientation. 
+            <ol>
+            <li>You have <b>no choice but Java</b>. We are not saying that Java is not a good language, 
+            but forcing contributors, users or integrators to switch to Java is too strong as a constraint. 
+            OK, JNI exists and you can bind other languages with Java, but this is not as simple as 
+            directly use these languages in complete freedom.
+            <li>All your application is confined in a <b>single system process</b>, the one in which the
+            JVM is running. This can become a weakness, since a nasty error in some application related 
+            code can break the whole thing. JVM is quite robust in normal conditions, but we could experience 
+            some situations where it broke.
+            </ol>
+            <p>
+            This made us leave the OSGi world, looking for other solutions for
+            inter-process message communication and remote procedure call.
+            <p>
+            Such a solution exists, and the expected features are provided out of the box by <b>D-Bus</b>
+            which is present in many Linux distributions, including embedded ones.
+            <p>
+            D-Bus provides services for messages broadcasting and listening, but also for 
+            inter-process method calling. One of its major advantages is that it provides this in a 
+            <b>programming language agnostic and neutral way</b>, bindings being available for the vast 
+            majority of languages (C, Java, Python,&hellip;) Thanks to this, a Java component will 
+            be able to call services provided by a component written in Python, the involved D-Bus 
+            bindings taking care of marshaling and un-marshaling in a transparent way.
+            <p>
+            The newest version of CSTBox has thus been rewritten to take advantage of D-Bus and 
+            split its services  as a collection of distinct independant processes. The core part and some common 
+            extensions have been written in Python, for taking advantage of its dynamic nature (we 
+            were forced to use quite convoluted implementations in the Java version for achieving 
+            the needed behaviours) and its power of expression.  
+            <p>
+            We could check the validity of the approach by writing an extension in Java, based on a 
+            Java closed source library provided by one our our partners, and a couple of other ones 
+            in C/C++ for validating the architecture. During a transitional period, we had even 
+            connected the new version of the framework with a OSGi based sub-system, by writing a 
+            bundle featuring a gateway between the OSGi message bus and D-Bus.
+            <p>
+            In addition of a greater level of freedom, we could also notice a benefit in terms of 
+            system resources usage. The Python based version of the framework is far less demanding 
+            in memory than the OSGi one, and its starting time is several times shorter.
+        </section>
+
+        <section id="open">
+            <div class="page-header">
+                <h1>Openness</h1>
+            </div>
+            <p class="lead">
+            Beside making it possible to implement various parts of an application with
+            the programming language of your choice, we do not enforce you to conform intrusive
+            APIs.
+            <p>
+            We have followed the Unix philosophy : all is files. This is applied by making all manipulated data
+            (configuration data, stored events,
+            &hellip;) using simple, open and documented formats (tabulated text files, JSON,&hellip;).
+            <p>
+            We take for granted that software developers are adults and responsible people, having
+            all the skills and knowledges needed to interact with the other parts of the environment
+            without having to force them to go through contrived and over-designed layers of code.
+            <dl>
+                <dt>You need to use a shared piece of data :</dt>
+                <dd>just read the files it is stored in  and work with it</dd>
+                <dt>You need to produced some shared data : </dt>
+                <dd>just study the format it uses, and generate your outputs in accordance.</dd>
+            </dl>
+            <p>
+            This is true for stored data, be they persistent of just for the lifespan of a run, but also
+            for messages exchanged between components.
+        </section>
+
+        <section id="semantic">
+            <div class="page-header">
+                <h1>A semantic model</h1>
+            </div>
+            <p class="lead">
+            Openness and flexibility requires an abstraction of the data and messages exchanged between
+            the components making an application.
+            <p>
+            For not be tainted by the specificities of participating components, be they at system or at
+            application level, data exchanges must take place at an abstracted level.
+            <p>
+            This means that while other systems are built around the concept of sensors and
+            actuators, thus making intricacies such as addresses and alike surface up to the application layer,
+            we have chosen to follow a different track. 
+            <p>
+            In practical, this translates into the fact that what circulates on the message bus to notify
+            that the temperature of the bedroom is 21°C is not a message conveying the identifier or address of
+            the sensor which produced the information, but a message telling that the variable
+            <tt>bedroom_temperature</tt>, which is of type <tt>temperature</tt> has presently the value of
+            <tt>21</tt> using the units <tt>degC</tt>. This way, if ever the sensor is broken and must be replaced
+            by a brand new one using a different address, the message will still be the same and nobody else
+            will ever notice the change. This is still
+            true even if the new equipment is from a different manufacturer, uses a different protocol or
+            communication support, or whatever else.
+            <p>
+            We are not the only ones to do this, but all the other solutions we have analyzed use the home
+            automation paradigm for abstracting the physical resources. So what about applications having 
+            nothing to do with home automation ?
+            <p>
+            We have stepped up one level in abstraction, and consider that an environment which is equipped
+            with such devices is an instrumented system, which is observed and controlled by the mean of 
+            state and control variables, these variables not being inevitably tied to physical or concrete concepts.
+            <p>
+            For instance, the outside temperature
+            can be provided by an online weather service at a time, and be replaced by an outdoor sensor
+            some time later without any effect on the consumers of the data. Same if it is provided by a physics 
+            simulation program.
+            <p>
+            Maybe you could here again argue that the other frameworks we mentioned can do the same. 
+            This is true to some extent. But consider now an application dealing with behaviors and activities
+            recognition, based on physical sensors inputs correlation. Such a processing should be 
+            packaged in a dedicated component, running on its own by listening to notification events pertaining
+            to its concern, and producing in turn special events notifying the start and the end of the 
+            activities to be monitored. This is nothing less than a <i>human behavior detector</i>. 
+            How do you map such
+            a sensor in available home automation oriented frameworks without using some trick to conform
+            the paradigm imposed there ?
+            <p>
+            Of course, the principle applies the other way around for controls and commands of actuators.
+            In this context, the message which will be used will contain the new value of the control variable,
+            which reflects for instance the state of a power switch, the level of a dimmer,&hellip;
+            <p>
+            An interesting benefit of dealing with abstracted data instead of specialized commands here
+            is the fact that several different command producers, be they
+            physical devices or other software components of the application, can emit
+            the same control message, without the controlled equipment making the difference if it does not
+            care about the originator.
+        </section>
+
+        <section id="services">
+            <div class="page-header">
+                <h1>Integrated services</h1>
+            </div>
+            <p class="lead">
+            The CSTBox framework provides out of the box a collection of
+            components implementing the frequently needed services.
+            <p>
+            The current catalog contains :
+            <ul>
+                <li> local data storage</li>
+                <li> HTTP embedded server</li>
+                <li>common Internet protocol support (HTTP, FTP,…) for communication
+                with external servers</li>
+                <li> scheduled data upload mechanism</li>
+                <li> plugin architecture for data format converters used to interface with
+                external servers</li>
+                <li> system parameter monitoring, such as devices battery level, radio link quality for
+                wireless devices,&hellip;</li>
+                <li> automation scenarios engine, allowing the definition of complex tasks
+                using interaction with installed devices</li>
+                <li> Web based administration console providing interactive tools for :
+                <ul>
+                    <li> devices configuration, including automatic discovery mechanisms
+                    to assist the user in this task and reduce required manual data entry</li>
+                    <li> stored data browsing and export</li>
+                    <li> system log browsing and export</li>
+                    <li>automation scenarios management</li>
+                </ul>
+                </li>
+            </uL>
+
+        </section>
+
+        </div><!-- span9 -->
+      </div><!-- row -->
+
+    </div><!-- container -->
+
+  </body>
+</html>

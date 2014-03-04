@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSTBox - Executive summary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/cstbox.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/scrollspy.js"></script>
+    <script src="js/affix.js"></script>
+    <script src="js/jquery.jcarousel.min.js"></script>
+    <script src="js/jcarousel.basic.js"> </script>
+    <script src="js/cstbox.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar" id="exec">
+    <header>
+        <h1>Executive summary</h1>
+        <p>A few words about the CSTBox for non-technical readers.</p>
+    </header>
+    
+    <div class="container wide">
+
+      <div class="row">
+  
+        <div id="docsnav">
+            <ul>
+              <li href='#shortdescr'>Short description</li>
+              <li href='#diff'>What makes it different</li>
+              <li href='#usage'>Typical usages</li>
+              <li href='#key-objectives'>Key objectives</li>
+              <li href='#team'>The team</li>
+              <li href='#website'>This web site</li>
+              <li href='#more'>More details</li>
+            </ul>
+        </div>
+
+        <div class="span9">
+
+          <section id="shortdescr">
+              <div class="page-header">
+                <h1>Short description</h1>
+              </div>
+              <p>
+              <b>CSTBox</b> acronym stands for : <b>C</b>STB <b>S</b>ensing and <b>T</b>ele-monitoring <b>Box</b>
+              <p>
+              CSTBox is a global solution designed by CSTB, targeted to embedded applications based on an ambient
+              instrumentation composed of disseminated devices (such as sensors, actuators), 
+              and providing features such as :
+              <ul>
+              <li>domain specific local processing (analysis, decision taking, storage),</li>
+              <li>external systems connectivity (collection server,</li>
+              <li>data or results upload facility,</li>
+              <li>web services providing complementary data).</li>
+              </ul>
+              <p>
+              It deals with heterogeneous device protocols in an agnostic and neutral way
+              and allows the creation of solutions using devices from different manufacturers
+              and working with different communication media.
+          </section>
+
+          <section id="diff">
+            <div class="page-header">
+                <h1>What makes it different ?</h1>
+            </div>
+            <p>
+            At this level, one could think that it is just <i>yet-another-home-automation-initiative</i>, as can be
+            found in many flavors on the Internet, either as commercial products (eg. <a href="http://www.homeseer.com">HomeSeer</a>) or open-source projects
+            (eg. <a href="http://www.openhab.org">openHAB</a>).
+            <p>
+            The answer is simple : <i>it is not a home automation oriented framework</i>. 
+            <p>
+            The initial need which led us to develop the CSTBox was far from this kind of application, and we carefully
+            analysed existing solutions before initiating the project. Our key need was to produce black boxes applications,
+            initially oriented to ambient assisted living <i>(see above for details)</i>, without any of these eye catchy user
+            interfaces on smartphones for controlling lights and displaying temperatures or electricity consumptions. 
+            <p>
+            To quote what an aged volunteer who participated to one of the experiments we have conduced said : 
+            <p>
+            <i>"I understand. Your system is just like the alarm system of my home, but it is for me and not for the home"</i>. 
+            <p>
+            She could not have described it better.
+            <p>
+            Of course, who can do more can do less. So you can create a home automation system with CSTBox if you want, but if 
+            all you want is to control you home over the net using your preferred smartphone, you'd better 
+            go with one of the other options. 
+            <p>
+            But if you are looking for a base for your domain oriented specific application, and need to talk to a variety of
+            equipments, including industrial grade ones, and be able to add your own specific features in a reusable way, 
+            maybe you should consider our work ;)
+          </section>
+
+          <section id="usage">
+              <div class="page-header">
+                <h1>Typical usages</h1>
+              </div>
+              <p>
+              This solution has already been applied to various domains:
+              </p>
+              <ul>
+                  <li><strong>Elderly Care at Home</strong>.
+                      Monitoring of daily activity to detect abnormal drifts of habits, often
+                      symptoms of diseases or global health degradation.
+                  </li>
+                  <li><strong>Domestic Accident Prevention</strong>.
+                  Detection of potentially hazardous situations (forgotten opened tap,
+                  stove left on for too long without any noticeable related activity,...).
+                  </li>
+                  <li><strong>Nurse Assistance</strong>.
+                  In hospitals and retirement houses, alert for potential situations demanding
+                  attention (movements in rooms at night, accidental falls, patient wandering,...).
+                  </li>
+                  <li><strong>Energy Use</strong>.
+                  Detection of bad habits and education of occupants with regards to efficiency.
+                  </li>
+                  <li><strong>In-situ Parameter Collection and Analysis for Scientific
+                      experiments</strong>.
+                  </li>
+                  <li><strong>Usage and Behavior Detection according to Activity Models</strong>.
+                  </li>
+              </ul>
+              </p>
+          </section>
+
+          <section id="key-objectives">
+              <div class="page-header">
+                <h1>Key objectives</h1>
+              </div>
+              <p>This solution has been designed with the following concerns in mind :
+                <ul>
+                    <li>to be embeddable in low-power devices, </li>
+                    <li>to be flexible, </li>
+                    <li>to be easily extensible,</li>
+                    <li>to be independent from the underlying hardware, and allow transparent
+                    replacement of a device by a functionally equivalent one..</li>
+                <ul>
+          </section>
+
+          <section id="team">
+              <div class="page-header">
+                <h1>The team</h1>
+              </div>
+              <p>The CSTBox concept has been created by the CSTB research team TIDS/IIS based at
+              Sophia-Antipolis.</p>
+              <p>The team develops and maintains the software framework used as the foundation layer of final
+              applications. The library is regularly extended with components implementing the support of 
+              hardwares or reusable services, resulting from needs of ongoing research and experimentation 
+              projects. We do this to contribute in turn to the open-source community, without which we could
+              never have created our framework. 
+              <p>
+              Aside from this, we have also designed and developed a set of wireless sensors in the past, 
+              used in real-world applications based on the CSTBox. This happened because we could not find
+              at that moment off the shelf products meeting our requirements. This experience provided us
+              a fairly good insight of the "other side" of the problem, namely the world of sensor networks
+              and alike.</p>
+          </section>
+
+          <section id="website">
+              <div class="page-header">
+                <h1>This web site</h1>
+              </div>
+              <p>You will find here documentation targeting different audiences :</p>
+              <ul>
+                  <li>managers, solution architects,... looking for available tools to
+                  develop specific applications</li>
+                  <li>integrators involved in the assembly of a CSTBox based application</li>
+                  <li>software developers needing to develop ad-hoc extensions for specific needs</li>
+                  <li>software developers wanting to contribute to CSTBox framework</li>
+              </ul>
+          </section>
+
+          <section id="more">
+              <div class="page-header">
+                <h1>More details</h1>
+              </div>
+              <p>Chances are you are now curious about details about why we did it, and how it works.
+              <p>
+              If so, just continue the journey with us and have a look under the hood by reading
+              <a href="./tech-why.html">why we made the CSTBox</a> and in which aspects it is
+              <a href="./tech-diff.html">different from other similar solutions</a>.
+          </section>
+
+        </div><!-- span9 -->
+      </div><!-- row -->
+
+    </div><!-- container -->
+
+  </body>
+</html>

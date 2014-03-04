@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CSTBox - Developpers' corner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="css/cstbox.css" rel="stylesheet">
+        <link href="css/docs.css" rel="stylesheet">
+        <link href="css/jcarousel.basic.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="js/scrollspy.js"></script>
+        <script src="js/affix.js"></script>
+        <script src="js/jquery.jcarousel.min.js"></script>
+        <script src="js/jcarousel.basic.js"> </script>
+        <script src="js/cstbox.js"></script>
+   </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" id='dev'>
+        <header>
+            <h1>Developpers' corner</h1>
+            <p>All you need to develop with and for CSTBox.</p>
+        </header>
+
+        <div class="container wide">
+
+            <div class="row">
+
+            <div id="docsnav">
+                <ul>
+                    <li href='#comms'>Inside communications</li>
+                    <li href='#deps'>Software dependencies</li>
+                    <li href='#refdoc'>Reference documentation</li>
+                </ul>
+            </div>
+
+                <div class="span9">
+
+                    <section id="comms">
+                        <div class="page-header">
+                            <h1>Inside communications</h1>
+                        </div>
+                        <p class="lead">The communications inside CSTBox framework are based on a few key concepts and paradigms :</p>
+                        <ul>
+                            <li>programing language neutral message bus</li>
+                            <li>white board</li>
+                            <li>explicit and extensible message format</li>
+                        </ul>
+                        <p>The combination of these base recipes allows an open and as affordable as possible
+                        extension and customization process, since assembled parts can be developed in any suited
+                        language.
+
+                        <h2>Communication path</h2>
+
+                        <p>The downstream path, from the equipments to the application, is illustrated hereafter :
+                        <img src="img/cstbox-v3-downstream.png"/>
+                        <p>One can see here that what we call the <i>driver</i> is responsible for translating
+                        the specific data frames coming from the equipments into technology agnostic events emitted
+                        on the communication bus.</p>
+                        <p>On the data consumers side, the involved components listen to the traffic on the communication bus, eventually tuning 
+                        them for selecting the messages related to changes of variables they are interpreted by. This filtering is based 
+                        on the content of the message fields. This behaviour
+                        can be seen what we do when choosing a radio station on a receiver.</p>
+                        <p>The reverse path, from application to equipments, is shown in next picture :</p>
+                        <img src="img/cstbox-v3-upstream.png"/>
+                        <p>The drivers use the same message listening and filtering as before, to select those related to changes in the control variables pertaining to the kind of devices they manage.</p>
+
+                        <h2>Messages format</h2>
+
+                        <p>In order to be easily produced and analyzed, the transported messages
+                        are standard strings encoded in JSON. Although a bit more costly in terms of data size and processing, this option
+                        as been preferred to a binary format for the following reasons :
+                        <ul>
+                            <li>strings don't have the problem of bytes ordering for representing numeric values, thus relieving producers and
+                            consumers to bother with this concern,</li>
+                            <li>strings are human readable, which is important for us, since self-explanatory data are one of the keystones of our approach,</li>
+                            <li>applications and usages targeted by the framework don't generate a high throughput of messages, and these
+                            messages are generally short, so we can afford the extra size and processing needed.</li>
+                            <li>JSON provides a way to serialize structured data at a very reasonable cost, unlike XML for instance,
+                            and is easy to parse and process</li>
+                        </ul>
+                        Messages are structured as follows :
+                        <style>
+                            table#msg_struct td {
+                                border : 1px solid;
+                                padding: 2px 5px;
+                                font-family: monospace;
+                            }
+                        </style>
+                        <center>
+                            <table id="msg_struct"><tr><td>timestamp</td><td>vartype</td><td>varname</td><td>data</td></tr></table>
+                        </center>
+                        with :
+                        <dl>
+                            <dt>timestamp</dt><dd>the event time stamp, in milliseconds, and relative to the standard epoch on Unix systems</dd>
+                            <dt>vartype</dt><dd>the type of the variable which change is notified by the event (ex: temperature)</dd>
+                            <dt>varname</dt><dd>the name of the variable</dd>
+                        <dt>data</dt><dd>an message dependent payload, represented as a dictionary containing the
+                        data fields key and value</dd>
+                        </dl>
+                        It must be noted that some keys are pre-defined for the data part of the message :
+                        <dl>
+                            <dt>value</dt><dd><b>(mandatory)</b> the variable value</dd>
+                            <dt>units</dt><dd>if relevant, units used to represent the value</dd>
+                        </dl>
+                        </p>
+                    </section>
+
+                    <section id="stock_comps">
+                        <div class="page-header">
+                            <h1>Out of the box components</h1>
+                        </div>
+
+                        <p class="lead">A comfortable collection of components is provided out of the box, covering the core
+                        features required to deal with sensor data collection and storage, box configuration, process scheduling,&hellip;</p>
+                        <p>Here they are :</p>
+                        <dl>
+                            <dt>timed data local storage</dt>
+                            <dd>Manages the storage and retrieval of timed events corresponding to changes of the state variables used to
+                            monitor the observed system. This component is made of two parts :
+                            <ul>
+                                <li>a daemon process, listening for variables value changes events and storing them locally,</li>
+                                <li>a library providing high-level services for querying and retrieval of data from the local storage.</li>
+                            </ul>
+                            </dd>
+                            <dt>administration and configuration Web based console</dt>
+                            <dd>Provides an HTTP server, hosting a Web based application for :
+                            <ul>
+                                <li>editing the device network</li>
+                                <li>browse data locally stored</li>
+                                <li>configure system level parameters</li>
+                                <li>manage active services</li>
+                                <li>consult and retrieve components execution logs</li>
+                            </ul>
+                            This application uses a plugin based architecture, allowing integrators to add their own applets for
+                            extending the supported features.
+                            </dd>
+                            <p>Here is a screen-shot of the desktop, showing some applets (both stock and application specific ones) :</p>
+                            <div id="screenshots" class="jcarousel-wrapper">
+                                <div class="jcarousel">
+                                    <ul>
+                                        <li><img src="img/screenshots/desktop.png" width="640" height="413" alt=""/></li>
+                                        <li><img src="img/screenshots/devcfg.png" width="640" height="413" alt=""/></li>
+                                        <li><img src="img/screenshots/evtbrw.png" width="640" height="413" alt=""/></li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+                                <p class="jcarousel-pagination">
+                                </p>
+                            </div>
+                        </dl>
+                    </section>
+
+                    <section id="deps">
+                        <div class="page-header">
+                            <h1>Software dependencies</h1>
+                        </div>
+
+                        <h2>For running CSTBox</h2>
+
+                        <p class="lead">The core part of the framework is written in Python.</p>
+                        <p>Python being included in common Linux distributions, even lighter ones, 
+                        you should have nothing special to do most of
+                        the time, apart if you are building a Linux from scratch or using some 
+                        more exotic distributions.</p>
+
+                        <p>We have used Debian based distributions for most of the applications 
+                        we have deployed in the field during the various
+                        projects and experiments CSTBox has been used for, installed on nano-PC 
+                        type boxes, and even on card credit size computers such as the Raspberry Pi. 
+                        In some specific cases, we were constrained 
+                        to use very low-end targets 
+                        (field controllers for instance) running LFS or alike, but could 
+                        successfully install and run the Python VM, and execute
+                        CSTBox based applications without any problem.</p>
+
+                        <h2>For developing your components</h2>
+
+                        <p class="lead">Since our approach is implementation language agnostic, there is no mandatory dependency.
+                        <p>For instance, if you only need to work with sensor data which have been stored by our included recorder,
+                        you do not need any special library, since the storage is organized in a collection of pure tabulated text files.
+                        Although this can sound strange, it has been proven well suited. For instance, a currently running application,
+                        collecting various ambient data using sensors disseminated in a house, manages nearly 3 million records using this
+                        technique, without any problem and using a reasonable storage space.</p>
+                        <p>If the component you want to create will communicate with some of the ones included in the framework distribution,
+                        you will need to be able to send and/or receive messages on D-Bus. Fortunately, D-Bus implementation is very portable
+                        <i>(it even runs on Mac OSX and Windows)</i> and bindings exist for a lot of programming
+                        languages. So you'll just have to pick and install the appropriate one.</p>
+                    </section>
+
+                    <section id="refdoc">
+                        <div class="page-header">
+                            <h1>Reference documentation</h1>
+                        </div>
+                        <p class="lead">
+                        CSTBox can be developed using different languages. Here is a list
+                        of available documentation:
+                        </p>
+                        <dl>
+                            <dt><a href="/python-api">Python</a></dt>
+                            <dd>Python modules and libraries composing the core framework and some publicly released extensions.</dd>
+                            <dt><a href="/c-api">C-API</a></dt>
+                            <dd>Collection of C libraries for the development of software modules for CSTBox.</dd>
+                        </li>
+                        </ul>
+                    </section>
+
+                </div><!-- span9 -->
+            </div><!-- row -->
+
+        </div><!-- container -->
+
+    </body>
+</html>
