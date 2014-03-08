@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>c_serial - Serial port base network coordinator &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="hal - Hardware Abstraction Layer package" href="../hal.html" />
+    <link rel="next" title="device - Device abstraction" href="device.html" />
+    <link rel="prev" title="drivers - Network device drivers sub-package" href="drivers.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>c_serial - Serial port base network coordinator</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="drivers.html">drivers - Network device drivers sub-package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="device.html">device - Device abstraction</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.hal.c_serial">
+<span id="c-serial-serial-port-base-network-coordinator"></span><h1>c_serial - Serial port base network coordinator<a class="headerlink" href="#module-pycstbox.hal.c_serial" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pycstbox.hal.c_serial.SerialCoordinatorServiceObject">
+<em class="property">class </em><tt class="descclassname">pycstbox.hal.c_serial.</tt><tt class="descname">SerialCoordinatorServiceObject</tt><big>(</big><em>c_id</em><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialCoordinatorServiceObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract class implementing the base tasks for a coordinator based on
+a serial port interface with the network.</p>
+<p>It has to be overridden to provide the dispatch_received_data() method which
+is responsible for handling the incoming data, depending on the protocol in
+use for the relevant equipments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>c_id</strong> (<em>str</em>) &#8211; coordinator id</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.hal.c_serial.SerialCoordinatorServiceObject.data_received">
+<tt class="descname">data_received</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialCoordinatorServiceObject.data_received" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback used by the receiver thread to notify us that a data packet is here to be processed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; the received data</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.c_serial.SerialCoordinatorServiceObject.dispatch_received_data">
+<tt class="descname">dispatch_received_data</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialCoordinatorServiceObject.dispatch_received_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dispatch the received data to the relevant devices, so that they
+return us the corresponding events to be emitted (if any).</p>
+<p>This method must be implemented by concrete coordinators, in order to
+handle the device identification based on the protocol in use and
+transmit them the received data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; the data to be processed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of events to be emitted (can be empty)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.c_serial.SerialCoordinatorServiceObject.send_command">
+<tt class="descname">send_command</tt><big>(</big><em>command</em>, <em>callback=None</em><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialCoordinatorServiceObject.send_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a command for a device attached to the coordinator, handling appropriate locking for guarantying
+the atomicity of the operation (command sending, callback invocation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>command</strong> (<em>str</em>) &#8211; the command to be sent (device dependant)</li>
+<li><strong>callback</strong> (<em>callable</em>) &#8211; an optional callable invoked is the command is send without error</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.hal.c_serial.SerialCoordinatorServiceObject.serial_port">
+<tt class="descname">serial_port</tt><a class="headerlink" href="#pycstbox.hal.c_serial.SerialCoordinatorServiceObject.serial_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>The serial port object used by the coordinator.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.c_serial.SerialCoordinatorServiceObject.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialCoordinatorServiceObject.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the service object.</p>
+<p>This will initialize the serial port, open it and start the data receive thread.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.c_serial.SerialCoordinatorServiceObject.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialCoordinatorServiceObject.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the service object.</p>
+<p>This will stop the receive thread and close the serial port.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.c_serial.SerialPortConfiguration">
+<em class="property">class </em><tt class="descclassname">pycstbox.hal.c_serial.</tt><tt class="descname">SerialPortConfiguration</tt><big>(</big><em>port</em>, <em>baudrate=4800</em>, <em>bytesize=8</em>, <em>parity='N'</em>, <em>stopbits=1</em><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialPortConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience data holder for serial port configuration data, providing commonly used default settings.</p>
+<dl class="method">
+<dt id="pycstbox.hal.c_serial.SerialPortConfiguration.update">
+<tt class="descname">update</tt><big>(</big><em>src</em><big>)</big><a class="headerlink" href="#pycstbox.hal.c_serial.SerialPortConfiguration.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates attribute values based on information defined as attributes of another object (most often,
+an extract of the device network configuraton data structure).
+:param src: the configuration data source object</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="drivers.html">drivers - Network device drivers sub-package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="device.html">device - Device abstraction</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

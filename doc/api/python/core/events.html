@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>events - Basic definitions and tools related to CSTBox events &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="evtdb - CSTBox Events Database access D-Bus service" href="evtdb.html" />
+    <link rel="prev" title="devcfg - Devices network configuration data access tools" href="devcfg.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>events - Basic definitions and tools related to CSTBox events</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="devcfg.html">devcfg - Devices network configuration data access tools</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.events">
+<span id="events-basic-definitions-and-tools-related-to-cstbox-events"></span><h1>events - Basic definitions and tools related to CSTBox events<a class="headerlink" href="#module-pycstbox.events" title="Permalink to this headline">¶</a></h1>
+<p>Basic definitions and tools related to CSTBox events.</p>
+<p>The instrumented environment (home, office, experiment,...) is represented by a
+set of state and control variables. State variables containts the last known
+value of a given sensor by instance, the current position of an actuator,...
+while control variables are used to modify the state of an actuator, and thus
+can represent its set point (ex: the status of a light switch). As a
+generalization, a control variable can be used to set a message to be displayed
+on a device, to be vocalized by an audio system, or to be sent as an SMS to a
+phone number.</p>
+<p>A special case of state variable without a value exists for notifications, such
+as the ones provided by motion sensors. In this case, the event is used to signal
+that a motion is detected, but does not convey any value (kind of Dirac function).</p>
+<p>Basic events are composed of the following parts :</p>
+<blockquote>
+<div><ul class="simple">
+<li>a variable type (ex: temperature)</li>
+<li>a variable name</li>
+<li>a dictionary containing event data if any, such as the value for events
+conveying one</li>
+</ul>
+</div></blockquote>
+<p>(*) the dictionary must be included, and can be empty if the event has no data</p>
+<p>Timed events add a time stamp field to these ones. The time stamp is expressed as
+the number of milliseconds elapsed since the Epoch.</p>
+<p>It must be noted that a state variable and a control variable can share the
+same variable type. There will be no clash since the associated events will be
+exchanged on distinct channels. This is by the way coherent with respect to
+what variables represent. For instance, a temperature is always a temperature,
+no matter if it is the temperature of a given room returned by a sensor, or the
+set point for a temperature regulator.</p>
+<p>Variable names must be unique within the same type, and only the association
+(type, name) must be unique. For instance, on can have two variables named
+&#8220;livingroom&#8221;, one defined with the &#8220;temperature&#8221; type, and the other with the
+&#8220;movement&#8221; one.</p>
+<p>At implementation level, events are conveniently manipulated as tuples, which
+components are the ones listed above. Python tuples are an efficient and
+light weight representation allowing to manipulate data as a structured and
+immutable entity.</p>
+<p>For convenience, named tuples are also defined here, conveying explicitly the
+name of the event components, and ensuring that the components sequence is
+respected in the tuple.</p>
+<dl class="class">
+<dt id="pycstbox.events.BasicEvent">
+<em class="property">class </em><tt class="descclassname">pycstbox.events.</tt><tt class="descname">BasicEvent</tt><a class="headerlink" href="#pycstbox.events.BasicEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>BasicEvent(var_type, var_name, data)</p>
+<dl class="attribute">
+<dt id="pycstbox.events.BasicEvent.data">
+<tt class="descname">data</tt><a class="headerlink" href="#pycstbox.events.BasicEvent.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.events.BasicEvent.var_name">
+<tt class="descname">var_name</tt><a class="headerlink" href="#pycstbox.events.BasicEvent.var_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.events.BasicEvent.var_type">
+<tt class="descname">var_type</tt><a class="headerlink" href="#pycstbox.events.BasicEvent.var_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.events.TimedEvent">
+<em class="property">class </em><tt class="descclassname">pycstbox.events.</tt><tt class="descname">TimedEvent</tt><a class="headerlink" href="#pycstbox.events.TimedEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>TimedEvent(timestamp, var_type, var_name, data)</p>
+<dl class="attribute">
+<dt id="pycstbox.events.TimedEvent.data">
+<tt class="descname">data</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.events.TimedEvent.timestamp">
+<tt class="descname">timestamp</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.events.TimedEvent.var_name">
+<tt class="descname">var_name</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.var_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.events.TimedEvent.var_type">
+<tt class="descname">var_type</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.var_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.events.make_basic_event">
+<tt class="descclassname">pycstbox.events.</tt><tt class="descname">make_basic_event</tt><big>(</big><em>var_type</em>, <em>var_name</em>, <em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.events.make_basic_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a BasicEvent built with the provided pieces.</p>
+<p>The return event is used to signal a value change of a variable, or to
+control an equipment by sending it the new setting of one of its control
+variables.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>var_type</strong> (<em>str</em>) &#8211; the type of the variable</li>
+<li><strong>var_name</strong> (<em>str</em>) &#8211; the name of the variable</li>
+<li><strong>value</strong> &#8211; (optional) the value of the variable if relevant</li>
+<li><strong>units</strong> (<em>str</em>) &#8211; (optional) the units of the variable value</li>
+<li><strong>kwargs</strong> &#8211; optional named parameters to be added to the dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the corresponding BasicEvent instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.events.make_data">
+<tt class="descclassname">pycstbox.events.</tt><tt class="descname">make_data</tt><big>(</big><em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.events.make_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the data dictionary of an event, handling common items such as
+the variable value and units if provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> &#8211; the variable value to be integrated in the resulting dictionary</li>
+<li><strong>units</strong> (<em>str</em>) &#8211; the variable units to be integrated in the resulting dictionary</li>
+<li><strong>kwargs</strong> &#8211; optional named parameters to be added to the dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the dictionary containing the passed information</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.events.make_timed_event">
+<tt class="descclassname">pycstbox.events.</tt><tt class="descname">make_timed_event</tt><big>(</big><em>ts</em>, <em>var_type</em>, <em>var_name</em>, <em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.events.make_timed_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as make_basic_event, but for a TimedEvent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ts</strong> (<em>datetime.datetime</em>) &#8211; the event timestamp
+(see <a class="reference internal" href="#pycstbox.events.make_basic_event" title="pycstbox.events.make_basic_event"><tt class="xref py py-func docutils literal"><span class="pre">make_basic_event()</span></tt></a> for the other parameters)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the corresponding TimeEvent instance</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="devcfg.html">devcfg - Devices network configuration data access tools</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

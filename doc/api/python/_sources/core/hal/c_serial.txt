@@ -1,0 +1,5 @@
+c_serial - Serial port base network coordinator
+===============================================
+
+.. automodule:: pycstbox.hal.c_serial
+

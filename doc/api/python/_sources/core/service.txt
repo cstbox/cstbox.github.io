@@ -1,0 +1,5 @@
+service - Fundation classes for services implementation
+=======================================================
+
+.. automodule:: pycstbox.service
+

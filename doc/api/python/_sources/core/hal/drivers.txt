@@ -1,0 +1,18 @@
+.. _hal_drivers:
+
+drivers - Network device drivers sub-package
+============================================
+
+Drivers are provided as external modules deployed in this sub-package.
+The documentation related to available drivers is compiled in the :ref:`extensions` section of this documentation.
+
+Driver automatic discovery and registering
+------------------------------------------
+
+They are automatically registered by an introspection mechanism of included modules,
+which is implemented at the `drivers` sub-package toplevel.
+
+.. automodule:: pycstbox.hal.drivers
+
+
+

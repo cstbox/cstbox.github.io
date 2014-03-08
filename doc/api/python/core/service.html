@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>service - Fundation classes for services implementation &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="sysutils - CSTBox system level utilities" href="sysutils.html" />
+    <link rel="prev" title="log - Customized logging system" href="log.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>service - Fundation classes for services implementation</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="log.html">log - Customized logging system</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sysutils.html">sysutils - CSTBox system level utilities</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.service">
+<span id="service-fundation-classes-for-services-implementation"></span><h1>service - Fundation classes for services implementation<a class="headerlink" href="#module-pycstbox.service" title="Permalink to this headline">¶</a></h1>
+<p>Root class and helpers for implementing CSTBox D-Bus based services.</p>
+<p>The concept of service container is provided to leverage the possibility of
+accessing several service objects through a single bus name. This container takes
+care of running the main loop and catching signals to terminating it gracefully.</p>
+<p>Services objects are added to the container to provide the required services, each
+one being associated to a given path inside the container.</p>
+<dl class="class">
+<dt id="pycstbox.service.ServiceContainer">
+<em class="property">class </em><tt class="descclassname">pycstbox.service.</tt><tt class="descname">ServiceContainer</tt><big>(</big><em>name</em>, <em>conn=None</em>, <em>svc_objects=None</em>, <em>auto_fw_object=True</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A service container is used to host one or many service objects, made accessible
+via its connection to a bus.</p>
+<p>Service objects can be added either at container creation time or afterwards.</p>
+<p>A service object providing framework level features, such as termination request is
+automatically created and added (unless specified otherwise). Its path is defined
+by the SYSTEM_OBJECT_PATH constant.</p>
+<dl class="docutils">
+<dt>Simple usage :</dt>
+<dd><dl class="first docutils">
+<dt>class SvcObject1(dbus.service.Object):</dt>
+<dd>...</dd>
+<dt>class SvcObject2(dbus.service.Object):</dt>
+<dd>...</dd>
+</dl>
+<p>obj1 = SvcObject1(...)
+obj2 = SvcObject2(...)
+svc = ServiceContainer(</p>
+<blockquote>
+<div>&#8216;my_service&#8217;,         &#8211;&gt; will claim &#8216;fr.cstb.cstbox.my_service&#8217; bus name on SessionBus
+[(obj1, &#8216;/path/to/obj1&#8217;),(obj2, &#8216;/path/to/obj2&#8217;)]
+)</div></blockquote>
+<p class="last">svc.start()</p>
+</dd>
+</dl>
+<p>Since automatic framework service object has been used (default),
+it is then possible possible to send to fr.cstb.cstbox.my_service a
+a method call message to framework.terminate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) &#8211; the container&#8217;s name. It is used to build the well-known name which will
+be claimed (see pycstbox.commons.make_bus_name())</li>
+<li><strong>conn</strong> (<em>dbus_connection</em>) &#8211; the connection to the bus used by the service.
+Set to the session bus if not provided.</li>
+<li><strong>svc_objects</strong> (<em>list</em>) &#8211; an optional list of service objects, which will be automatically added to
+the container during its initialization. The items of this list are tuples
+containing the service object instance and the path to be associated for it</li>
+<li><strong>auto_fw_object</strong> (<em>bool</em>) &#8211; if True (the default) a service object implementing framework level functions
+is automatically created and added. If False, it is the responsibility of
+the application to provide it and adding it if framework level functions are
+required.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.service.ServiceContainer.add">
+<tt class="descname">add</tt><big>(</big><em>svc_object</em>, <em>path</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a service object to the container.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>svc_object</strong> (<em>ServiceObject</em>) &#8211; the service object</li>
+<li><strong>path</strong> (<em>str</em>) &#8211; the path to which the object is accessed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if parameters are None or not the right type</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.service.ServiceContainer.add_objects">
+<tt class="descname">add_objects</tt><big>(</big><em>svc_objects</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.add_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a list of service object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>svc_objects</strong> (<em>list</em>) &#8211; an optional list of service objects, which will be automatically added to
+the container during its initialization. The items of this list are tuples
+containing the service object instance and the path to be associated for it</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.service.ServiceContainer.log_setLevel">
+<tt class="descname">log_setLevel</tt><big>(</big><em>level</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.log_setLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Local override of log_setLevel fo handing the propagation of the
+level setting to the child service objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.service.ServiceContainer.remove">
+<tt class="descname">remove</tt><big>(</big><em>svc_object</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a service object from the container.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>svc_object</strong> (<em>ServiceObject</em>) &#8211; the service object to be removed</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if parameter is None or not the right type</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.service.ServiceContainer.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the container.</p>
+<p>This starts the D-Bus main loop and allows the service to receive calls and signals
+from the outside.</p>
+<p>The container can be stopped then by :
+- calling its terminate() method
+- sending it a SIGTERM signal or a KeyboardInterrupt</p>
+<p>Starting a running container has no effect, apart a warning message in the log.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.service.ServiceContainer.terminate">
+<tt class="descname">terminate</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.terminate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the container.</p>
+<p>This makes the event loop to exit and resources to be freed.</p>
+<p>Stopping a not running container has no effect, apart a warning message in the log.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.service.SimpleService">
+<em class="property">class </em><tt class="descclassname">pycstbox.service.</tt><tt class="descname">SimpleService</tt><big>(</big><em>name</em>, <em>conn=None</em>, <em>path='/service'</em><big>)</big><a class="headerlink" href="#pycstbox.service.SimpleService" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class is just a helper for implementation of a service composed of
+a single object.</p>
+<p>It is an hybrid class which packages the service container and the service object,
+and &#8220;connects&#8221; them automatically. If not provided, the service object path
+is set to &#8216;/service&#8217;.</p>
+<p>It must be sub-classed to implement the required methods and/or signals.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; the path to be associated to the service object. Default: &#8216;/service&#8217;</td>
+</tr>
+</tbody>
+</table>
+<p>For other parameters, see <a class="reference internal" href="#pycstbox.service.ServiceContainer" title="pycstbox.service.ServiceContainer"><tt class="xref py py-class docutils literal"><span class="pre">ServiceContainer</span></tt></a></p>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="log.html">log - Customized logging system</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sysutils.html">sysutils - CSTBox system level utilities</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

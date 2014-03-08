@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cron - CSTBox crontab management &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="dbuslib - D-Bus helpers" href="dbuslib.html" />
+    <link rel="prev" title="config - System wide configuration" href="config.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>cron - CSTBox crontab management</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="config.html">config - System wide configuration</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="dbuslib.html">dbuslib - D-Bus helpers</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.cron">
+<span id="cron-cstbox-crontab-management"></span><h1>cron - CSTBox crontab management<a class="headerlink" href="#module-pycstbox.cron" title="Permalink to this headline">¶</a></h1>
+<p>Lightweight tools for working with the CSTBox private crontab.</p>
+<p>In order to avoid cluttering the host system, CSTBox cron settings are gathered
+in a package related crontab stored in /etc/cron.d, as described in cron man page.
+This way, we can deactivate all CSTBox cron tasks when shutting it down, without
+loosing their definitions, and this be able to reactivate them back again when
+restarting the framework.</p>
+<dl class="class">
+<dt id="pycstbox.cron.CronItem">
+<em class="property">class </em><tt class="descclassname">pycstbox.cron.</tt><tt class="descname">CronItem</tt><big>(</big><em>line=None</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>An item of the crontab, be it a job specification or anything
+else.</p>
+<p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<em>str</em>) &#8211; (optional) a line to be parsed. If not provided, all fields are
+initialized to an empty value, but the user one, defaulted to
+the current user id</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.cron.CronItem.ITEMREX">
+<tt class="descname">ITEMREX</tt><em class="property"> = &lt;_sre.SRE_Pattern object at 0x4185b40&gt;</em><a class="headerlink" href="#pycstbox.cron.CronItem.ITEMREX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronItem.parse">
+<tt class="descname">parse</tt><big>(</big><em>line</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronItem.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a string supposed to be a crontab line.</p>
+<p>A basic analyze of the line is performed to decide if it can be a job
+specification or something else. It is quite rudimentary and not bullet
+proof in any way, since a comment line containing a number of words
+equal to the job definition field count is taken for a job.</p>
+<p>Maybe some more in-depth analyze could be done by checking if what is
+supposed to be the time specs fields are valid ones, but we don&#8217;t need
+so much sophistication for the moment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<em>str</em>) &#8211; the line to be parsed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronItem.render">
+<tt class="descname">render</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.cron.CronItem.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the crontab record corresponding to the item definition.</p>
+<p>The result is always a string, which can be empty if no attribute of
+the item is set.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.cron.CronTab">
+<em class="property">class </em><tt class="descclassname">pycstbox.cron.</tt><tt class="descname">CronTab</tt><big>(</big><em>path='/etc/cstbox/crontab'</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab" title="Permalink to this definition">¶</a></dt>
+<dd><p>The crontab.</p>
+<p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; an optional path from which the crontab is loaded, if it exists.
+default: CSTBox crontab path</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.add">
+<tt class="descname">add</tt><big>(</big><em>item</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an item to the crontab.</p>
+<p>Passing None is allowed and will add an empty CronItem.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.find_command">
+<tt class="descname">find_command</tt><big>(</big><em>command</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.find_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of crons using a command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.find_comment">
+<tt class="descname">find_comment</tt><big>(</big><em>comment</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.find_comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of crons having a specific comment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.iterjobs">
+<tt class="descname">iterjobs</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.iterjobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an iterator on the items representing jobs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.read">
+<tt class="descname">read</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads and parses the content of a crontab file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; the path of the file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">any IO error dealing with file access, including file not found</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.remove">
+<tt class="descname">remove</tt><big>(</big><em>item</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a given item from the crontab.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.render">
+<tt class="descname">render</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the whole crontab as a list of strings.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cron.CronTab.write">
+<tt class="descname">write</tt><big>(</big><em>path=None</em><big>)</big><a class="headerlink" href="#pycstbox.cron.CronTab.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the crontab to disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; the path of the file to be written. If not provided, the path
+defined at instantiation time is used. If none of these are
+defined, an exception is generated.
+If not provided at creation time, the path passed here will be
+stored in the instance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.cron.make_timespec">
+<tt class="descclassname">pycstbox.cron.</tt><tt class="descname">make_timespec</tt><big>(</big><em>minute='*'</em>, <em>hour='*'</em>, <em>day='*'</em>, <em>month='*'</em>, <em>dow='*'</em><big>)</big><a class="headerlink" href="#pycstbox.cron.make_timespec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="config.html">config - System wide configuration</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="dbuslib.html">dbuslib - D-Bus helpers</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

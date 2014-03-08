@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cli - Command line interface helpers &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="config - System wide configuration" href="config.html" />
+    <link rel="prev" title="cfgbroker - Device network configuration access service" href="cfgbroker.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>cli - Command line interface helpers</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="cfgbroker.html">cfgbroker - Device network configuration access service</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="config.html">config - System wide configuration</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.cli">
+<span id="cli-command-line-interface-helpers"></span><h1>cli - Command line interface helpers<a class="headerlink" href="#module-pycstbox.cli" title="Permalink to this headline">¶</a></h1>
+<p>Complementary definitions to enhance <cite>argparse</cite> usage with commonly used
+features.</p>
+<dl class="function">
+<dt id="pycstbox.cli.add_config_file_option_to_parser">
+<tt class="descclassname">pycstbox.cli.</tt><tt class="descname">add_config_file_option_to_parser</tt><big>(</big><em>parser</em>, <em>dflt_name</em><big>)</big><a class="headerlink" href="#pycstbox.cli.add_config_file_option_to_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the command-line option to the parser for providing the path of
+the configuration file</p>
+<p>The default name provided will be used to build the full path of the
+configuration file, which directory is defined by CONFIG_DIR</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parser</strong> (<em>argparse.ArgumentParser</em>) &#8211; The parser to which the option will be added. Cannot be None</li>
+<li><strong>dflt_name</strong> (<em>str</em>) &#8211; the default name of the file. Cannot be None or empty</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.cli.get_argument_parser">
+<tt class="descclassname">pycstbox.cli.</tt><tt class="descname">get_argument_parser</tt><big>(</big><em>description</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.cli.get_argument_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an argument parser with common options already defined</p>
+<p>Included pre-defined options:</p>
+<p>-L &#8211;loglevel
+&#8211;debug</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>description</strong> (<em>str</em>) &#8211; Brief description of the script</li>
+<li><strong>kwargs</strong> &#8211; named arguments for ArgumentParser constructor</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="cfgbroker.html">cfgbroker - Device network configuration access service</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="config.html">config - System wide configuration</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

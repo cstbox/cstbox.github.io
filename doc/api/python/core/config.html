@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>config - System wide configuration &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="cron - CSTBox crontab management" href="cron.html" />
+    <link rel="prev" title="cli - Command line interface helpers" href="cli.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>config - System wide configuration</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="cli.html">cli - Command line interface helpers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cron.html">cron - CSTBox crontab management</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.config">
+<span id="config-system-wide-configuration"></span><h1>config - System wide configuration<a class="headerlink" href="#module-pycstbox.config" title="Permalink to this headline">¶</a></h1>
+<p>CSTBox system wide configuration routines and definitions.</p>
+<p>This implementation is based on INI like configuration files.</p>
+<dl class="class">
+<dt id="pycstbox.config.GlobalSettings">
+<em class="property">class </em><tt class="descclassname">pycstbox.config.</tt><tt class="descname">GlobalSettings</tt><big>(</big><em>path=None</em><big>)</big><a class="headerlink" href="#pycstbox.config.GlobalSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>A special pre-defined configuration file containing application wide
+parameters.</p>
+<p>The file name is pre-defined, and data are automatically loaded when creating
+the instance, thus relieving from explicitly call the read() method.</p>
+<p>In addition, since this file is single section, simplified get/set methods
+are proposed, removing the need to specify a section name.</p>
+<p>Some fixed settings are also provided as class attributes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; configuration file path, used only for unit tests</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.config.GlobalSettings.DEFAULTS">
+<tt class="descname">DEFAULTS</tt><em class="property"> = {'dao_name': 'fsys', 'system_id': 'sop-pascual', 'prefix': ''}</em><a class="headerlink" href="#pycstbox.config.GlobalSettings.DEFAULTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.config.GlobalSettings.LOGFILES_DIR">
+<tt class="descname">LOGFILES_DIR</tt><em class="property"> = '/var/log/cstbox'</em><a class="headerlink" href="#pycstbox.config.GlobalSettings.LOGFILES_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.config.GlobalSettings.LOGFILES_EXT">
+<tt class="descname">LOGFILES_EXT</tt><em class="property"> = '.log'</em><a class="headerlink" href="#pycstbox.config.GlobalSettings.LOGFILES_EXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.config.GlobalSettings.SECTION">
+<tt class="descname">SECTION</tt><em class="property"> = 'cstbox'</em><a class="headerlink" href="#pycstbox.config.GlobalSettings.SECTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.config.GlobalSettings.as_dict">
+<tt class="descname">as_dict</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.config.GlobalSettings.as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the configuration content as a dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.config.GlobalSettings.get">
+<tt class="descname">get</tt><big>(</big><em>option</em><big>)</big><a class="headerlink" href="#pycstbox.config.GlobalSettings.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overridden <tt class="xref py py-meth docutils literal"><span class="pre">ConfigParser.SafeConfigParser.get()</span></tt> hiding parameters having no use in this version
+for simplication&#8217;s sake.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.config.GlobalSettings.set">
+<tt class="descname">set</tt><big>(</big><em>option</em>, <em>value</em><big>)</big><a class="headerlink" href="#pycstbox.config.GlobalSettings.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overridden <tt class="xref py py-meth docutils literal"><span class="pre">ConfigParser.SafeConfigParser.set()</span></tt> hiding parameters having no use in this version
+for simplication&#8217;s sake.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.config.GlobalSettings.write">
+<tt class="descname">write</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.config.GlobalSettings.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overridden <tt class="xref py py-meth docutils literal"><span class="pre">ConfigParser.SafeConfigParser.write()</span></tt> hiding parameters having no use in this version
+since storage file is defined at instanciation time (see constructor).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.config.make_config_file_path">
+<tt class="descclassname">pycstbox.config.</tt><tt class="descname">make_config_file_path</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#pycstbox.config.make_config_file_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the full path of a configuration file located in CSTBox
+default configuration directory.</p>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="cli.html">cli - Command line interface helpers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cron.html">cron - CSTBox crontab management</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

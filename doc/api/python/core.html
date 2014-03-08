@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Core system &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="index.html" />
+    <link rel="up" title="CSTBox v3 API documentation" href="api.html" />
+    <link rel="next" title="cfgbroker - Device network configuration access service" href="core/cfgbroker.html" />
+    <link rel="prev" title="CSTBox v3 API documentation" href="api.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Core system</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="api.html">CSTBox v3 API documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="core/cfgbroker.html">cfgbroker - Device network configuration access service</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="core-system">
+<h1>Core system<a class="headerlink" href="#core-system" title="Permalink to this headline">¶</a></h1>
+<p>Core modules of the framework provide services needed for any
+application. This encompasses :</p>
+<blockquote>
+<div><ul class="simple">
+<li>inter-component communication (both asynchronous messages based and remote
+procedure calls)</li>
+<li>events persistence in the local storage, with services for querying and
+extracting data, and support for exchangeable underlying persistence engine</li>
+<li>scheduling service, based on the system &#8216;&#8217;cron&#8217;&#8217; (which is thus required)</li>
+<li>equipments network configuration management and broking</li>
+<li>hardware abstraction layer (HAL), providing a plugin based architecture for
+adding the support of involved equipements</li>
+<li>HTTP server providing the core engine and the plugin based architecture for implementing an extensible
+user interface and Web services</li>
+<li>flag based notification engine, allowing components to signal events to be notified to the
+rest of the application or the the end user</li>
+<li>plugin based data export infrastructure, for adding inter-operability
+between the CSTBox based application and external systems.</li>
+</ul>
+</div></blockquote>
+<p>Several complementary modules are included, providing helpers intended for
+contributors and integrators, in order to make their life  easier. This
+includes command line common handling features, unified logging,</p>
+<p>Core modules:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core/cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/config.html">config - System wide configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/export.html">export - Events data export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/hal.html">hal - Hardware Abstraction Layer package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/log.html">log - Customized logging system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="api.html">CSTBox v3 API documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="core/cfgbroker.html">cfgbroker - Device network configuration access service</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

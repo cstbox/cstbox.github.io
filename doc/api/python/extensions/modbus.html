@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>modbus - Modbus devices support extension &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Extensions" href="../extensions.html" />
+    <link rel="next" title="onewire - 1-Wire devices support extension" href="onewire.html" />
+    <link rel="prev" title="Extensions" href="../extensions.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>modbus - Modbus devices support extension</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../extensions.html">Extensions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="onewire.html">onewire - 1-Wire devices support extension</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="modbus-modbus-devices-support-extension">
+<h1>modbus - Modbus devices support extension<a class="headerlink" href="#modbus-modbus-devices-support-extension" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-pycstbox.modbus">
+<span id="pycstbox-modbus"></span><h2>pycstbox.modbus<a class="headerlink" href="#module-pycstbox.modbus" title="Permalink to this headline">¶</a></h2>
+<p>Common definitions and helpers for Modbus devices support.</p>
+<dl class="class">
+<dt id="pycstbox.modbus.ModbusRegister">
+<em class="property">class </em><tt class="descclassname">pycstbox.modbus.</tt><tt class="descname">ModbusRegister</tt><a class="headerlink" href="#pycstbox.modbus.ModbusRegister" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modbus register description.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
+<li><strong>addr</strong> &#8211; register address</li>
+<li><strong>size</strong> (<em>int</em>) &#8211; register size (in 16 bits words)</li>
+<li><strong>cfgreg</strong> (<em>bool</em>) &#8211; True if this register is a configuration one</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycstbox.modbussvc">
+<span id="pycstbox-modbussvc"></span><h2>pycstbox.modbussvc<a class="headerlink" href="#module-pycstbox.modbussvc" title="Permalink to this headline">¶</a></h2>
+<p>Modbus devices sub-network management service.</p>
+<dl class="class">
+<dt id="pycstbox.modbussvc.ModbusSvc">
+<em class="property">class </em><tt class="descclassname">pycstbox.modbussvc.</tt><tt class="descname">ModbusSvc</tt><big>(</big><em>conn</em><big>)</big><a class="headerlink" href="#pycstbox.modbussvc.ModbusSvc" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class implements the model of the service managing the sub-network
+built with Modbus products.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>conn</strong> (<em>Connection</em>) &#8211; D-Bus connection (see service.ServiceObject.__init__())</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../extensions.html">Extensions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="onewire.html">onewire - 1-Wire devices support extension</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

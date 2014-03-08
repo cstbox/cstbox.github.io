@@ -1,0 +1,19 @@
+onewire - 1-Wire devices support extension
+==========================================
+
+The 1-Wire extension adds the support of 1-wire devices such as the DS18x20 temperature sensor.
+
+It includes the driver for the DS1820 as a starting point for adding other 1-wire devices. The
+implementation is
+
+
+pycstbox.onewire
+----------------
+
+.. automodule:: pycstbox.onewire
+
+pycstbox.onewiresvc
+-------------------
+
+.. automodule:: pycstbox.onewiresvc
+

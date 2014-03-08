@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cfgbroker - Device network configuration access service &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="cli - Command line interface helpers" href="cli.html" />
+    <link rel="prev" title="Core system" href="../core.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>cfgbroker - Device network configuration access service</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../core.html">Core system</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cli.html">cli - Command line interface helpers</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.cfgbroker">
+<span id="cfgbroker-device-network-configuration-access-service"></span><h1>cfgbroker - Device network configuration access service<a class="headerlink" href="#module-pycstbox.cfgbroker" title="Permalink to this headline">¶</a></h1>
+<p>Device configuration broker.</p>
+<p>This modules implements a service acting as a provider for the configuration of the device
+network used in and application.</p>
+<p>Its main function is to keep the current configuration in memory and to provide its items
+over D-Bus as requested by client components of the application.</p>
+<dl class="class">
+<dt id="pycstbox.cfgbroker.BrokerObject">
+<em class="property">class </em><tt class="descclassname">pycstbox.cfgbroker.</tt><tt class="descname">BrokerObject</tt><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.changed">
+<tt class="descname">changed</tt><big>(</big><em>*args</em>, <em>**keywords</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.changed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notifies a change in the configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>chgtype</strong> &#8211; the type of the change. Can be one of of the CFGCHG_xx constants.</li>
+<li><strong>resid</strong> &#8211; the identifier of the modified resource (see restype documentation). Empty
+in case of a change at the global level</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.get_coordinator">
+<tt class="descname">get_coordinator</tt><big>(</big><em>c_id</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.get_coordinator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a device given the id of the coordinator it is attached to and its
+own id in this scope.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>c_id</strong> (<em>str</em>) &#8211; the id of the coordinator the device is attached to (ex: x2d1)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns str:</th><td class="field-body">JSON representation of the device properties</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.get_coordinator_devices">
+<tt class="descname">get_coordinator_devices</tt><big>(</big><em>c_id</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.get_coordinator_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of id of the devices attached to a given coordinator.</p>
+<p>Note the the returned ids are the &#8220;local&#8221; ids of the devices and not the
+equivalent unique ids.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>c_id</strong> (<em>str</em>) &#8211; the id of the coordinator the device is attached to (ex: x2d1)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an array if device local ids (string)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.get_coordinators">
+<tt class="descname">get_coordinators</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.get_coordinators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of id of the coordinators currently defined
+in the configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">an array if coordinator ids (string)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.get_device">
+<tt class="descname">get_device</tt><big>(</big><em>c_id</em>, <em>d_id</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.get_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a device given the id of the coordinator it is attached to and its
+own id in this scope.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>c_id</strong> (<em>str</em>) &#8211; the id of the coordinator the device is attached to (ex: x2d1)</li>
+<li><strong>d_id</strong> (<em>str</em>) &#8211; the id of the device within its coordinator  (ex: MCX-CH1)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns str:</th><td class="field-body"><p class="first last">JSON representation of the device properties</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.get_device_by_uid">
+<tt class="descname">get_device_by_uid</tt><big>(</big><em>uid</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.get_device_by_uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a device given its unique id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uid</strong> (<em>str</em>) &#8211; the device unique id, composed of the id of the coordinator it is
+attached to, and its own id inside this scope. Both parts are joined
+by a &#8220;/&#8221; (ex: x2d1/MCX-CH1)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns str:</th><td class="field-body">JSON representation of the device properties</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.get_full_configuration">
+<tt class="descname">get_full_configuration</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.get_full_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the full configuration data as its JSON representation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.notify_configuration_change">
+<tt class="descname">notify_configuration_change</tt><big>(</big><em>chgtype='*'</em>, <em>resid=None</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.notify_configuration_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emits a &#8220;changed&#8221; signal.</p>
+<p>See changed() for parameters documentation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.cfgbroker.BrokerObject.set_logger">
+<tt class="descname">set_logger</tt><big>(</big><em>logger</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.BrokerObject.set_logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.cfgbroker.ConfigurationBroker">
+<em class="property">class </em><tt class="descclassname">pycstbox.cfgbroker.</tt><tt class="descname">ConfigurationBroker</tt><big>(</big><em>conn</em><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.ConfigurationBroker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>see service.ServiceObject.__init__()</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.cfgbroker.get_object">
+<tt class="descclassname">pycstbox.cfgbroker.</tt><tt class="descname">get_object</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.cfgbroker.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the service proxy object of the configuration broker.</p>
+<p>Note that only a single broker is supposed to exist in the system. It is the
+responsibility of the application integrator to ensure this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the requested service instance, if exists</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../core.html">Core system</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cli.html">cli - Command line interface helpers</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

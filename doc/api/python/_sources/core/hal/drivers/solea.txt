@@ -1,0 +1,31 @@
+SOLEA products drivers
+======================
+
+SOLEA support library
+---------------------
+
+Modules inside the ``pycstbox.solea`` package provide classes and helpers to handle
+communications with supported products, even outside the CSTBox context.
+
+AD12B
++++++
+
+.. automodule:: pycstbox.solea.ad12b
+
+AJ12B
++++++
+
+.. automodule:: pycstbox.solea.aj12b
+
+AJ42
+++++
+
+.. automodule:: pycstbox.solea.aj12
+
+SOLEA products integration
+--------------------------
+
+This module provides the integration of the products modeled in ``pycstbox.solea`` in the
+CSTBox framework architecture.
+
+.. automodule:: pycstbox.hal.drivers.solea

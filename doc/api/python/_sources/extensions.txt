@@ -1,0 +1,48 @@
+.. _extensions:
+
+Extensions
+==========
+
+Extensions are add-ons to the core part of the framework. They can be anything which extends the features
+of the core system, such as :
+
+- hardware support drivers
+- application specific processing
+- data export filters for inter-operability with external systems
+- ...
+
+Devices support extensions
+--------------------------
+
+Such extensions are special, since they have the specific role of bridging specific communication protocols with
+devices with the agnostic eventing and messaging architecture used for communication in the CSTBox framework domain.
+Because of this, there architecture and deployement must follow some rules (see :ref:`hal_drivers` for details).
+
+Protocol enablers
+^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+
+   extensions/modbus
+   extensions/onewire
+
+Products drivers
+^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   core/hal/drivers/*
+
+
+Application level extensions
+----------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   extensions/openrj
+
+

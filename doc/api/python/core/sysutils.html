@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>sysutils - CSTBox system level utilities &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="Extensions" href="../extensions.html" />
+    <link rel="prev" title="service - Fundation classes for services implementation" href="service.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>sysutils - CSTBox system level utilities</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="service.html">service - Fundation classes for services implementation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../extensions.html">Extensions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.sysutils">
+<span id="sysutils-cstbox-system-level-utilities"></span><h1>sysutils - CSTBox system level utilities<a class="headerlink" href="#module-pycstbox.sysutils" title="Permalink to this headline">¶</a></h1>
+<p>CSTBox system level utilities.</p>
+<dl class="class">
+<dt id="pycstbox.sysutils.ServiceInformation">
+<em class="property">class </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServiceInformation</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Service descriptor namedtuple.</p>
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServiceInformation.descr">
+<tt class="descname">descr</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.descr" title="Permalink to this definition">¶</a></dt>
+<dd><p>service short description</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServiceInformation.core">
+<tt class="descname">core</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.core" title="Permalink to this definition">¶</a></dt>
+<dd><p>flag telling if it is a core service (not user manageable) or not</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServiceInformation.running">
+<tt class="descname">running</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.running" title="Permalink to this definition">¶</a></dt>
+<dd><p>flag telling if the service is currently active or not</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">core</tt></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">descr</tt></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">running</tt></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.sysutils.ServiceProperties">
+<em class="property">class </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServiceProperties</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Service properties namedtuple.</p>
+<p>Is a subset of <a class="reference internal" href="#pycstbox.sysutils.ServiceInformation" title="pycstbox.sysutils.ServiceInformation"><tt class="xref py py-class docutils literal"><span class="pre">ServiceInformation</span></tt></a></p>
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServiceProperties.core">
+<tt class="descname">core</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties.core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServiceProperties.descr">
+<tt class="descname">descr</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties.descr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.sysutils.ServicesManager">
+<em class="property">class </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServicesManager</tt><a class="headerlink" href="#pycstbox.sysutils.ServicesManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mimics what is provided by the Linux &#8216;service&#8217; command, applied to the
+CSTBox context.</p>
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServicesManager.INIT_SCRIPTS_DIR">
+<tt class="descname">INIT_SCRIPTS_DIR</tt><em class="property"> = '/etc/init.d'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.INIT_SCRIPTS_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServicesManager.INIT_SCRIPT_FORMAT">
+<tt class="descname">INIT_SCRIPT_FORMAT</tt><em class="property"> = 'cstbox-%s'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.INIT_SCRIPT_FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServicesManager.INIT_SCRIPT_PATTERN">
+<tt class="descname">INIT_SCRIPT_PATTERN</tt><em class="property"> = 'cstbox-(.*)'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.INIT_SCRIPT_PATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServicesManager.PIDFILES_DIR">
+<tt class="descname">PIDFILES_DIR</tt><em class="property"> = '/var/run/cstbox'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.PIDFILES_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServicesManager.PIDFILE_FORMAT">
+<tt class="descname">PIDFILE_FORMAT</tt><em class="property"> = 'cstbox-%s.pid'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.PIDFILE_FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServicesManager.PIDFILE_PATTERN">
+<tt class="descname">PIDFILE_PATTERN</tt><em class="property"> = 'cstbox-(.*)\\.pid'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.PIDFILE_PATTERN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycstbox.sysutils.ServicesManager.application_layer_restart">
+<em class="property">static </em><tt class="descname">application_layer_restart</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.application_layer_restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restarts only the application layer services.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycstbox.sysutils.ServicesManager.cstbox_restart">
+<em class="property">static </em><tt class="descname">cstbox_restart</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.cstbox_restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restarts all CSTBox services, including the core ones.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.sysutils.ServicesManager.get_service_info">
+<tt class="descname">get_service_info</tt><big>(</big><em>svc_name=None</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.get_service_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the information about a given service, or about all
+installed services.</p>
+<p>The returned information are packed in a ServiceInformation named tuple,</p>
+<p>If a service name is passed, the result is a single tuple. If non no
+parameter is passed, the result is a dictionary containing the
+information about all installed services, keyed by the service name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>svc_name</strong> (<em>str</em>) &#8211; the name of the service which information is asked for. If not
+given, information about all installed services are returned</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a ServiceInformation instance for the requested service, or a
+dictionary ServiceInformation instances for a parameterless call</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">if a given service is requested but does not exist</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.ServicesManager.known_services">
+<tt class="descname">known_services</tt><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.known_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of services currently installed.</p>
+<p>Service names are returned in their shortened form, without the
+&#8220;cstbox-&#8221; prefix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.sysutils.ServicesManager.running_services">
+<tt class="descname">running_services</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.running_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of currently running CSTBox services.</p>
+<p>Same remark as for known_services() method applies here with respect
+to the returned names.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.sysutils.ServicesManager.start">
+<tt class="descname">start</tt><big>(</big><em>svc_name</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a given service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>svc_name</strong> (<em>str</em>) &#8211; the name of the service</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ServicesManagerError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if the &#8216;service start&#8217; command fails</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.sysutils.ServicesManager.stop">
+<tt class="descname">stop</tt><big>(</big><em>svc_name</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops a given service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>svc_name</strong> (<em>str</em>) &#8211; the name of the service</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ServicesManagerError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if the &#8216;service stops&#8217; command fails</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycstbox.sysutils.ServicesManager.system_reboot">
+<em class="property">static </em><tt class="descname">system_reboot</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.system_reboot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reboots the whole Linux system.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="pycstbox.sysutils.ServicesManagerError">
+<em class="property">exception </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServicesManagerError</tt><a class="headerlink" href="#pycstbox.sysutils.ServicesManagerError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specializec error for CSTBox services management.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.get_services_manager">
+<tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">get_services_manager</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.get_services_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poor man&#8217;s singleton implementation, since it does not forbid to
+use ServicesManager() in your code.</p>
+<p>But we are all adults here, and the ServicesManager is not intended to be
+used by application integrators. Don&#8217;t go with over-design if we can do
+without ;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.parse_period">
+<tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">parse_period</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.parse_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a period provided as a string and returns the equivalent
+number of seconds.</p>
+<dl class="docutils">
+<dt>The accepted format is:</dt>
+<dd>&lt;nn&gt; [ &#8216;s&#8217; | &#8216;m&#8217; | &#8216;h&#8217; ]</dd>
+<dt>with:</dt>
+<dd>&lt;nn&gt; : a positive integer value</dd>
+</dl>
+<p>The suffix (if provided) indicates the units, with the following
+convention:</p>
+<blockquote>
+<div>&#8216;s&#8217; : seconds
+&#8216;m&#8217; : minutes
+&#8216;h&#8217; : hours</div></blockquote>
+<p>If not provided, units are defaulted to seconds.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the corresponding number of seconds. If the parameter is None or an empty string, 0 is return.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if input string is not valid</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.str_2_bool">
+<tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">str_2_bool</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.str_2_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a boolean value provided as a string and returns it.</p>
+<dl class="docutils">
+<dt>Accepted values for True:</dt>
+<dd>true, t, yes, y, 1</dd>
+</dl>
+<p>Any other value is converted as False</p>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="service.html">service - Fundation classes for services implementation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../extensions.html">Extensions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

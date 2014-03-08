@@ -1,0 +1,5 @@
+evtdb - CSTBox Events Database access D-Bus service
+===================================================
+
+.. automodule:: pycstbox.evtdb
+

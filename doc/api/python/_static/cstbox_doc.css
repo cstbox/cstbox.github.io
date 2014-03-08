@@ -1,0 +1,35 @@
+@import url("haiku.css");
+
+dl.class > dt {
+    background-color : lavender;
+    font-size : 120%;
+    padding-left : 5px;
+}
+
+dl.method > dt, 
+dl.classmethod > dt, 
+dl.function > dt, 
+dl.exception > dt, 
+dl.staticmethod > dt   {
+    font-size : 110%;
+    padding-left : 5px;
+}
+
+dl.method > dt, 
+dl.classmethod > dt, 
+dl.function > dt, 
+dl.staticmethod > dt {
+    background-color : aliceblue;
+}
+
+dl.exception > dt {
+    background-color : mistyrose;
+}
+
+dl.data > dt, dl.attribute > dt {
+    background-color : beige;
+}
+
+tt.docutils {
+    background-color : transparent;
+}

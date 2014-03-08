@@ -1,0 +1,22 @@
+CSTBox v3 API documentation
+===========================
+
+The CSTBox v3 Python framework is composed of a collection of modules and sub-packages 
+gathered into a global toplevel package named ''pycstbox''.
+
+It is divided in two main areas :
+
+    - the **core** area, containing all the components providing the mandatory services and 
+      data structures
+    - the **extension** area, gathering independant components providing complementary services. 
+      Such extensions can add the support of protocols, device types,... or additional services, 
+      such as adapters to exchange data with external systems, domain specific processing,...
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   core
+   extensions
+

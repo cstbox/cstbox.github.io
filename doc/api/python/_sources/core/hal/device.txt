@@ -1,0 +1,5 @@
+device - Device abstraction
+===========================
+
+.. automodule:: pycstbox.hal.device
+

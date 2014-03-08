@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>evtmgr - CSTBox Event manager service &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="export - Events data export" href="export.html" />
+    <link rel="prev" title="evtdb - CSTBox Events Database access D-Bus service" href="evtdb.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>evtmgr - CSTBox Event manager service</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="export.html">export - Events data export</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.evtmgr">
+<span id="evtmgr-cstbox-event-manager-service"></span><h1>evtmgr - CSTBox Event manager service<a class="headerlink" href="#module-pycstbox.evtmgr" title="Permalink to this headline">¶</a></h1>
+<p>CSTBox Event manager service.</p>
+<p>Service taking care of events broadcasting to the rest of the framework and
+application.</p>
+<p>In order to be easily filtered by nature, events are exhanged on several
+separate &#8220;channels&#8221;. Each channel is managed by a distinct instance of the
+event manager, which defines its own connection name (aka bus name), set as
+ROOT_BUS_NAME suffixed by the channel name.</p>
+<p>When started as a script, this module creates a bus for the channel passed
+on the command line (use -h for detailed usage).</p>
+<p>This allows a simple and efficient way for consumers to subscribe to only the
+events of interest, without any complicated matching, just by using the
+connection to the right manager.</p>
+<dl class="docutils">
+<dt>The following channels are pre-defined as module properties:</dt>
+<dd><ul class="first last simple">
+<li>SENSOR_EVENT_CHANNEL = &#8216;sensor&#8217;</li>
+<li>SYSMON_EVENT_CHANNEL = &#8216;sysmon&#8217;</li>
+<li>FRAMEWORK_EVENT_CHANNEL = &#8216;framework&#8217;</li>
+</ul>
+</dd>
+</dl>
+<p>Public methods and signals published through D-Bus are accessed via a single
+object which path is defined by the OBJECT_PATH module property. They are
+grouped in an interface which name is provided by the SERVICE_INTERFACE module
+property.</p>
+<p>For details, refer to the documentation of method EventManager.emitEvent,
+signal EventManager.onCSTBoxEvent and pycstbox.events module.</p>
+<dl class="class">
+<dt id="pycstbox.evtmgr.EventManager">
+<em class="property">class </em><tt class="descclassname">pycstbox.evtmgr.</tt><tt class="descname">EventManager</tt><big>(</big><em>conn</em>, <em>channels=None</em><big>)</big><a class="headerlink" href="#pycstbox.evtmgr.EventManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSTBox Event manager service.</p>
+<p>This container will host a service object for each event channel, in order
+to keep the various communication separated, and this easing the subscription
+to a given family of event.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conn</strong> &#8211; the bus connection (Session, System,...)</li>
+<li><strong>channels</strong> (<em>str</em>) &#8211; a list of strings enumerating the event channels (sensor, system,...). If
+not provided, all pre-defined channels will be used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.evtmgr.EventManagerObject">
+<em class="property">class </em><tt class="descclassname">pycstbox.evtmgr.</tt><tt class="descname">EventManagerObject</tt><big>(</big><em>channel</em><big>)</big><a class="headerlink" href="#pycstbox.evtmgr.EventManagerObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>The service object for a given event channel.</p>
+<p>One instance of this class is created for each event channel to be managed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channel</strong> (<em>str</em>) &#8211; the event channel</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.evtmgr.EventManagerObject.emitEvent">
+<tt class="descname">emitEvent</tt><big>(</big><em>var_type</em>, <em>var_name</em>, <em>data</em><big>)</big><a class="headerlink" href="#pycstbox.evtmgr.EventManagerObject.emitEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timestamps and posts a CSTBoxEvent on the message bus.</p>
+<p>Events are automatically timestamp&#8217;ed before being posted on the bus.
+The timestamp is set to the number of milliseconds elasped since the
+origin of time (aka epoch).</p>
+<p>Appropriate synchronization is also applied to ensure events integrity
+in case of multi-threaded calls.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>var_type</strong> (<em>str</em>) &#8211; A string defining the type a the involved variable (ex: &#8216;temperature&#8217;)</li>
+<li><strong>var_name</strong> (<em>str</em>) &#8211; The name of the variable</li>
+<li><strong>data</strong> (<em>str</em>) &#8211; A string containing the event payload, formatted as a valid
+JSON representation.  The payload format is defined by the
+event class. Ex: {&#8220;value&#8221;:&#8221;25.7&#8221;,&#8221;unit&#8221;:&#8221;degC&#8221;}.  See json
+package documentation for details</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if all is ok</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.evtmgr.EventManagerObject.emitTimedEvent">
+<tt class="descname">emitTimedEvent</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#pycstbox.evtmgr.EventManagerObject.emitTimedEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Posts an event provided as a tuple.</p>
+<p>This method is intended to be called by Python clients, and uses an
+objectified event instead of separate parameters.</p>
+<p>If the provided event is a TimedEvent instance, its timestamp will be
+discarded, since it can be outdated and thus introduce a break in the
+time line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> &#8211; the event to be emited, as a events.BasicEvent or a events.TimedEvent instance</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.evtmgr.EventManagerObject.onCSTBoxEvent">
+<tt class="descname">onCSTBoxEvent</tt><big>(</big><em>*args</em>, <em>**keywords</em><big>)</big><a class="headerlink" href="#pycstbox.evtmgr.EventManagerObject.onCSTBoxEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSTBoxEvent broadcasting DBus signal</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>uunsigned64</em>) &#8211; the event timestamp, in milliseconds since January 1st, 1970</td>
+</tr>
+</tbody>
+</table>
+<p>See <a class="reference internal" href="#pycstbox.evtmgr.EventManagerObject.emitEvent" title="pycstbox.evtmgr.EventManagerObject.emitEvent"><tt class="xref py py-meth docutils literal"><span class="pre">emitEvent()</span></tt></a> documentation for other parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.evtmgr.get_object">
+<tt class="descclassname">pycstbox.evtmgr.</tt><tt class="descname">get_object</tt><big>(</big><em>channel</em><big>)</big><a class="headerlink" href="#pycstbox.evtmgr.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the service proxy object for a given event channel if available</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channel</strong> (<em>str</em>) &#8211; the event channel managed by the requested service instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the requested service instance, if exists</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">if no bus name match the requested channel</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="export.html">export - Events data export</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

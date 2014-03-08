@@ -1,0 +1,5 @@
+sysutils - CSTBox system level utilities
+========================================
+
+.. automodule:: pycstbox.sysutils
+

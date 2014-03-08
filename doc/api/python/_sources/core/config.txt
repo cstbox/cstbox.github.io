@@ -1,0 +1,4 @@
+config - System wide configuration
+==================================
+
+.. automodule:: pycstbox.config

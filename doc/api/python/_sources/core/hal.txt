@@ -1,0 +1,21 @@
+hal - Hardware Abstraction Layer package
+========================================
+
+This sub-package gathers all modules related to abstraction of the hardware (sensors, actuators),
+by providing the adaptation layer between the proprietary dialogs at device network level and the events and messages
+based agnostic inter-components communication.
+
+It contains the foundation modules providing the base definitions allowing contributors to develop the modules
+providing the abstraction of their products. These module will be deployed as modules of the
+`pycstbox.hal.drivers` sub-package, and are automatically integrated in the framework thanks to
+appropriate introspection mechanisms.
+
+Sub-package content
+-------------------
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   hal/drivers
+   hal/*

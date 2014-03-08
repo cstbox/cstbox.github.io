@@ -1,0 +1,4 @@
+cfgbroker - Device network configuration access service
+=======================================================
+
+.. automodule:: pycstbox.cfgbroker

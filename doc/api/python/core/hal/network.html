@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>network - Device network base definitions &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="hal - Hardware Abstraction Layer package" href="../hal.html" />
+    <link rel="next" title="log - Customized logging system" href="../log.html" />
+    <link rel="prev" title="device - Device abstraction" href="device.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>network - Device network base definitions</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="device.html">device - Device abstraction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../log.html">log - Customized logging system</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.hal.network">
+<span id="network-device-network-base-definitions"></span><h1>network - Device network base definitions<a class="headerlink" href="#module-pycstbox.hal.network" title="Permalink to this headline">¶</a></h1>
+<p>Device(sub-)network abstraction.</p>
+<p>It is implemented as a D-Bus service container, bundling one service object per
+connected network, each service object being in charge of the communications
+with the devices and acting as a gateway with the D-Bus eventing layer.</p>
+<p>The service container can be created for a specific set of coordinator types,
+giving the ability to create sub-networks which can be controlled in an
+independent way. Refer to <a class="reference internal" href="#pycstbox.hal.network.DeviceNetworkSvc" title="pycstbox.hal.network.DeviceNetworkSvc"><tt class="xref py py-class docutils literal"><span class="pre">DeviceNetworkSvc</span></tt></a> documentation for details.</p>
+<p>The configuration loading process takes care of taking in account only the
+equipments for which we have an implementation available. This allows heterogeneous
+implementation (in terms of programming language for instance), by letting each
+sub-system of the equipment support software pick only the devices and coordinators
+it knows how to handle.</p>
+<dl class="class">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject">
+<em class="property">class </em><tt class="descclassname">pycstbox.hal.network.</tt><tt class="descname">CoordinatorServiceObject</tt><big>(</big><em>cid</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>DBus service object responsible for managing a given sub-network
+coordinator.</p>
+<p>It provides a generic mechanism for scheduling the poll of the devices
+using this type of communications.</p>
+<p>This class must be overridden most of the time if communication with the
+network is to be handled at the coordinator level. The only situation where
+it can be used as is is when device drivers know how to communicate
+directly with the equipments (such as those based on minimalmodbus for
+instance).</p>
+<p>c_serial.SerialCoordinatorServiceObject is an example of such a sub-class,
+dealing with network communicating through a serial port in a centralized
+way.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cid</strong> (<em>str</em>) &#8211; coordinator id</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.cfg">
+<tt class="descname">cfg</tt><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.cfg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read access to the coordinator and attached devices configuration.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.coordinator_id">
+<tt class="descname">coordinator_id</tt><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.coordinator_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.emit_event">
+<tt class="descname">emit_event</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.emit_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.load_configuration">
+<tt class="descname">load_configuration</tt><big>(</big><em>cfg</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.load_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the configuration data related to the coordinator and
+the devices attached to it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cfg</strong> (<em>dict</em>) &#8211; coordinator&#8217;s configuration data</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if no or empty configuration passed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.log_setLevel">
+<tt class="descname">log_setLevel</tt><big>(</big><em>level</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.log_setLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the logging level for the container and its service objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>level</strong> &#8211; logging level (see module <tt class="xref py py-mod docutils literal"><span class="pre">logging</span></tt>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.send_command">
+<tt class="descname">send_command</tt><big>(</big><em>command</em>, <em>callback=None</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.send_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provision for outbounds communication.</p>
+<p>To be overridden by sub-class when needed. The default implementation
+raises a NotImplementedError exception.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>command</strong> (<em>str</em>) &#8211; command to be sent (exact content is implementation dependent)</li>
+<li><strong>callback</strong> (<em>method</em>) &#8211; an optional method to be called after the command has been sent
+(can be used for reply synchronous wait for instance)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing to be done when the service objet is started.</p>
+<p>Called automatically by the framework when the service is started.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.network.CoordinatorServiceObject.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.network.CoordinatorServiceObject.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing to be done when the service object is stopped.</p>
+<p>Called automatically by the framework when the service is stopped.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.network.DeviceListEntry">
+<em class="property">class </em><tt class="descclassname">pycstbox.hal.network.</tt><tt class="descname">DeviceListEntry</tt><a class="headerlink" href="#pycstbox.hal.network.DeviceListEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Named tuple gathering all informations related to a device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Key id_:</th><td class="field-body">the device id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Key cfg:</th><td class="field-body">the device configuration data, as stored in the network configuration</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Key haldev:</th><td class="field-body">the instance of HalDevice implementing the abstraction for the device</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.hal.network.DeviceListEntry.cfg">
+<tt class="descname">cfg</tt><a class="headerlink" href="#pycstbox.hal.network.DeviceListEntry.cfg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.hal.network.DeviceListEntry.haldev">
+<tt class="descname">haldev</tt><a class="headerlink" href="#pycstbox.hal.network.DeviceListEntry.haldev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.hal.network.DeviceListEntry.id_">
+<tt class="descname">id_</tt><a class="headerlink" href="#pycstbox.hal.network.DeviceListEntry.id_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="pycstbox.hal.network.DeviceNetworkError">
+<em class="property">exception </em><tt class="descclassname">pycstbox.hal.network.</tt><tt class="descname">DeviceNetworkError</tt><a class="headerlink" href="#pycstbox.hal.network.DeviceNetworkError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specialized exception for device network related errors.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.network.DeviceNetworkSvc">
+<em class="property">class </em><tt class="descclassname">pycstbox.hal.network.</tt><tt class="descname">DeviceNetworkSvc</tt><big>(</big><em>conn</em>, <em>svc_name</em>, <em>coord_types=None</em>, <em>coord_typemap=None</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.DeviceNetworkSvc" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class implements a service container gathering all the equipment
+we know about.</p>
+<p>Each sub-network attached to a given interface is represented by an
+independent service object responsible for managing the connected
+equipments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conn</strong> (<em>Connection</em>) &#8211; the D-Bus connection of the container</li>
+<li><strong>svc_name</strong> (<em>str</em>) &#8211; the name under which the service will be know on D-Bus</li>
+<li><strong>coord_types</strong> (<em>list</em>) &#8211; a list of the coordinator types used to filter the device network
+configuration. If not provided, all know types as provided by the
+devcfg.Metedata class will be taken in account. The implementation
+class of the coordinators will be defaulted to CoordinatorServiceObject.</li>
+<li><strong>coord_typemap</strong> (<em>dict</em>) &#8211; a dictionary providing for each coordinator type the associated
+implementation class. If both coord_types and coord_typemap parameters
+are used, coord_types is discarded.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.hal.network.DeviceNetworkSvc.load_configuration">
+<tt class="descname">load_configuration</tt><big>(</big><em>cfg</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.DeviceNetworkSvc.load_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads devices configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cfg</strong> (<em>DeviceNetworkConfiguration</em>) &#8211; network configuration</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.hal.network.DeviceNetworkSvc.log_setLevel">
+<tt class="descname">log_setLevel</tt><big>(</big><em>level</em><big>)</big><a class="headerlink" href="#pycstbox.hal.network.DeviceNetworkSvc.log_setLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the logging level for the container and its service objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>level</strong> &#8211; logging level (see module <tt class="xref py py-mod docutils literal"><span class="pre">logging</span></tt>)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.network.PollTask">
+<em class="property">class </em><tt class="descclassname">pycstbox.hal.network.</tt><tt class="descname">PollTask</tt><a class="headerlink" href="#pycstbox.hal.network.PollTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Named tuple describing a polling task for a given device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Key dev:</th><td class="field-body">the instance of the related device</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Key period:</th><td class="field-body">the polling period (in seconds)</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.hal.network.PollTask.dev">
+<tt class="descname">dev</tt><a class="headerlink" href="#pycstbox.hal.network.PollTask.dev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.hal.network.PollTask.period">
+<tt class="descname">period</tt><a class="headerlink" href="#pycstbox.hal.network.PollTask.period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="pycstbox.hal.network.PollingThreadError">
+<em class="property">exception </em><tt class="descclassname">pycstbox.hal.network.</tt><tt class="descname">PollingThreadError</tt><a class="headerlink" href="#pycstbox.hal.network.PollingThreadError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specialized exception for polling thread errors.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.network.Schedule">
+<em class="property">class </em><tt class="descclassname">pycstbox.hal.network.</tt><tt class="descname">Schedule</tt><a class="headerlink" href="#pycstbox.hal.network.Schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Named tuple describing a task schedule.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Key long when:</th><td class="field-body">schedule time (in second count from asbolute time origin)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Key task:</th><td class="field-body">the instance of the task to be executed</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.hal.network.Schedule.task">
+<tt class="descname">task</tt><a class="headerlink" href="#pycstbox.hal.network.Schedule.task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.hal.network.Schedule.when">
+<tt class="descname">when</tt><a class="headerlink" href="#pycstbox.hal.network.Schedule.when" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="device.html">device - Device abstraction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../log.html">log - Customized logging system</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>dbuslib - D-Bus helpers &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Core system" href="../core.html" />
+    <link rel="next" title="devcfg - Devices network configuration data access tools" href="devcfg.html" />
+    <link rel="prev" title="cron - CSTBox crontab management" href="cron.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>dbuslib - D-Bus helpers</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="cron.html">cron - CSTBox crontab management</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="devcfg.html">devcfg - Devices network configuration data access tools</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.dbuslib">
+<span id="dbuslib-d-bus-helpers"></span><h1>dbuslib - D-Bus helpers<a class="headerlink" href="#module-pycstbox.dbuslib" title="Permalink to this headline">¶</a></h1>
+<p>A collection of definitions and helpers for D-Bus usage in the CSTBox
+context.</p>
+<dl class="function">
+<dt id="pycstbox.dbuslib.dbus_init">
+<tt class="descclassname">pycstbox.dbuslib.</tt><tt class="descname">dbus_init</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.dbuslib.dbus_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the D-Bus stuff so that messaging and signaling work.</p>
+<p>MUST be called at the very begining of any process using D-Bus.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.dbuslib.get_bus">
+<tt class="descclassname">pycstbox.dbuslib.</tt><tt class="descname">get_bus</tt><big>(</big><em>logger=None</em><big>)</big><a class="headerlink" href="#pycstbox.dbuslib.get_bus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the D-Bus bus to be used.</p>
+<p>Depending on the fact that the environment variable DBUS_SESSION_BUS_ADDRESS
+is set or not, either we use our own session bus, or the X user&#8217;s session one.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.dbuslib.get_object">
+<tt class="descclassname">pycstbox.dbuslib.</tt><tt class="descname">get_object</tt><big>(</big><em>svc_name</em>, <em>obj_path</em><big>)</big><a class="headerlink" href="#pycstbox.dbuslib.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the service object corresponding to a connection name and
+an object path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.dbuslib.make_bus_name">
+<tt class="descclassname">pycstbox.dbuslib.</tt><tt class="descname">make_bus_name</tt><big>(</big><em>short_name</em><big>)</big><a class="headerlink" href="#pycstbox.dbuslib.make_bus_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a consistent bus name (well-known name), based on the short
+one (ie the last part)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.dbuslib.make_interface_name">
+<tt class="descclassname">pycstbox.dbuslib.</tt><tt class="descname">make_interface_name</tt><big>(</big><em>short_name</em><big>)</big><a class="headerlink" href="#pycstbox.dbuslib.make_interface_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a consistent interface name, based on the abbreviated one (ie
+the last part)</p>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="cron.html">cron - CSTBox crontab management</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="devcfg.html">devcfg - Devices network configuration data access tools</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

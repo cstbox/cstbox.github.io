@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>drivers - Network device drivers sub-package &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="hal - Hardware Abstraction Layer package" href="../hal.html" />
+    <link rel="next" title="c_serial - Serial port base network coordinator" href="c_serial.html" />
+    <link rel="prev" title="hal - Hardware Abstraction Layer package" href="../hal.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>drivers - Network device drivers sub-package</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../hal.html">hal - Hardware Abstraction Layer package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="c_serial.html">c_serial - Serial port base network coordinator</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="drivers-network-device-drivers-sub-package">
+<span id="hal-drivers"></span><h1>drivers - Network device drivers sub-package<a class="headerlink" href="#drivers-network-device-drivers-sub-package" title="Permalink to this headline">¶</a></h1>
+<p>Drivers are provided as external modules deployed in this sub-package.
+The documentation related to available drivers is compiled in the <a class="reference internal" href="../../extensions.html#extensions"><em>Extensions</em></a> section of this documentation.</p>
+<div class="section" id="driver-automatic-discovery-and-registering">
+<h2>Driver automatic discovery and registering<a class="headerlink" href="#driver-automatic-discovery-and-registering" title="Permalink to this headline">¶</a></h2>
+<p>They are automatically registered by an introspection mechanism of included modules,
+which is implemented at the <cite>drivers</cite> sub-package toplevel.</p>
+<span class="target" id="module-pycstbox.hal.drivers"></span><p>This package level module provides the package directory exploration mechanisme,
+for finding modules which provide HAL device classes and add them to the known devices.</p>
+<p>All modules are analyzed, except those which name starts with a double underscore.
+Candidate modules must publish a dictionary named HAL_DEVICE_CLASSES providing the
+mapping table between devices symbolic names and corresponding implementation
+classes.</p>
+<p>Collected dictionaries are merged into the global one published here, at
+package level. Extension distribution packages providing such classes must
+thus deploy them in the <cite>&lt;PYCSTBOX_LIB_ROOT&gt;/hal/drivers</cite> directory.</p>
+<p>Existing entries will be replaced in case of duplicate names, and a warning will
+be issued in the log. Implementors are thus strongly encouraged to choose
+identifiers carefully so that name clashes have almost no chance to occur, for
+instance by prefixing them by the maker name (ex: worldcompany.motionsensor).</p>
+<p>However, since the modules are loaded by name order, one can take advantage of
+this behavior to replace an existing device by a new version.</p>
+<dl class="function">
+<dt id="pycstbox.hal.drivers.get_hal_device_classes">
+<tt class="descclassname">pycstbox.hal.drivers.</tt><tt class="descname">get_hal_device_classes</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.drivers.get_hal_device_classes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../hal.html">hal - Hardware Abstraction Layer package</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="c_serial.html">c_serial - Serial port base network coordinator</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>
