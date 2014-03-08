@@ -10,12 +10,19 @@
         <link href="css/docs.css" rel="stylesheet">
         <link rel="stylesheet" href="css/cstbox.css">
         <link rel="stylesheet" href="css/docs.css">
+        <link rel="stylesheet" type="text/css" 
+            href="http://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="js/scrollspy.js"></script>
         <script src="js/affix.js"></script>
         <script src="js/jquery.jcarousel.min.js"></script>
         <script src="js/jcarousel.basic.js"> </script>
         <script src="js/cstbox.js"></script>
+        <!--
+        <script type="text/javascript" 
+            src="http://cdn.knightlab.com/libs/timeline/latest/js/timeline-min.js"></script>
+        -->
     </head>
     <body data-spy="scroll" data-target=".bs-docs-sidebar" id="home">
 
@@ -133,10 +140,32 @@
                 <a href="http://extranet.cstb.fr/sites/energihab/default.aspx">ENERGIHAB</a>
             </div>
 
-        </div>
-
-        </div>
+        </div> <!-- row -->
+        
     </div> <!-- marketting -->
+    
+    </div> <!-- container -->
+
+    <div class="marketing">
+
+        <hr class="soften">
+
+        <h1>Timeline</h1>
+        
+        <center>
+        <div id="timeline-container"></div>
+        </center>
+        <script type="text/javascript">
+             var timeline_config = {
+                "width" : '90%',
+                "height" : '500',
+                "source" : 'res/timeline.json',
+                "embed_id" : 'timeline-container'
+            }
+       </script>
+       <script type="text/javascript" 
+        src="http://cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js"></script>
+    </div>
 
     <!--<?php include 'inc/footer.html'; ?>-->
     </body>

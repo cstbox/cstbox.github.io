@@ -1,0 +1,49 @@
+{
+    "timeline": {
+        "headline" : "CSTBox project timeline",
+        "type" : "default",
+        "text" : "<p>Here are the main events of the CSTBox open-source project life</p>",
+        "date" : [
+            {
+                "startDate" : "2013,07,01",
+                "endDate" : "2013,07,02",
+                "headline" : "CSTBox goes open-source",
+                "text" : "Our last version will now be available for everybody",
+                "asset" : {
+                    "media" : "img/cstbox_goes_open_source.png",
+                    "caption" : "CSTBox now open-source"
+                }
+            },
+            {
+                "startDate" : "2013,08,01",
+                "endDate" : "2013,08,02",
+                "headline" : "Public presentation web-site created",
+                "text" : "This is a lot of work, and you are just contemplating it",
+                "asset" : {
+                    "media" : "img/screenshots/public-site.png",
+                    "caption" : "Web site welcome page"
+                }
+            },
+            {
+                "startDate" : "2014,02,01",
+                "endDate" : "2014,02,02",
+                "headline" : "Public repository opened on GitHub",
+                "text" : "Enjoy our devs and contribute",
+                "asset" : {
+                    "media" : "img/cstbox_github.png",
+                    "caption" : "CSTBox is on GitHub"
+                }
+            },
+            {
+                "startDate" : "2014,03,03",
+                "endDate" : "2014,03,04",
+                "headline" : "Single repository converted in a public organization",
+                "text" : "It is now possible to clone only the part of the framework you need.",
+                "asset" : {
+                    "media" : "img/cstbox_github.png",
+                    "caption" : "CSTBox is on GitHub"
+                }
+            }       
+        ] 
+    }
+}
