@@ -275,6 +275,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   font-weight: 300;
   line-height: 1.25;
   color: #999;
+  text-align: center;
 }
 .marketing-img {
   display: block;
