@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>evtdb - CSTBox Events Database access D-Bus service &mdash; CSTBox 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="../index.html">
+          <span>CSTBox 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>evtdb - CSTBox Events Database access D-Bus service</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-pycstbox.evtdb">
+<span id="evtdb-cstbox-events-database-access-d-bus-service"></span><h1>evtdb - CSTBox Events Database access D-Bus service<a class="headerlink" href="#module-pycstbox.evtdb" title="Permalink to this headline">¶</a></h1>
+<p>CSTBox Events Database access D-Bus service.</p>
+<p>The class defined in this module do not implement the data access layer, but
+sits on top of it to provide a generic API for data storage and retrieval.</p>
+<p>The data access layer is defined in separate DAO classes, which can be viewed
+as drivers for supported persistence mechanism. This approach allows switching
+between different underlying storage strategies, without any impact for the
+upper layers.</p>
+<p>The concrete DAO to be used must be passed to the constructor.</p>
+<dl class="class">
+<dt id="pycstbox.evtdb.EventDatabaseObject">
+<em class="property">class </em><tt class="descclassname">pycstbox.evtdb.</tt><tt class="descname">EventDatabaseObject</tt><big>(</big><em>channel</em>, <em>dao</em><big>)</big><a class="headerlink" href="#pycstbox.evtdb.EventDatabaseObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>The service object for a given event database.</p>
+<p>One instance of this class is created for managing the persistence of
+each event channel to be managed (see EventDatabase.__init__().</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channel</strong> (<em>str</em>) &#8211; the event channel</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.evtdb.EventDatabaseObject.get_available_days">
+<tt class="descname">get_available_days</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.evtdb.EventDatabaseObject.get_available_days" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of days for which events have been stored.</p>
+<p>The result is an array of dates formatted as &#8220;YYYY-MM-DD&#8221;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.evtdb.EventDatabaseObject.get_events">
+<tt class="descname">get_events</tt><big>(</big><em>event_filter</em><big>)</big><a class="headerlink" href="#pycstbox.evtdb.EventDatabaseObject.get_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of events matching the provided filter.</p>
+<p>Events are returned in D-Bus compatible format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event_filter</strong> (<em>dict</em>) &#8211; a dictionnary of criteria, as accepted by the DAOs get_events() method</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of events, as serializable tuples</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.evtdb.EventDatabaseObject.get_events_for_day">
+<tt class="descname">get_events_for_day</tt><big>(</big><em>day</em>, <em>var_type=None</em>, <em>var_name=None</em><big>)</big><a class="headerlink" href="#pycstbox.evtdb.EventDatabaseObject.get_events_for_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of events matching the provided criteria.</p>
+<p>The result is an array of tuples representing the properties of the
+events (timestamp, var_type, var_name, value, dictionary of additional
+infos).</p>
+<p>Events are returned in D-Bus compatible format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>day</strong> (<em>str</em>) &#8211; the date of the requested days (as a valid SQL date)</li>
+<li><strong>var_type</strong> (<em>str</em>) &#8211; (optional) an event class (&#8216;temperature&#8217;,...) for filtering the returned list</li>
+<li><strong>var_name</strong> (<em>str</em>) &#8211; (optional) the var_name of events for filtering the returned list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of events, as serializable tuples</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.evtdb.EventDatabaseObject.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.evtdb.EventDatabaseObject.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Service objet runtime initialization</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.evtdb.EventDatabaseObject.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.evtdb.EventDatabaseObject.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleanup before stop</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.evtdb.EventsDatabase">
+<em class="property">class </em><tt class="descclassname">pycstbox.evtdb.</tt><tt class="descname">EventsDatabase</tt><big>(</big><em>conn</em>, <em>daos</em><big>)</big><a class="headerlink" href="#pycstbox.evtdb.EventsDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSTBox Event database service.</p>
+<p>This container will host a service object for each event channel, in order
+to keep the various communication separated, and this easing the subscription
+to a given kind of channel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>conn</strong> &#8211; the D-Bus connection (Session, System,...)</li>
+<li><strong>daos</strong> &#8211; a list of tuples, containing the channel name and the DAO instance managing
+its events</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.evtdb.get_object">
+<tt class="descclassname">pycstbox.evtdb.</tt><tt class="descname">get_object</tt><big>(</big><em>channel</em><big>)</big><a class="headerlink" href="#pycstbox.evtdb.get_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the service proxy object for a given event channel if available</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>channel</strong> (<em>str</em>) &#8211; the event channel managed by the requested service instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the requested service instance, if exists</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">if no bus name match the requested channel</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

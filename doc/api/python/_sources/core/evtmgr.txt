@@ -1,5 +1,0 @@
-evtmgr - CSTBox Event manager service
-=====================================
-
-.. automodule:: pycstbox.evtmgr
-

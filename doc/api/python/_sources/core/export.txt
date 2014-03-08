@@ -1,5 +1,0 @@
-export - Events data export
-===========================
-
-.. automodule:: pycstbox.export
-

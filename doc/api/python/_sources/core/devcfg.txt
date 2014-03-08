@@ -1,5 +1,0 @@
-devcfg - Devices network configuration data access tools
-========================================================
-
-.. automodule:: pycstbox.devcfg
-

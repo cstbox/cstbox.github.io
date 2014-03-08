@@ -1,5 +1,0 @@
-flags - Notification flags management
-=====================================
-
-.. automodule:: pycstbox.flags
-

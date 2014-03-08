@@ -1,4 +1,0 @@
-dbuslib - D-Bus helpers
-=======================
-
-.. automodule:: pycstbox.dbuslib

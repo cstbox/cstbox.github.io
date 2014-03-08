@@ -1,4 +1,0 @@
-cron - CSTBox crontab management
-================================
-
-.. automodule:: pycstbox.cron

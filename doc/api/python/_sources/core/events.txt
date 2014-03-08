@@ -1,5 +1,0 @@
-events - Basic definitions and tools related to CSTBox events
-=============================================================
-
-.. automodule:: pycstbox.events
-

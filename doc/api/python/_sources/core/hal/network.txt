@@ -1,5 +1,0 @@
-network - Device network base definitions
-=========================================
-
-.. automodule:: pycstbox.hal.network
-
