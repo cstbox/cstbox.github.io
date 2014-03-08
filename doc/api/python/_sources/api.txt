@@ -1,7 +1,7 @@
-CSTBox v3 API documentation
-===========================
+CSTBox API documentation
+========================
 
-The CSTBox v3 Python framework is composed of a collection of modules and sub-packages 
+The CSTBox Python framework is composed of a collection of modules and sub-packages 
 gathered into a global toplevel package named ''pycstbox''.
 
 It is divided in two main areas :
