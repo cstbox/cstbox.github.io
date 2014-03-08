@@ -3,6 +3,9 @@
         "headline" : "CSTBox project timeline",
         "type" : "default",
         "text" : "<p>Here are the main events of the CSTBox open-source project life</p>",
+        "asset" : {
+            "media" : "img/cstbox.png"
+        },
         "date" : [
             {
                 "startDate" : "2013,07,01",
