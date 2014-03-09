@@ -23,7 +23,7 @@ $(document).ready(function(){
             '<div class="nav-collapse collapse">' +
             '<ul id="navbar" class="nav"></ul>' +
             '<ul id="extra" class="nav">' +
-            '<li><a id="contact" href="mailto:cstbox@cstn.fr">Contact us</a></li>' +
+            '<li><a id="contact" href="mailto:cstbox@cstb.fr">Contact us</a></li>' +
             '</ul>' +
             '</div>' +
             '</div>' +
