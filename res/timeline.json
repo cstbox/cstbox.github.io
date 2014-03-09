@@ -40,11 +40,11 @@
             {
                 "startDate" : "2014,03,03",
                 "endDate" : "2014,03,04",
-                "headline" : "Single repository converted in a public organization",
+                "headline" : "Single repository converted to a public organization",
                 "text" : "It is now possible to clone only the part of the framework you need.",
                 "asset" : {
                     "media" : "img/cstbox_github.png",
-                    "caption" : "CSTBox is on GitHub"
+                    "caption" : "CSTBox organization on GitHub"
                 }
             }       
         ] 
