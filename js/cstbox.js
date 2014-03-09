@@ -21,8 +21,14 @@ $(document).ready(function(){
             '<div class="navbar-inner">' +
             '<div class="container">' +
             '<div class="nav-collapse collapse">' +
-            '<ul id="navbar" class="nav">' +
-            '</ul></div></div></div></div>'
+            '<ul id="navbar" class="nav"></ul>' +
+            '<ul id="extra" class="nav">' +
+            '<li><a id="contact" href="mailto:cstbox@cstn.fr">Contact us</a></li>' +
+            '</ul>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
         );
         var ul = $("ul#navbar");
         $.each(navbarContent, function(key, content) {
