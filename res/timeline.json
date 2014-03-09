@@ -11,7 +11,7 @@
                 "startDate" : "2013,07,01",
                 "endDate" : "2013,07,02",
                 "headline" : "CSTBox goes open-source",
-                "text" : "Our last version will now be available for everybody",
+                "text" : "We have decided to allow everybody to take advantage of our works and contribute to them",
                 "asset" : {
                     "media" : "img/cstbox_goes_open_source.png",
                     "caption" : "CSTBox now open-source"
