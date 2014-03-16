@@ -9,7 +9,7 @@
         "date" : [
             {
                 "startDate" : "2013,07,01",
-                "endDate" : "2013,07,02",
+                "endDate" : "2013,07,01",
                 "headline" : "CSTBox goes open-source",
                 "text" : "We have decided to allow everybody to take advantage of our works and contribute to them",
                 "asset" : {
@@ -19,7 +19,7 @@
             },
             {
                 "startDate" : "2013,08,01",
-                "endDate" : "2013,08,02",
+                "endDate" : "2013,08,01",
                 "headline" : "Public presentation web-site created",
                 "text" : "This is a lot of work, and you are just contemplating it",
                 "asset" : {
@@ -29,8 +29,8 @@
             },
             {
                 "startDate" : "2014,02,01",
-                "endDate" : "2014,02,02",
-                "headline" : "Public repository opened on GitHub",
+                "endDate" : "2014,02,01",
+                "headline" : "Public organization opened on GitHub",
                 "text" : "Enjoy our devs and contribute",
                 "asset" : {
                     "media" : "img/cstbox_github.png",
@@ -38,13 +38,13 @@
                 }
             },
             {
-                "startDate" : "2014,03,03",
-                "endDate" : "2014,03,04",
-                "headline" : "Single repository converted to a public organization",
-                "text" : "It is now possible to clone only the part of the framework you need.",
+                "startDate" : "2014,03,16",
+                "endDate" : "2014,03,16",
+                "headline" : "Git repository fully populated",
+                "text" : "All modules have been migrated to the new organization. Enjoy ;)",
                 "asset" : {
-                    "media" : "img/cstbox_github.png",
-                    "caption" : "CSTBox organization on GitHub"
+                    "media" : "img/mission_complete.png",
+                    "caption" : "We did it"
                 }
             }       
         ] 
