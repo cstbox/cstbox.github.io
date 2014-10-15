@@ -28,6 +28,7 @@
 
             <div id="docsnav">
                 <ul>
+                    <li href='#arch'>Technical architecture</li>
                     <li href='#comms'>Inside communications</li>
                     <li href='#deps'>Software dependencies</li>
                     <li href='#howto'>How to...</li>
@@ -36,6 +37,63 @@
             </div>
 
                 <div class="span9">
+
+                    <section id="arch">
+                        <div class="page-header">
+                            <h1>Technical architecture</h1>
+                        </div>
+                        <p class="lead">The framework architecture has been inspired by the
+                        Unix/Linux philosophy with respect to decomposition of features and
+                        functions.</p>
+                        <p>Instead of being made of a big monolothic software, it is broken in small
+                        parts, each one have a well defined and limited role, and runing in its own
+                        system process. In addition, services provided by the underlying Linux are
+                        exploited as much as possible to optimize the development efforts.
+                        <p>
+                        Communications between these building blocks are based on 3 main principles :
+                        <ul>
+                            <li>a <a href="#comms">messsage bus</a> for asynchronous communication
+                            and notification of spontaneous events</li>
+                            <li>inter-process communications</li>
+                            <li>open and documented file formats</li>
+                        </ul>
+                        <p>First two items above rely on <a
+                            href="http://www.freedesktop.org/wiki/Software/dbus/">D-Bus
+                        features</a>. In addition to make inter-process transparent, it also allows
+                    implementation language neutral invocations.
+                    <p>The overall components set is divided into :
+                    <ul>
+                        <li>the core, which is the only mandatory part, and which contains the 
+                        base mechanisms, such as the events based
+                        communication layer, the device network configuration management,...  </li>
+                        <li>a collection of extensions, which implement complementary
+                        features, among which :
+                        <ul>
+                            <li>sensor events local storage</li>
+                            <li>Web based user interface framework</li>
+                            <li>support of protocols such as ModBus, NMEA, 1-wire, including the 
+                            drivers for a first set of off-the-shelf commercial products</li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <p>Most of the time, active extensions such as device network coordinators for
+                    instance are 
+                    implemented as a service started during the system init sequence, and often
+                    acting as a producer or/and consumer of 
+                    messages on the communication bus. For instance the ModBus network
+                    coordinator service takes care of polling the attached devices and emitting the
+                    events corresponding to the data returned by them, according to the policy
+                    defined in the network configuration. The sensor events storage service will in 
+                    contrary listen for sensor events on the bus and store them using the
+                    appropriate persistence layer.
+                    <p>
+                    Other services can just deal with stored data. 
+                    As an exemple, a periodic sensor data upload service will be
+                    scheduled to run at fixed periods (relying on the system cron service), extract
+                    events data from the local storage thanks to inter-process communication with
+                    the local storage manager service, format them according to the destination
+                    tier and send the result over Internet using the appropriate protocol.
+                    </section>
 
                     <section id="comms">
                         <div class="page-header">
@@ -208,6 +266,11 @@
                             <dd>Learn how to add the support of devices working with a communication
                             mode (e.g. a protocol) not yet supported by the CSTBox.
                             <a href="howto/add-device-support.html">More...</a></dd>
+                            <dt>Use stored events data</dt>
+                            <dd>Learn how to access stored event data, either by using the
+                            Python library directly or via inter-process communication from any
+                            supported programming language.
+                            <a href="howto/access-data.html">More...</a></dd>
                             <dt>Use external data providers</dt>
                             <dd>Learn how to used a remote web service to get data from it and use
                             them as if they were produced by a local piced of hardware.
