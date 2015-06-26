@@ -1,258 +1,168 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>devcfg - Devices network configuration data access tools &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>devcfg - Devices network configuration data access tools &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Core system" href="../core.html"/>
+        <link rel="next" title="events - Basic definitions and tools related to CSTBox events" href="events.html"/>
+        <link rel="prev" title="dbuslib - D-Bus helpers" href="dbuslib.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
-    <link rel="up" title="Core system" href="../core.html" />
-    <link rel="next" title="events - Basic definitions and tools related to CSTBox events" href="events.html" />
-    <link rel="prev" title="dbuslib - D-Bus helpers" href="dbuslib.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>devcfg - Devices network configuration data access tools</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../core.html">Core system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hal.html">hal - Hardware Abstraction Layer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="dbuslib.html">dbuslib - D-Bus helpers</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="events.html">events - Basic definitions and tools related to CSTBox events</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../core.html">Core system</a> &raquo;</li>
+      
+    <li>devcfg - Devices network configuration data access tools</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="module-pycstbox.devcfg">
 <span id="devcfg-devices-network-configuration-data-access-tools"></span><h1>devcfg - Devices network configuration data access tools<a class="headerlink" href="#module-pycstbox.devcfg" title="Permalink to this headline">¶</a></h1>
 <p>Devices network configuration data access tools.</p>
 <p>The configuration data are stored as a single JSON file, which default path
 is <strong>/etc/cstbox/devices.cfg</strong>.</p>
 <dl class="class">
-<dt id="pycstbox.devcfg.Coordinator">
-<em class="property">class </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">Coordinator</tt><big>(</big><em>uid</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Coordinator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Network coordinator model</p>
-<p>The coordinator has devices attached to it. It is implemented as a typed
-dictionary, augmented with convenience methods.</p>
-<dl class="docutils">
-<dt>Required attributes :</dt>
-<dd><ul class="first last simple">
-<li>type</li>
-</ul>
-</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>uid</strong> (<em>str</em>) &#8211; (see <a class="reference internal" href="#pycstbox.devcfg.DevCfgObject" title="pycstbox.devcfg.DevCfgObject"><tt class="xref py py-class docutils literal"><span class="pre">DevCfgObject</span></tt></a>)</li>
-<li><strong>kwargs</strong> &#8211; optional complementary named parameters</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pycstbox.devcfg.Coordinator.add_device">
-<tt class="descname">add_device</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Coordinator.add_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a device to the coordinator.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d</strong> (<em>Device</em>) &#8211; the device instance</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if the passed object is not a device, is invalid, or already exists</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.Coordinator.del_device">
-<tt class="descname">del_device</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Coordinator.del_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes a device</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>d</strong> (<em>Device</em>) &#8211; the device to be deleted, or its id</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ValueError</strong> &#8211; if the passed parameter is neither a Device nor a string.</li>
-<li><strong>KeyError</strong> &#8211; if the device does not exist</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.Coordinator.js_dict">
-<tt class="descname">js_dict</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Coordinator.js_dict" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.Coordinator.js_ownprops_dict">
-<tt class="descname">js_ownprops_dict</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Coordinator.js_ownprops_dict" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="exception">
-<dt id="pycstbox.devcfg.DevCfgError">
-<em class="property">exception </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">DevCfgError</tt><big>(</big><em>msg</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DevCfgError" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="class">
-<dt id="pycstbox.devcfg.DevCfgObject">
-<em class="property">class </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">DevCfgObject</tt><big>(</big><em>uid</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base class for all device configuration objects</p>
-<p>It manages integrity checking by providing a method ensuring that all
-required attributes are defined. The list is defined by the class
-attribute _required_attrs, which can be overridden in descendants.</p>
-<p>It also provides a generic JSON serialization mechanism, managing not
-persisted attributes.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uid</strong> (<em>str</em>) &#8211; the id of the object (cannot be None or empty)</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if arguments not valid</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pycstbox.devcfg.DevCfgObject.check">
-<tt class="descname">check</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check that all required attributes are defined.</p>
-<p>Their list is defined by the class attribute _requited_attrs</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">if at least one attribute is missing</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DevCfgObject.js_dict">
-<tt class="descname">js_dict</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.js_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>JSON serializer for DevCfgObject&#8217;s and descendant.
-(see json package documentation for details about custom serializers)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a dictionary containing the attributes to be persisted. Transient
-(ie not persisted) ones are defined by the class attribute
-_transient</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="pycstbox.devcfg.DevCfgObject.make_uid">
-<em class="property">static </em><tt class="descname">make_uid</tt><big>(</big><em>c_id</em>, <em>d_id</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.make_uid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="classmethod">
-<dt id="pycstbox.devcfg.DevCfgObject.required_attrs">
-<em class="property">classmethod </em><tt class="descname">required_attrs</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.required_attrs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the list of the required attributes, which must thus be
-present in the configuration data as keys in the dictionary describing
-the object.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="pycstbox.devcfg.DevCfgObject.split_uid">
-<em class="property">static </em><tt class="descname">split_uid</tt><big>(</big><em>uid</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.split_uid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="pycstbox.devcfg.Device">
-<em class="property">class </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">Device</tt><big>(</big><em>uid</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Device model</p>
-<p>By default all the attributes of the instances are persisted.</p>
-<p>Required attributes :</p>
-<ul class="simple">
-<li>address</li>
-<li>type</li>
-<li>location</li>
-</ul>
-<p>Constructor</p>
-<p>If a device type is provided in the extra parameters, the end points
-defined in the corresponding device metadata are automatically added
-to the new instance. Passed extra parameters are added afterwards, so
-that they can override those defined in the metadata.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>uid</strong> (<em>str</em>) &#8211; (see <a class="reference internal" href="#pycstbox.devcfg.DevCfgObject" title="pycstbox.devcfg.DevCfgObject"><tt class="xref py py-class docutils literal"><span class="pre">DevCfgObject</span></tt></a>)</li>
-<li><strong>kwargs</strong> &#8211; optional complementary named parameters</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="pycstbox.devcfg.Device.address">
-<tt class="descname">address</tt><em class="property"> = None</em><a class="headerlink" href="#pycstbox.devcfg.Device.address" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.devcfg.Device.location">
-<tt class="descname">location</tt><em class="property"> = None</em><a class="headerlink" href="#pycstbox.devcfg.Device.location" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.devcfg.Device.type">
-<tt class="descname">type</tt><em class="property"> = None</em><a class="headerlink" href="#pycstbox.devcfg.Device.type" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="pycstbox.devcfg.DeviceNetworkConfiguration">
-<em class="property">class </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">DeviceNetworkConfiguration</tt><big>(</big><em>path='/etc/cstbox/devices.cfg'</em>, <em>autoload=False</em>, <em>logger=None</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.devcfg.</code><code class="descname">DeviceNetworkConfiguration</code><span class="sig-paren">(</span><em>path='/etc/cstbox/devices.cfg'</em>, <em>autoload=False</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstraction class providing the access to the devices network
 configuration data.</p>
 <p>It is an extended dictionary, containing the collection of the
@@ -271,164 +181,15 @@ not pointing to a valid file,...)</td>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.add_coordinator">
-<tt class="descname">add_coordinator</tt><big>(</big><em>c</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.add_coordinator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a coordinator to the configuration</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>c</strong> (<em>Coordinator</em>) &#8211; the coordinator to be added</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises DuplicatedCoordinator:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if instance is not a valid coordinator, of if it exists already</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.add_device">
-<tt class="descname">add_device</tt><big>(</big><em>c</em>, <em>d</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.add_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a device to a coordinator.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>c</strong> (<em>Coordinator/str</em>) &#8211; the coordinator instance, or its id</li>
-<li><strong>d</strong> (<em>Device</em>) &#8211; the device instance</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if the device is not valid</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.as_json">
-<tt class="descname">as_json</tt><big>(</big><em>formatted=False</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.as_json" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.as_tree">
-<tt class="descname">as_tree</tt><big>(</big><em>_sorted=False</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.as_tree" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.del_coordinator">
-<tt class="descname">del_coordinator</tt><big>(</big><em>c_id</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.del_coordinator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes the coordinator and its devices.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>c_id</strong> (<em>str</em>) &#8211; the id of coordinator to be deleted</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if coordinator does not exist</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.del_device">
-<tt class="descname">del_device</tt><big>(</big><em>c</em>, <em>d</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.del_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes a device.</p>
-<p>It is removed from the parent coordinator, and its storage is deleted
-too.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>c</strong> (<em>Coordinator/str</em>) &#8211; the coordinator instance, or its id</li>
-<li><strong>d</strong> (<em>Device</em>) &#8211; the device instance</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.del_device_by_uid">
-<tt class="descname">del_device_by_uid</tt><big>(</big><em>uid</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.del_device_by_uid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes a device.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uid</strong> (<em>str</em>) &#8211; the unique id of the device (&lt;coord_id&gt; &#8216;/&#8217; &lt;dev_id&gt;)</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.get_coordinator">
-<tt class="descname">get_coordinator</tt><big>(</big><em>c_id</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.get_coordinator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a coordinator by its id.</p>
-<p>This is just an alias of the inherited dictionary item retrieval operator,
-but it can be more explicit like this in user&#8217;s code, since similar to
-get_device call.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.get_device">
-<tt class="descname">get_device</tt><big>(</big><em>c</em>, <em>d_id</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.get_device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a device, knowing its parent and its local id.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>c</strong> (<em>Coordinator/str</em>) &#8211; the coordinator instance, or its id</li>
-<li><strong>d_id</strong> (<em>str</em>) &#8211; the id of the device within this coordinator</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if not found</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.get_device_by_uid">
-<tt class="descname">get_device_by_uid</tt><big>(</big><em>uid</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.get_device_by_uid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a device, knowing its parent and its unique id.</p>
-<p>The unique id is something like the absolute path of a file.
-It is composed of the id of the parent coordinator, concatenated
-with the id of the device itself.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>uid</strong> (<em>str</em>) &#8211; the unique id of the device (&lt;coord_id&gt; &#8216;/&#8217; &lt;dev_id&gt;)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ValueError</strong> &#8211; if the id is not valid</li>
-<li><strong>KeyError</strong> &#8211; if not found</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="attribute">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.path">
+<code class="descname">path</code><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path of the configuration file.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pycstbox.devcfg.DeviceNetworkConfiguration.load">
-<tt class="descname">load</tt><big>(</big><em>path=None</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.load" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads the configuration data from a file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -445,8 +206,15 @@ with the id of the device itself.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.load_str">
+<code class="descname">load_str</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.load_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the configuration date from a string containing the JSON
+serialization of the configuration.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pycstbox.devcfg.DeviceNetworkConfiguration.load_dict">
-<tt class="descname">load_dict</tt><big>(</big><em>cfg</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.load_dict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_dict</code><span class="sig-paren">(</span><em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.load_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the configuration data from a dictionary.</p>
 <p>The passed dictionary must conform to the following structure, where
 each level is a dictionary and optional parts are indicated
@@ -505,21 +273,153 @@ endpoint nature. Endpoint definition is device type dependent.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.load_str">
-<tt class="descname">load_str</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.load_str" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads the configuration date from a string containing the JSON
-serialization of the configuration.</p>
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.get_coordinator">
+<code class="descname">get_coordinator</code><span class="sig-paren">(</span><em>c_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.get_coordinator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a coordinator by its id.</p>
+<p>This is just an alias of the inherited dictionary item retrieval operator,
+but it can be more explicit like this in user&#8217;s code, since similar to
+get_device call.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.path">
-<tt class="descname">path</tt><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.path" title="Permalink to this definition">¶</a></dt>
-<dd><p>The path of the configuration file.</p>
+<dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.add_coordinator">
+<code class="descname">add_coordinator</code><span class="sig-paren">(</span><em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.add_coordinator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a coordinator to the configuration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>c</strong> (<a class="reference internal" href="#pycstbox.devcfg.Coordinator" title="pycstbox.devcfg.Coordinator"><em>Coordinator</em></a>) &#8211; the coordinator to be added</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises DuplicatedCoordinator:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if instance is not a valid coordinator, of if it exists already</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.del_coordinator">
+<code class="descname">del_coordinator</code><span class="sig-paren">(</span><em>c_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.del_coordinator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the coordinator and its devices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>c_id</strong> (<em>str</em>) &#8211; the id of coordinator to be deleted</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if coordinator does not exist</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.add_device">
+<code class="descname">add_device</code><span class="sig-paren">(</span><em>c</em>, <em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.add_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a device to a coordinator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>c</strong> (<em>Coordinator/str</em>) &#8211; the coordinator instance, or its id</li>
+<li><strong>d</strong> (<a class="reference internal" href="#pycstbox.devcfg.Device" title="pycstbox.devcfg.Device"><em>Device</em></a>) &#8211; the device instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if the device is not valid</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.get_device">
+<code class="descname">get_device</code><span class="sig-paren">(</span><em>c</em>, <em>d_id</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.get_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a device, knowing its parent and its local id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>c</strong> (<em>Coordinator/str</em>) &#8211; the coordinator instance, or its id</li>
+<li><strong>d_id</strong> (<em>str</em>) &#8211; the id of the device within this coordinator</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises KeyError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if not found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.get_device_by_uid">
+<code class="descname">get_device_by_uid</code><span class="sig-paren">(</span><em>uid</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.get_device_by_uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a device, knowing its parent and its unique id.</p>
+<p>The unique id is something like the absolute path of a file.
+It is composed of the id of the parent coordinator, concatenated
+with the id of the device itself.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>uid</strong> (<em>str</em>) &#8211; the unique id of the device (&lt;coord_id&gt; &#8216;/&#8217; &lt;dev_id&gt;)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> &#8211; if the id is not valid</li>
+<li><strong>KeyError</strong> &#8211; if not found</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.del_device">
+<code class="descname">del_device</code><span class="sig-paren">(</span><em>c</em>, <em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.del_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a device.</p>
+<p>It is removed from the parent coordinator, and its storage is deleted
+too.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>c</strong> (<em>Coordinator/str</em>) &#8211; the coordinator instance, or its id</li>
+<li><strong>d</strong> (<a class="reference internal" href="#pycstbox.devcfg.Device" title="pycstbox.devcfg.Device"><em>Device</em></a>) &#8211; the device instance</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.del_device_by_uid">
+<code class="descname">del_device_by_uid</code><span class="sig-paren">(</span><em>uid</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.del_device_by_uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uid</strong> (<em>str</em>) &#8211; the unique id of the device (&lt;coord_id&gt; &#8216;/&#8217; &lt;dev_id&gt;)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pycstbox.devcfg.DeviceNetworkConfiguration.rename_device">
-<tt class="descname">rename_device</tt><big>(</big><em>uid</em>, <em>newid</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.rename_device" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rename_device</code><span class="sig-paren">(</span><em>uid</em>, <em>newid</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.rename_device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes the id of a device.</p>
 <dl class="docutils">
 <dt>:params str uid :</dt>
@@ -539,42 +439,23 @@ serialization of the configuration.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
-<dt id="pycstbox.devcfg.DeviceNetworkConfiguration.store">
-<tt class="descname">store</tt><big>(</big><em>path=None</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceNetworkConfiguration.store" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
-
-<dl class="exception">
-<dt id="pycstbox.devcfg.DeviceTypeNotFound">
-<em class="property">exception </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">DeviceTypeNotFound</tt><big>(</big><em>devtype</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DeviceTypeNotFound" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="exception">
-<dt id="pycstbox.devcfg.DuplicatedCoordinator">
-<em class="property">exception </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">DuplicatedCoordinator</tt><big>(</big><em>uid</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DuplicatedCoordinator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="exception">
-<dt id="pycstbox.devcfg.DuplicatedDevice">
-<em class="property">exception </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">DuplicatedDevice</tt><big>(</big><em>uid</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.DuplicatedDevice" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="exception">
-<dt id="pycstbox.devcfg.InvalidCfgFile">
-<em class="property">exception </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">InvalidCfgFile</tt><big>(</big><em>path</em>, <em>reason</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.InvalidCfgFile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="class">
 <dt id="pycstbox.devcfg.Metadata">
-<em class="property">class </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">Metadata</tt><a class="headerlink" href="#pycstbox.devcfg.Metadata" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.devcfg.</code><code class="descname">Metadata</code><a class="headerlink" href="#pycstbox.devcfg.Metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class bundles static methods working at the global level. They
 could have just been top-level functions, but it seemed cleaner to packaged
 them in a well identified structure.</p>
 <dl class="staticmethod">
+<dt id="pycstbox.devcfg.Metadata.coordinator_types">
+<em class="property">static </em><code class="descname">coordinator_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Metadata.coordinator_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of known coordinator types.</p>
+</dd></dl>
+
+<dl class="staticmethod">
 <dt id="pycstbox.devcfg.Metadata.coordinator">
-<em class="property">static </em><tt class="descname">coordinator</tt><big>(</big><em>c_type</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Metadata.coordinator" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">coordinator</code><span class="sig-paren">(</span><em>c_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Metadata.coordinator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the metadata for a given coordinator type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -588,39 +469,8 @@ them in a well identified structure.</p>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="pycstbox.devcfg.Metadata.coordinator_types">
-<em class="property">static </em><tt class="descname">coordinator_types</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Metadata.coordinator_types" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the list of known coordinator types.</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="pycstbox.devcfg.Metadata.device">
-<em class="property">static </em><tt class="descname">device</tt><big>(</big><em>fqdt</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Metadata.device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the metadata for a given device.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fqdt</strong> (<em>str</em>) &#8211; fully qualified device type
-(see <tt class="docutils literal"><span class="pre">_device_path</span></tt> documentation for details)</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the device metadata as a dictionary</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><strong>ValueError</strong> &#8211; if unknown device type</li>
-<li><strong>InvalidCfgFile</strong> &#8211; if device metadata file has errors</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
 <dt id="pycstbox.devcfg.Metadata.device_types">
-<em class="property">static </em><tt class="descname">device_types</tt><big>(</big><em>c_type</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.Metadata.device_types" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">device_types</code><span class="sig-paren">(</span><em>c_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Metadata.device_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the device types supported by a given coordinator type.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -637,31 +487,256 @@ them in a well identified structure.</p>
 </table>
 </dd></dl>
 
+<dl class="staticmethod">
+<dt id="pycstbox.devcfg.Metadata.device">
+<em class="property">static </em><code class="descname">device</code><span class="sig-paren">(</span><em>fqdt</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Metadata.device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the metadata for a given device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fqdt</strong> (<em>str</em>) &#8211; fully qualified device type
+(see <code class="docutils literal"><span class="pre">_device_path</span></code> documentation for details)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the device metadata as a dictionary</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> &#8211; if unknown device type</li>
+<li><strong>InvalidCfgFile</strong> &#8211; if device metadata file has errors</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="exception">
-<dt id="pycstbox.devcfg.MissingAttribute">
-<em class="property">exception </em><tt class="descclassname">pycstbox.devcfg.</tt><tt class="descname">MissingAttribute</tt><big>(</big><em>attr</em><big>)</big><a class="headerlink" href="#pycstbox.devcfg.MissingAttribute" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.devcfg.DevCfgObject">
+<em class="property">class </em><code class="descclassname">pycstbox.devcfg.</code><code class="descname">DevCfgObject</code><span class="sig-paren">(</span><em>uid</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all device configuration objects</p>
+<p>It manages integrity checking by providing a method ensuring that all
+required attributes are defined. The list is defined by the class
+attribute _required_attrs, which can be overridden in descendants.</p>
+<p>It also provides a generic JSON serialization mechanism, managing not
+persisted attributes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uid</strong> (<em>str</em>) &#8211; the id of the object (cannot be None or empty)</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if arguments not valid</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="pycstbox.devcfg.DevCfgObject.required_attrs">
+<em class="property">classmethod </em><code class="descname">required_attrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.required_attrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of the required attributes, which must thus be
+present in the configuration data as keys in the dictionary describing
+the object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DevCfgObject.check">
+<code class="descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that all required attributes are defined.</p>
+<p>Their list is defined by the class attribute _requited_attrs</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">if at least one attribute is missing</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.DevCfgObject.js_dict">
+<code class="descname">js_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.DevCfgObject.js_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>JSON serializer for DevCfgObject&#8217;s and descendant.
+(see json package documentation for details about custom serializers)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a dictionary containing the attributes to be persisted. Transient
+(ie not persisted) ones are defined by the class attribute
+_transient</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.devcfg.Coordinator">
+<em class="property">class </em><code class="descclassname">pycstbox.devcfg.</code><code class="descname">Coordinator</code><span class="sig-paren">(</span><em>uid</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Coordinator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network coordinator model</p>
+<p>The coordinator has devices attached to it. It is implemented as a typed
+dictionary, augmented with convenience methods.</p>
+<dl class="docutils">
+<dt>Required attributes :</dt>
+<dd><ul class="first last simple">
+<li>type</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>uid</strong> (<em>str</em>) &#8211; (see <a class="reference internal" href="#pycstbox.devcfg.DevCfgObject" title="pycstbox.devcfg.DevCfgObject"><code class="xref py py-class docutils literal"><span class="pre">DevCfgObject</span></code></a>)</li>
+<li><strong>kwargs</strong> &#8211; optional complementary named parameters</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.devcfg.Coordinator.add_device">
+<code class="descname">add_device</code><span class="sig-paren">(</span><em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Coordinator.add_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a device to the coordinator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>d</strong> (<a class="reference internal" href="#pycstbox.devcfg.Device" title="pycstbox.devcfg.Device"><em>Device</em></a>) &#8211; the device instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if the passed object is not a device, is invalid, or already exists</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.devcfg.Coordinator.del_device">
+<code class="descname">del_device</code><span class="sig-paren">(</span><em>d</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Coordinator.del_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a device</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>d</strong> (<a class="reference internal" href="#pycstbox.devcfg.Device" title="pycstbox.devcfg.Device"><em>Device</em></a>) &#8211; the device to be deleted, or its id</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> &#8211; if the passed parameter is neither a Device nor a string.</li>
+<li><strong>KeyError</strong> &#8211; if the device does not exist</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.devcfg.Device">
+<em class="property">class </em><code class="descclassname">pycstbox.devcfg.</code><code class="descname">Device</code><span class="sig-paren">(</span><em>uid</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.devcfg.Device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device model</p>
+<p>By default all the attributes of the instances are persisted.</p>
+<p>Required attributes :</p>
+<ul class="simple">
+<li>address</li>
+<li>type</li>
+<li>location</li>
+</ul>
+<p>Constructor</p>
+<p>If a device type is provided in the extra parameters, the end points
+defined in the corresponding device metadata are automatically added
+to the new instance. Passed extra parameters are added afterwards, so
+that they can override those defined in the metadata.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>uid</strong> (<em>str</em>) &#8211; (see <a class="reference internal" href="#pycstbox.devcfg.DevCfgObject" title="pycstbox.devcfg.DevCfgObject"><code class="xref py py-class docutils literal"><span class="pre">DevCfgObject</span></code></a>)</li>
+<li><strong>kwargs</strong> &#8211; optional complementary named parameters</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="dbuslib.html">dbuslib - D-Bus helpers</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="events.html">events - Basic definitions and tools related to CSTBox events</a>&#160;&#160;»
-        </p>
+        <a href="events.html" class="btn btn-neutral float-right" title="events - Basic definitions and tools related to CSTBox events" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dbuslib.html" class="btn btn-neutral" title="dbuslib - D-Bus helpers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

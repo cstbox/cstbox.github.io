@@ -1,52 +1,160 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>service - Fundation classes for services implementation &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>service - Fundation classes for services implementation &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Core system" href="../core.html"/>
+        <link rel="next" title="statemgr - State variables management" href="statemgr.html"/>
+        <link rel="prev" title="log - Customized logging system" href="log.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
-    <link rel="up" title="Core system" href="../core.html" />
-    <link rel="next" title="sysutils - CSTBox system level utilities" href="sysutils.html" />
-    <link rel="prev" title="log - Customized logging system" href="log.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>service - Fundation classes for services implementation</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../core.html">Core system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hal.html">hal - Hardware Abstraction Layer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">log - Customized logging system</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="log.html">log - Customized logging system</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="sysutils.html">sysutils - CSTBox system level utilities</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../core.html">Core system</a> &raquo;</li>
+      
+    <li>service - Fundation classes for services implementation</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="module-pycstbox.service">
 <span id="service-fundation-classes-for-services-implementation"></span><h1>service - Fundation classes for services implementation<a class="headerlink" href="#module-pycstbox.service" title="Permalink to this headline">¶</a></h1>
 <p>Root class and helpers for implementing CSTBox D-Bus based services.</p>
@@ -57,7 +165,7 @@ care of running the main loop and catching signals to terminating it gracefully.
 one being associated to a given path inside the container.</p>
 <dl class="class">
 <dt id="pycstbox.service.ServiceContainer">
-<em class="property">class </em><tt class="descclassname">pycstbox.service.</tt><tt class="descname">ServiceContainer</tt><big>(</big><em>name</em>, <em>conn=None</em>, <em>svc_objects=None</em>, <em>auto_fw_object=True</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.service.</code><code class="descname">ServiceContainer</code><span class="sig-paren">(</span><em>name</em>, <em>conn=None</em>, <em>svc_objects=None</em>, <em>auto_fw_object=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.ServiceContainer" title="Permalink to this definition">¶</a></dt>
 <dd><p>A service container is used to host one or many service objects, made accessible
 via its connection to a bus.</p>
 <p>Service objects can be added either at container creation time or afterwards.</p>
@@ -107,8 +215,15 @@ required.</li>
 </tbody>
 </table>
 <dl class="method">
+<dt id="pycstbox.service.ServiceContainer.log_setLevel">
+<code class="descname">log_setLevel</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.ServiceContainer.log_setLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Local override of log_setLevel fo handing the propagation of the
+level setting to the child service objects.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pycstbox.service.ServiceContainer.add">
-<tt class="descname">add</tt><big>(</big><em>svc_object</em>, <em>path</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.add" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add</code><span class="sig-paren">(</span><em>svc_object</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.ServiceContainer.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a service object to the container.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -130,7 +245,7 @@ required.</li>
 
 <dl class="method">
 <dt id="pycstbox.service.ServiceContainer.add_objects">
-<tt class="descname">add_objects</tt><big>(</big><em>svc_objects</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.add_objects" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_objects</code><span class="sig-paren">(</span><em>svc_objects</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.ServiceContainer.add_objects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a list of service object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -145,15 +260,8 @@ containing the service object instance and the path to be associated for it</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycstbox.service.ServiceContainer.log_setLevel">
-<tt class="descname">log_setLevel</tt><big>(</big><em>level</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.log_setLevel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Local override of log_setLevel fo handing the propagation of the
-level setting to the child service objects.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="pycstbox.service.ServiceContainer.remove">
-<tt class="descname">remove</tt><big>(</big><em>svc_object</em><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.remove" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove</code><span class="sig-paren">(</span><em>svc_object</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.ServiceContainer.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes a service object from the container.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -170,7 +278,7 @@ level setting to the child service objects.</p>
 
 <dl class="method">
 <dt id="pycstbox.service.ServiceContainer.start">
-<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.start" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.ServiceContainer.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts the container.</p>
 <p>This starts the D-Bus main loop and allows the service to receive calls and signals
 from the outside.</p>
@@ -182,7 +290,7 @@ from the outside.</p>
 
 <dl class="method">
 <dt id="pycstbox.service.ServiceContainer.terminate">
-<tt class="descname">terminate</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.service.ServiceContainer.terminate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">terminate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.ServiceContainer.terminate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops the container.</p>
 <p>This makes the event loop to exit and resources to be freed.</p>
 <p>Stopping a not running container has no effect, apart a warning message in the log.</p>
@@ -192,13 +300,14 @@ from the outside.</p>
 
 <dl class="class">
 <dt id="pycstbox.service.SimpleService">
-<em class="property">class </em><tt class="descclassname">pycstbox.service.</tt><tt class="descname">SimpleService</tt><big>(</big><em>name</em>, <em>conn=None</em>, <em>path='/service'</em><big>)</big><a class="headerlink" href="#pycstbox.service.SimpleService" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.service.</code><code class="descname">SimpleService</code><span class="sig-paren">(</span><em>name</em>, <em>conn=None</em>, <em>path='/service'</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.service.SimpleService" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class is just a helper for implementation of a service composed of
 a single object.</p>
 <p>It is an hybrid class which packages the service container and the service object,
 and &#8220;connects&#8221; them automatically. If not provided, the service object path
 is set to &#8216;/service&#8217;.</p>
 <p>It must be sub-classed to implement the required methods and/or signals.</p>
+<p><strong>IMPORTANT</strong> don&#8217;t use this for the moment, it is a bit buggy</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -207,27 +316,74 @@ is set to &#8216;/service&#8217;.</p>
 </tr>
 </tbody>
 </table>
-<p>For other parameters, see <a class="reference internal" href="#pycstbox.service.ServiceContainer" title="pycstbox.service.ServiceContainer"><tt class="xref py py-class docutils literal"><span class="pre">ServiceContainer</span></tt></a></p>
+<p>For other parameters, see <a class="reference internal" href="#pycstbox.service.ServiceContainer" title="pycstbox.service.ServiceContainer"><code class="xref py py-class docutils literal"><span class="pre">ServiceContainer</span></code></a></p>
 </dd></dl>
 
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="log.html">log - Customized logging system</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="sysutils.html">sysutils - CSTBox system level utilities</a>&#160;&#160;»
-        </p>
+        <a href="statemgr.html" class="btn btn-neutral float-right" title="statemgr - State variables management" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="log.html" class="btn btn-neutral" title="log - Customized logging system" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

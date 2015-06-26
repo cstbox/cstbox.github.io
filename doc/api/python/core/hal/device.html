@@ -1,106 +1,194 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>device - Device abstraction &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>device - Device abstraction &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="hal - Hardware Abstraction Layer package" href="../hal.html"/>
+        <link rel="next" title="network - Device network base definitions" href="network.html"/>
+        <link rel="prev" title="c_serial - Serial port base network coordinator" href="c_serial.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../../index.html" />
-    <link rel="up" title="hal - Hardware Abstraction Layer package" href="../hal.html" />
-    <link rel="next" title="network - Device network base definitions" href="network.html" />
-    <link rel="prev" title="c_serial - Serial port base network coordinator" href="c_serial.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>device - Device abstraction</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../core.html">Core system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../hal.html">hal - Hardware Abstraction Layer package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions.html">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="c_serial.html">c_serial - Serial port base network coordinator</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="network.html">network - Device network base definitions</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../../core.html">Core system</a> &raquo;</li>
+      
+          <li><a href="../hal.html">hal - Hardware Abstraction Layer package</a> &raquo;</li>
+      
+    <li>device - Device abstraction</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="module-pycstbox.hal.device">
 <span id="device-device-abstraction"></span><h1>device - Device abstraction<a class="headerlink" href="#module-pycstbox.hal.device" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pycstbox.hal.device.log_setLevel">
+<code class="descclassname">pycstbox.hal.device.</code><code class="descname">log_setLevel</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.log_setLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the level of module level logging.</p>
+</dd></dl>
+
 <dl class="data">
 <dt id="pycstbox.hal.device.DEFAULT_PRECISION">
-<tt class="descclassname">pycstbox.hal.device.</tt><tt class="descname">DEFAULT_PRECISION</tt><em class="property"> = 3</em><a class="headerlink" href="#pycstbox.hal.device.DEFAULT_PRECISION" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycstbox.hal.device.</code><code class="descname">DEFAULT_PRECISION</code><em class="property"> = 3</em><a class="headerlink" href="#pycstbox.hal.device.DEFAULT_PRECISION" title="Permalink to this definition">¶</a></dt>
 <dd><p>Default precision for notified values.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="pycstbox.hal.device.EventDataDef">
-<em class="property">class </em><tt class="descclassname">pycstbox.hal.device.</tt><tt class="descname">EventDataDef</tt><a class="headerlink" href="#pycstbox.hal.device.EventDataDef" title="Permalink to this definition">¶</a></dt>
-<dd><p>Named tuple describing the data to be conveyed by sensor notification events</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Key var_type:</th><td class="field-body">type of the variable which change is notified by the event</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Key units:</th><td class="field-body">units used for the value</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="pycstbox.hal.device.EventDataDef.units">
-<tt class="descname">units</tt><a class="headerlink" href="#pycstbox.hal.device.EventDataDef.units" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.hal.device.EventDataDef.var_type">
-<tt class="descname">var_type</tt><a class="headerlink" href="#pycstbox.hal.device.EventDataDef.var_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="pycstbox.hal.device.HalDevice">
-<em class="property">class </em><tt class="descclassname">pycstbox.hal.device.</tt><tt class="descname">HalDevice</tt><big>(</big><em>coord</em>, <em>cfg</em><big>)</big><a class="headerlink" href="#pycstbox.hal.device.HalDevice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.hal.device.</code><code class="descname">HalDevice</code><span class="sig-paren">(</span><em>coord</em>, <em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.HalDevice" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for modeling devices in the abstraction layer.</p>
 <p>It acts as a kind of driver and is responsible for interfacing
 the real equipments with the generic communication layer.</p>
 <p>This base class includes the generic mechanism which produces CSTBox events based on
-data produce by the equipment outputs (see <a class="reference internal" href="#pycstbox.hal.device.HalDevice.create_events" title="pycstbox.hal.device.HalDevice.create_events"><tt class="xref py py-meth docutils literal"><span class="pre">create_events()</span></tt></a>), and can be used
-as is for modeling asynchrous equipments which produce data on their own (ie without being
+data produce by the equipment outputs (see <a class="reference internal" href="#pycstbox.hal.device.HalDevice.create_events" title="pycstbox.hal.device.HalDevice.create_events"><code class="xref py py-meth docutils literal"><span class="pre">create_events()</span></code></a>), and can be used
+as is for modeling asynchronous equipments which produce data on their own (ie without being
 polled).</p>
-<p>Polled devices are modeled by the <a class="reference internal" href="#pycstbox.hal.device.PolledDevice" title="pycstbox.hal.device.PolledDevice"><tt class="xref py py-class docutils literal"><span class="pre">PolledDevice</span></tt></a> class, which provides the
-fundation for managing the dialog with the physical equipement in order to get its outputs.</p>
+<p>Polled devices are modeled by the <a class="reference internal" href="#pycstbox.hal.device.PolledDevice" title="pycstbox.hal.device.PolledDevice"><code class="xref py py-class docutils literal"><span class="pre">PolledDevice</span></code></a> class, which provides the
+foundation for managing the dialog with the physical equipment in order to get its outputs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>coord</strong> (<em>Coordinator</em>) &#8211; the parent coordinator</li>
+<li><strong>coord</strong> (<a class="reference internal" href="../devcfg.html#pycstbox.devcfg.Coordinator" title="pycstbox.devcfg.Coordinator"><em>Coordinator</em></a>) &#8211; the parent coordinator</li>
 <li><strong>cfg</strong> (<em>dict</em>) &#8211; the device configuration, as retrieved from the global configuration data</li>
 </ul>
 </td>
@@ -108,8 +196,21 @@ fundation for managing the dialog with the physical equipement in order to get i
 </tbody>
 </table>
 <dl class="method">
+<dt id="pycstbox.hal.device.HalDevice.is_pollable">
+<code class="descname">is_pollable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.HalDevice.is_pollable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells if the device can be polled.</p>
+<p>Polled equipments HalDevice sub-classes must provide a method named
+&#8220;poll&#8221;, which takes no parameter and returns the list of CSTBox events
+reflecting the reply to the poll request.</p>
+<p>The returned events must be instances of pycstbox.events.BasicEvent or
+pycstbox.events.TimedEvents.</p>
+<p>The poll method must notify any error by raising a PollingError
+exception.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pycstbox.hal.device.HalDevice.create_events">
-<tt class="descname">create_events</tt><big>(</big><em>output_values</em><big>)</big><a class="headerlink" href="#pycstbox.hal.device.HalDevice.create_events" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_events</code><span class="sig-paren">(</span><em>output_values</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.HalDevice.create_events" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the list of events depending on the collected or received
 data from the device.</p>
 <p>This method takes care of handling the filtering of redundant events
@@ -127,7 +228,7 @@ event to be produced.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>output_values</strong> (<em>tuple</em>) &#8211; a tuple containing the values produced by the output(s) of the
 device. Output values set to None are silently ignored</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns list:</th><td class="field-body">a (possibily empty) list of events to be emitted</td>
+<tr class="field-even field"><th class="field-name">Returns list:</th><td class="field-body">a (possibly empty) list of events to be emitted</td>
 </tr>
 </tbody>
 </table>
@@ -135,14 +236,14 @@ device. Output values set to None are silently ignored</td>
 
 <dl class="classmethod">
 <dt id="pycstbox.hal.device.HalDevice.get_output_data_definition">
-<em class="property">classmethod </em><tt class="descname">get_output_data_definition</tt><big>(</big><em>output</em><big>)</big><a class="headerlink" href="#pycstbox.hal.device.HalDevice.get_output_data_definition" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">get_output_data_definition</code><span class="sig-paren">(</span><em>output</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.HalDevice.get_output_data_definition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the type of the data and its units (if any) for a given
 output.</p>
 <p>&#8220;type of the data&#8221; is taken at the semantic level, not at computer
 language level. It can be something like &#8220;temperature&#8221;, &#8220;voltage&#8221;,...</p>
 <p>The <cite>_OUTPUTS_TO_EVENTS_MAPPING</cite> attribute is initialized at initialization time
 of the HAL, using the introspection mechanism based on the
-<tt class="xref py py-func docutils literal"><span class="pre">pycstbox.hal.hal_device()</span></tt> decorator.</p>
+<code class="xref py py-func docutils literal"><span class="pre">pycstbox.hal.hal_device()</span></code> decorator.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -159,33 +260,48 @@ of the HAL, using the introspection mechanism based on the
 </table>
 </dd></dl>
 
-<dl class="method">
-<dt id="pycstbox.hal.device.HalDevice.is_pollable">
-<tt class="descname">is_pollable</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.device.HalDevice.is_pollable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tells if the device can be polled.</p>
-<p>Polled equipments HalDevice sub-classes must provide a method named
-&#8220;poll&#8221;, which takes no parameter and returns the list of CSTBox events
-reflecting the reply to the poll request.</p>
-<p>The returned events must be instances of pycstbox.events.BasicEvent or
-pycstbox.events.TimedEvents.</p>
-<p>The poll method must notify any error by raising a PollingError
-exception.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.device.EventDataDef">
+<em class="property">class </em><code class="descclassname">pycstbox.hal.device.</code><code class="descname">EventDataDef</code><span class="sig-paren">(</span><em>var_type</em>, <em>units</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.EventDataDef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Named tuple describing the data to be conveyed by sensor notification events</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Key var_type:</th><td class="field-body">type of the variable which change is notified by the event</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Key units:</th><td class="field-body">units used for the value</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.hal.device.EventDataDef.units">
+<code class="descname">units</code><a class="headerlink" href="#pycstbox.hal.device.EventDataDef.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.hal.device.EventDataDef.var_type">
+<code class="descname">var_type</code><a class="headerlink" href="#pycstbox.hal.device.EventDataDef.var_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="pycstbox.hal.device.PolledDevice">
-<em class="property">class </em><tt class="descclassname">pycstbox.hal.device.</tt><tt class="descname">PolledDevice</tt><big>(</big><em>coord</em>, <em>cfg</em><big>)</big><a class="headerlink" href="#pycstbox.hal.device.PolledDevice" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.hal.device.</code><code class="descname">PolledDevice</code><span class="sig-paren">(</span><em>coord</em>, <em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.PolledDevice" title="Permalink to this definition">¶</a></dt>
 <dd><p>A device which works by polling and not spontaneaous notification.</p>
-<p>This class adds the method <a class="reference internal" href="#pycstbox.hal.device.PolledDevice.poll" title="pycstbox.hal.device.PolledDevice.poll"><tt class="xref py py-meth docutils literal"><span class="pre">poll()</span></tt></a> which takes care  of:</p>
+<p>This class adds the method <a class="reference internal" href="#pycstbox.hal.device.PolledDevice.poll" title="pycstbox.hal.device.PolledDevice.poll"><code class="xref py py-meth docutils literal"><span class="pre">poll()</span></code></a> which takes care  of:</p>
 <ul class="simple">
-<li>invoking the low level interface (<tt class="docutils literal"><span class="pre">self._hwdev</span></tt>) for querying the
+<li>invoking the low level interface (<code class="docutils literal"><span class="pre">self._hwdev</span></code>) for querying the
 values. The device implementation classes can do it on their own if
-they can, or rely to the <tt class="docutils literal"><span class="pre">send_device_command()</span></tt> method provided by a
+they can, or rely to the <code class="docutils literal"><span class="pre">send_device_command()</span></code> method provided by a
 specialized coordinator class</li>
 <li>translating the received values into the corresponding collection of
-events to be broadcasted by calling the super-class <tt class="xref py py-meth docutils literal"><span class="pre">create_events()</span></tt>
+events to be broadcasted by calling the super-class <code class="xref py py-meth docutils literal"><span class="pre">create_events()</span></code>
 method</li>
 </ul>
 <div class="admonition important">
@@ -193,25 +309,25 @@ method</li>
 <p class="last">This class cannot be used as is for implementing devices, but must be sub-classed to add in
 its initialization code the connection with an object responsible for the
 low-level interactions with the equipment. This connection is established by initializing
-the private attribute <tt class="docutils literal"><span class="pre">_hwdev</span></tt> with and instance of an object implementing a <a href="#id1"><span class="problematic" id="id2">``</span></a>poll`
+the private attribute <code class="docutils literal"><span class="pre">_hwdev</span></code> with and instance of an object implementing a <a href="#id1"><span class="problematic" id="id2">``</span></a>poll`
 method.
 Proper
 initialization is
 checked at first poll time,
 and the device will be tagged as invalid (and will be no more polled) if not compliant.</p>
 </div>
-<p>Refer to <a class="reference internal" href="#pycstbox.hal.device.HalDevice" title="pycstbox.hal.device.HalDevice"><tt class="xref py py-class docutils literal"><span class="pre">pycstbox.hal.device.HalDevice</span></tt></a> for parameters definition.</p>
+<p>Refer to <a class="reference internal" href="#pycstbox.hal.device.HalDevice" title="pycstbox.hal.device.HalDevice"><code class="xref py py-class docutils literal"><span class="pre">pycstbox.hal.device.HalDevice</span></code></a> for parameters definition.</p>
 <dl class="method">
 <dt id="pycstbox.hal.device.PolledDevice.poll">
-<tt class="descname">poll</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.device.PolledDevice.poll" title="Permalink to this definition">¶</a></dt>
-<dd><p>Refer to <a class="reference internal" href="#pycstbox.hal.device.HalDevice" title="pycstbox.hal.device.HalDevice"><tt class="xref py py-class docutils literal"><span class="pre">pycstbox.hal.device.HalDevice</span></tt></a> for details.</p>
+<code class="descname">poll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.PolledDevice.poll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refer to <a class="reference internal" href="#pycstbox.hal.device.HalDevice" title="pycstbox.hal.device.HalDevice"><code class="xref py py-class docutils literal"><span class="pre">pycstbox.hal.device.HalDevice</span></code></a> for details.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="exception">
 <dt id="pycstbox.hal.device.PollingError">
-<em class="property">exception </em><tt class="descclassname">pycstbox.hal.device.</tt><tt class="descname">PollingError</tt><big>(</big><em>dev_id</em>, <em>error</em><big>)</big><a class="headerlink" href="#pycstbox.hal.device.PollingError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">pycstbox.hal.device.</code><code class="descname">PollingError</code><span class="sig-paren">(</span><em>dev_id</em>, <em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.device.PollingError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Specialized exception for polling errors.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -227,30 +343,71 @@ and the device will be tagged as invalid (and will be no more polled) if not com
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="pycstbox.hal.device.log_setLevel">
-<tt class="descclassname">pycstbox.hal.device.</tt><tt class="descname">log_setLevel</tt><big>(</big><em>level</em><big>)</big><a class="headerlink" href="#pycstbox.hal.device.log_setLevel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the level of module level logging.</p>
-</dd></dl>
-
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="c_serial.html">c_serial - Serial port base network coordinator</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="network.html">network - Device network base definitions</a>&#160;&#160;»
-        </p>
+        <a href="network.html" class="btn btn-neutral float-right" title="network - Device network base definitions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="c_serial.html" class="btn btn-neutral" title="c_serial - Serial port base network coordinator" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

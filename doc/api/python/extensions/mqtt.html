@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mqtt - MQTT gateway extension &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Extensions" href="../extensions.html"/>
+        <link rel="prev" title="evtdb - CSTBox Events Database access D-Bus service" href="evtdb.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../core.html">Core system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/hal.html">hal - Hardware Abstraction Layer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../core/hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../core/log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../core/statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../core/sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../extensions.html">Extensions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../extensions.html#optional-services">Optional services</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CSTBox</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../extensions.html">Extensions</a> &raquo;</li>
+      
+    <li>mqtt - MQTT gateway extension</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="mqtt-mqtt-gateway-extension">
+<h1>mqtt - MQTT gateway extension<a class="headerlink" href="#mqtt-mqtt-gateway-extension" title="Permalink to this headline">¶</a></h1>
+<p>This extension provides a gateway with MQTT based communication architectures.</p>
+<p>It includes a connector with the core builtin mechanisms implemented. Applications needing a MQTT connectivity
+only need to sub-class or monkey patch it in order to define the methods handling the in and out communications,
+in terms of filtering and transformations.</p>
+<div class="section" id="package-modules">
+<h2>Package modules<a class="headerlink" href="#package-modules" title="Permalink to this headline">¶</a></h2>
+<p>The extension is implemented by the <code class="xref py py-mod docutils literal"><span class="pre">pycstbox.mqtt</span></code> package, composed of the modules documented hereafter.</p>
+<div class="section" id="module-pycstbox.mqtt.core">
+<span id="pycstbox-mqtt-core"></span><h3>pycstbox.mqtt.core<a class="headerlink" href="#module-pycstbox.mqtt.core" title="Permalink to this headline">¶</a></h3>
+<p>Base classes and definitions used for the MQTT gateway.</p>
+<p>This gateway is basically based on the <a class="reference internal" href="#pycstbox.mqtt.core.MQTTConnector" title="pycstbox.mqtt.core.MQTTConnector"><code class="xref py py-class docutils literal"><span class="pre">MQTTConnector</span></code></a> class, which
+wraps the connection with the MQTT broken in a convenient way, and offers the proper
+extension points for assembling the complete gateway.</p>
+<dl class="class">
+<dt id="pycstbox.mqtt.core.MQTTConnector">
+<em class="property">class </em><code class="descclassname">pycstbox.mqtt.core.</code><code class="descname">MQTTConnector</code><span class="sig-paren">(</span><em>broker</em>, <em>port</em>, <em>keep_alive=60</em>, <em>client_id=None</em>, <em>login=None</em>, <em>password=None</em>, <em>tls=None</em>, <em>topics=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.MQTTConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base class taking care of bridging the CSTBox internal message bus and the
+MQTT one.</p>
+<p>This implementation uses <a class="reference external" href="https://pypi.python.org/pypi/paho-mqtt">paho MQTT client</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>broker</strong> (<em>str</em>) &#8211; the broker server public name or IP</li>
+<li><strong>port</strong> (<em>int</em>) &#8211; the server connection port</li>
+<li><strong>keep_alive</strong> (<em>int</em>) &#8211; delay (in seconds) during which the connection is maintained in the absence of communication</li>
+<li><strong>client_id</strong> (<em>str</em>) &#8211; optional client identification, for further exchanges tracking</li>
+<li><strong>login</strong> (<em>str</em>) &#8211; optional authentication login</li>
+<li><strong>password</strong> (<em>str</em>) &#8211; optional authentication password</li>
+<li><strong>tls</strong> &#8211; configuration for TLS if used (not used in current implementation)</li>
+<li><strong>topics</strong> &#8211; an optional list of MQTT topics to subscribe to when connected</li>
+<li><strong>logger</strong> &#8211; optional logger</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.mqtt.core.MQTTConnector.publish">
+<code class="descname">publish</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.MQTTConnector.publish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Publish a message on MQTT.</p>
+<p>This method is a facade of the MQTT client homonym one, checking that the communication is established
+before passing the call.</p>
+<p>It uses the same signature as the homonym method of the paho Client. Refer to its
+<a class="reference external" href="https://pypi.python.org/pypi/paho-mqtt">documentation</a> for details.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.mqtt.core.MQTTConnector.connected">
+<code class="descname">connected</code><a class="headerlink" href="#pycstbox.mqtt.core.MQTTConnector.connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells if we are currently connected to the broker.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.mqtt.core.MQTTConnector.on_message">
+<code class="descname">on_message</code><a class="headerlink" href="#pycstbox.mqtt.core.MQTTConnector.on_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler of MQTT messages.</p>
+<p>See <a class="reference external" href="https://pypi.python.org/pypi/paho-mqtt">paho MQTT Client documentation</a> for details
+about the signature of the callback.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.mqtt.core.MQTTConnector.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.MQTTConnector.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the connector.</p>
+<p>Establish the connection with the MQTT broker, and starts the client loop in threaded mode. Subscription
+to the MQTT topics of interest (if any) is done in the <code class="xref py py-meth docutils literal"><span class="pre">_on_connect()</span></code> private callback,
+to avoid race conditions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.mqtt.core.MQTTConnector.shutdown">
+<code class="descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.MQTTConnector.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shutdowns the connector.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.mqtt.core.InboundFilter">
+<em class="property">class </em><code class="descclassname">pycstbox.mqtt.core.</code><code class="descname">InboundFilter</code><a class="headerlink" href="#pycstbox.mqtt.core.InboundFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prototype of the filter for incoming messages.</p>
+<p>Its role is to define how messages received from the MQTT domain are accepted, and
+for those which are, translated into messages injected in the CSTBox domain.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The default implementation accept nothing by security. It has to be sub-classed by
+the application.</p>
+</div>
+<dl class="method">
+<dt id="pycstbox.mqtt.core.InboundFilter.accept_event">
+<code class="descname">accept_event</code><span class="sig-paren">(</span><em>client</em>, <em>user_data</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.InboundFilter.accept_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tells if an incoming MQTT event is to be published on the CSTBox bus.</p>
+<p>The method returns the corresponding CSTBox event(s) which must be published on CSTBox
+message bus in case the MQTT event is accepted, and the target channel for each one.
+The return events are either instances of <a class="reference internal" href="../core/events.html#pycstbox.events.BasicEvent" title="pycstbox.events.BasicEvent"><code class="xref py py-class docutils literal"><span class="pre">pycstbox.events.BasicEvent</span></code></a> or
+the equivalent tuples (see class definition for their attributes). To ensure the consistency
+of the time line, the CSTBox events will be dated by the event manager at publication time.
+Consequently, the time stamp included in the MQTT message will be discarded.</p>
+<p>The method result is an iterable of tuples, each one containing the event and the name of the
+channel on which it must be published.</p>
+<p>If the incoming MQTT event is not accepted, the method must return None or an empty list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>client</strong> &#8211; the MQTT client instance</li>
+<li><strong>user_data</strong> &#8211; application specific data which can be attached to the client</li>
+<li><strong>message</strong> &#8211; the MQTT message</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the list of CSTBox events to be published</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">iterable of (CSTBox event, channel name) tuples</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.mqtt.core.REInboundFilter">
+<em class="property">class </em><code class="descclassname">pycstbox.mqtt.core.</code><code class="descname">REInboundFilter</code><span class="sig-paren">(</span><em>rules</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.REInboundFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expressions based inbound filter.</p>
+<p>It is based on regex based rules applied to the message topic, which give in return the variable
+type and variable name of the message to be emitted, with the channel on which this must be done.</p>
+<p>Initializes the rules list by compiling their specifications.</p>
+<p>The specifications are provided as an iterable of tuples, which items are :</p>
+<blockquote>
+<div><ul>
+<li><p class="first">a string containing the regex to be applied to the MQTT message topic</p>
+</li>
+<li><p class="first">an events dispatch list, composed of tuples specifying each of the corresponding CSTBox events
+to be produced. Each tuple is composed of :</p>
+<blockquote>
+<div><ul class="simple">
+<li>the variable type</li>
+<li>the variable name</li>
+<li>the channel on which the event will be emitted. If omitted, it is defaulted to
+<code class="xref py py-attr docutils literal"><span class="pre">pycstbox.evtmgr.CONTROL_EVENT_CHANNEL</span></code></li>
+</ul>
+</div></blockquote>
+<p>Using an empty dispatch list is allowed, which is equivalent to block the incoming message.
+This can be useful for dynamically dispatch strategies, so that the rule can be left in place but will
+produce no CSTBox event in result to the matching MQTT message.</p>
+</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rules</strong> &#8211; an iterable of tuples, as described above</li>
+<li><strong>logger</strong> &#8211; optional logging object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if invalid regex, or if the topic format contains replaceable parameters
+not found in the regex</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.mqtt.core.REInboundFilter.make_event_payload">
+<code class="descname">make_event_payload</code><span class="sig-paren">(</span><em>client</em>, <em>user_data</em>, <em>message</em>, <em>var_type</em>, <em>var_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.REInboundFilter.make_event_payload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the event payload of the CSTBox event to be produced, based on the content of the incoming
+MQTT message.</p>
+<p>To make things easier for implementors, the result is expected as a tuple, which first item is the value,
+and the second an optional dictionary of additional information. The effective event payload will be built
+by the framework, by assembling these two pieces of data.</p>
+<p>This method is called by <code class="xref py py-meth docutils literal"><span class="pre">accept_event()</span></code> when a rule matches and corresponding variable
+type and name could thus have been determined.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>client</strong> &#8211; the MQTT client instance</li>
+<li><strong>user_data</strong> &#8211; application specific data which can be attached to the client</li>
+<li><strong>message</strong> &#8211; the MQTT message</li>
+<li><strong>var_type</strong> (<em>str</em>) &#8211; the variable type of the CSTBox event</li>
+<li><strong>var_name</strong> (<em>str</em>) &#8211; the variable name of the CSTBox event</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the value and optional additional information to be used for the CSTBox event</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.mqtt.core.OutboundFilter">
+<em class="property">class </em><code class="descclassname">pycstbox.mqtt.core.</code><code class="descname">OutboundFilter</code><a class="headerlink" href="#pycstbox.mqtt.core.OutboundFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prototype of the filter for outgoing messages.</p>
+<p>Its role is to define if a given CSTBox message can be published on the MQTT domain,
+and in this case which is the relevant MQTT topic to be used.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">To be sub-classed, since the default implementation forbid any event
+to go outside of the CSTBox domain.</p>
+</div>
+<dl class="method">
+<dt id="pycstbox.mqtt.core.OutboundFilter.get_mqtt_topic">
+<code class="descname">get_mqtt_topic</code><span class="sig-paren">(</span><em>timestamp</em>, <em>var_type</em>, <em>var_name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.OutboundFilter.get_mqtt_topic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the MQTT topic conforming the broker conventions and corresponding to the CSTBox
+candidate message.</p>
+<p>Return None if the message is not to be passed to the MQTT world (which is the behaviour if the
+default implementation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>timestamp</strong> (<em>int</em>) &#8211; the event time stamp</li>
+<li><strong>var_type</strong> (<em>str</em>) &#8211; the type of the variable the event is related to</li>
+<li><strong>var_name</strong> (<em>str</em>) &#8211; the name of the variable</li>
+<li><strong>data</strong> (<em>dict</em>) &#8211; the event specific payload</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the MQTT topic to be used, or None if the message is not allowed to go outside</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.mqtt.core.REOutboundFilter">
+<em class="property">class </em><code class="descclassname">pycstbox.mqtt.core.</code><code class="descname">REOutboundFilter</code><span class="sig-paren">(</span><em>rules</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.REOutboundFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular expressions based outbound filter.</p>
+<p>It is based on regex based rules, applied to the variable type and variable name,
+which give the MQTT topic to be used for publication. If no matching is found, the message
+is not published.</p>
+<p>The rules are applied in the sequence defined by the rules table, by checking if the compound key
+built as <cite>&lt;var_type&gt;:&lt;var_name&gt;</cite> matches with the rule regex. The corresponding MQTT topîc will be used
+when sending the message.</p>
+<p>Regex can include named capturing groups, which value are used for computing the the topic value. For
+using this feature, the topic must include named replaceable parameters, which name match regex group ones.</p>
+<p>Initializes the rules list by compiling their specifications.</p>
+<p>The specifications are provided as an iterable of tuples, which items are :</p>
+<blockquote>
+<div><ul class="simple">
+<li>a string containing the regex to be applied to fully qualified variable names</li>
+<li>the MQTT topic string (or topic format string) to be used for publication</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rules</strong> &#8211; an iterable of tuples, as described above</li>
+<li><strong>logger</strong> &#8211; optional logging object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if invalid regex, or if the topic format contains replaceable parameters
+not found in the regex</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.mqtt.core.REOutboundFilter.get_mqtt_topic">
+<code class="descname">get_mqtt_topic</code><span class="sig-paren">(</span><em>timestamp</em>, <em>var_type</em>, <em>var_name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.core.REOutboundFilter.get_mqtt_topic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the MQTT topic matching the event variable type and name, based on the
+known regex rules.</p>
+<p>For efficiency sake, the result is cached for avoiding scanning the rules tables and applying the
+regex for already processed variable types and names.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycstbox.mqtt.dbus_binding">
+<span id="pycstbox-mqtt-dbus-binding"></span><h3>pycstbox.mqtt.dbus_binding<a class="headerlink" href="#module-pycstbox.mqtt.dbus_binding" title="Permalink to this headline">¶</a></h3>
+<p>D-Bus binding layer of the MQTT gateway.</p>
+<p>This module implements the building blocks for interfacing the <code class="xref py py-class docutils literal"><span class="pre">MQTTConnector</span></code> class
+with the CSTBox D-Bus layer.</p>
+<p>The feature is provided by the <a class="reference internal" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject" title="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject"><code class="xref py py-class docutils literal"><span class="pre">MQTTGatewayServiceObject</span></code></a> which is the worker instance
+of the service.</p>
+<p>The gateway service object works in association with the filters provided by the
+application. The role of these filters is to filter messages allowing to cross the CSTBox/MQTT
+boundary, and to translate accepted ones. Their prototypes is specified by classes <code class="xref py py-class docutils literal"><span class="pre">InboundFilter</span></code>
+and <code class="xref py py-class docutils literal"><span class="pre">OutboundFilter</span></code> provided by the package module <a class="reference internal" href="#module-pycstbox.mqtt.core" title="pycstbox.mqtt.core"><code class="xref py py-mod docutils literal"><span class="pre">pycstbox.mqtt.core</span></code></a>.</p>
+<dl class="function">
+<dt id="pycstbox.mqtt.dbus_binding.load_configuration">
+<code class="descclassname">pycstbox.mqtt.dbus_binding.</code><code class="descname">load_configuration</code><span class="sig-paren">(</span><em>cfgfile_path</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.dbus_binding.load_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the configuration from a file and returns it as a dictionnary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>cfgfile_path</strong> (<em>str</em>) &#8211; configuration file path</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the configuration data</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dict</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> &#8211; if path is not provided of configuration data are invalid</li>
+<li><strong>IOError</strong> &#8211; if not found or not a file</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject">
+<em class="property">class </em><code class="descclassname">pycstbox.mqtt.dbus_binding.</code><code class="descname">MQTTGatewayServiceObject</code><span class="sig-paren">(</span><em>cfg</em>, <em>inbound_filter=None</em>, <em>outbound_filter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>The service object wrapping the gateway process.</p>
+<p>It takes care of all the generic tasks. It :</p>
+<blockquote>
+<div><ul class="simple">
+<li>listens to both sensor and control CSTBox buses for processing circulating messages for
+forwarding them in the MQTT world</li>
+<li>creates a MQTT client for the broker, and listens to the relevant MQTT topîcs,
+for injecting the corresponding messages in the CSTBox internal communication bus</li>
+</ul>
+</div></blockquote>
+<p>In both cases, messages are first passed to an application dependant filtering layer, which decides
+which ones are allowed to cross the boundaries. This layer takes also care of converting the messages
+in the proper form before publishing.</p>
+<p>It is the responsibility of the application to provide these filters when creating an instance of this
+service object (refer to the <cite>__init__</cite> method signature). It is valid to omit one of them, the absence of
+filter meaning that nothing will go through in the corresponding direction.</p>
+<p>The service object is configured based on the content of the configuration data, provided as
+a dictionary by the process which instantiates it.</p>
+<p>See <a class="reference internal" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.configure" title="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.configure"><code class="xref py py-meth docutils literal"><span class="pre">configure()</span></code></a> method documentation for specifications of the configuration data.</p>
+<p>Note that providing no filter at all is invalid, since it would make the gateway useless.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cfg</strong> (<em>dict</em>) &#8211; the configuration data</li>
+<li><strong>inbound_filter</strong> (<a class="reference internal" href="#pycstbox.mqtt.core.InboundFilter" title="pycstbox.mqtt.core.InboundFilter"><em>InboundFilter</em></a>) &#8211; the filter for MQTT to CSTBox messages (default: None)</li>
+<li><strong>outbound_filter</strong> (<a class="reference internal" href="#pycstbox.mqtt.core.OutboundFilter" title="pycstbox.mqtt.core.OutboundFilter"><em>OutboundFilter</em></a>) &#8211; the filter for CSTBox to MQTT messages (default: None)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if both filters are unset</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.DEFAULT_BROKER_PORT">
+<code class="descname">DEFAULT_BROKER_PORT</code><em class="property"> = 61613</em><a class="headerlink" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.DEFAULT_BROKER_PORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>default MQTT broker connection port</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.configure">
+<code class="descname">configure</code><span class="sig-paren">(</span><em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configures the service object.</p>
+<p>The configuration data are provided as a dictionary, which keys and structure are :</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><cite>broker</cite> : sub-dictionary providing the broker connection information</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>host</cite> : public host name or IP of the server</li>
+<li><cite>port</cite> : connection port, defaulted to <a class="reference internal" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.DEFAULT_BROKER_PORT" title="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.DEFAULT_BROKER_PORT"><code class="xref py py-attr docutils literal"><span class="pre">DEFAULT_BROKER_PORT</span></code></a> if not
+provided</li>
+<li><cite>client_id</cite> : optional identifier attached to the MQTT client</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><cite>auth</cite> : optional sub-dictionary containing the authentication information</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>username</cite> : login</li>
+<li><cite>password</cite> : guess what...</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><cite>listened_topics</cite> : optional list of MQTT topics or topic patterns the gateway must subscribe</p>
+</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cfg</strong> (<em>dict</em>) &#8211; configuration data as a dictionary</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.start">
+<code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts the service object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.mqtt.dbus_binding.MQTTGatewayServiceObject.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the service object</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="extension-service">
+<h2>Extension service<a class="headerlink" href="#extension-service" title="Permalink to this headline">¶</a></h2>
+<p>The extension includes a service, which daemon is provided as the <cite>mqttgwd.py</cite> script, usually deployed
+in <cite>/opt/cstbox/bin</cite> directory.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="evtdb.html" class="btn btn-neutral" title="evtdb - CSTBox Events Database access D-Bus service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

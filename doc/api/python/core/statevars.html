@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>config - System wide configuration &mdash; CSTBox 1.0 documentation</title>
+  <title>statevars - State variables management &mdash; CSTBox 1.0 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="CSTBox 1.0 documentation" href="../index.html"/>
         <link rel="up" title="Core system" href="../core.html"/>
-        <link rel="next" title="cron - CSTBox crontab management" href="cron.html"/>
-        <link rel="prev" title="cli - Command line interface helpers" href="cli.html"/> 
+        <link rel="next" title="sysutils - CSTBox system level utilities" href="sysutils.html"/>
+        <link rel="prev" title="service - Fundation classes for services implementation" href="service.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -77,7 +77,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../core.html">Core system</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cli.html">cli - Command line interface helpers</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html">config - System wide configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cron.html">cron - CSTBox crontab management</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dbuslib.html">dbuslib - D-Bus helpers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="devcfg.html">devcfg - Devices network configuration data access tools</a></li>
@@ -91,10 +91,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="log.html">log - Customized logging system</a></li>
 <li class="toctree-l3"><a class="reference internal" href="service.html">service - Fundation classes for services implementation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="statemgr.html">statemgr - State variables management</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
-<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
-<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">statevars - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#statevars-core">statevars.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#statevars-mgr">statevars.mgr</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="sysutils.html">sysutils - CSTBox system level utilities</a></li>
@@ -144,7 +143,7 @@
       
           <li><a href="../core.html">Core system</a> &raquo;</li>
       
-    <li>config - System wide configuration</li>
+    <li>statevars - State variables management</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -155,64 +154,49 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="module-pycstbox.config">
-<span id="config-system-wide-configuration"></span><h1>config - System wide configuration<a class="headerlink" href="#module-pycstbox.config" title="Permalink to this headline">¶</a></h1>
-<p>CSTBox system wide configuration routines and definitions.</p>
-<p>This implementation is based on INI like configuration files.</p>
-<dl class="function">
-<dt id="pycstbox.config.make_config_file_path">
-<code class="descclassname">pycstbox.config.</code><code class="descname">make_config_file_path</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.config.make_config_file_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the full path of a configuration file located in CSTBox
-default configuration directory.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="pycstbox.config.GlobalSettings">
-<em class="property">class </em><code class="descclassname">pycstbox.config.</code><code class="descname">GlobalSettings</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.config.GlobalSettings" title="Permalink to this definition">¶</a></dt>
-<dd><p>A special pre-defined configuration file containing application wide
-parameters.</p>
-<p>The file name is pre-defined, and data are automatically loaded when creating
-the instance, thus relieving from explicitly call the read() method.</p>
-<p>In addition, since this file is single section, simplified get/set methods
-are proposed, removing the need to specify a section name.</p>
-<p>Some fixed settings are also provided as class attributes.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; configuration file path, used only for unit tests</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="pycstbox.config.GlobalSettings.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>option</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.config.GlobalSettings.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Overridden <code class="xref py py-meth docutils literal"><span class="pre">ConfigParser.SafeConfigParser.get()</span></code> hiding parameters having no use in this version
-for simplication&#8217;s sake.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.config.GlobalSettings.set">
-<code class="descname">set</code><span class="sig-paren">(</span><em>option</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.config.GlobalSettings.set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Overridden <code class="xref py py-meth docutils literal"><span class="pre">ConfigParser.SafeConfigParser.set()</span></code> hiding parameters having no use in this version
-for simplication&#8217;s sake.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.config.GlobalSettings.write">
-<code class="descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.config.GlobalSettings.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Overridden <code class="xref py py-meth docutils literal"><span class="pre">ConfigParser.SafeConfigParser.write()</span></code> hiding parameters having no use in this version
-since storage file is defined at instanciation time (see constructor).</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.config.GlobalSettings.as_dict">
-<code class="descname">as_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.config.GlobalSettings.as_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the configuration content as a dictionary.</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="statevars-state-variables-management">
+<h1>statevars - State variables management<a class="headerlink" href="#statevars-state-variables-management" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At the time of writing, this module is not integrated in the core by default, although it
+is intended to. It is thus distributed as a separate installation package during the transitional period.</p>
+</div>
+<p>State variables are the interface used to interact with the observed and/or controlled system (a house,
+an office building, an experiment,...) from the application layer.</p>
+<p>Its purpose is to fully decouple the application processes from the physical nature of the instrumentation of
+the system, be it sensors, actuators,... This is achieved by defining a <strong>state vector</strong> with gathers all the parameters
+which are used for monitoring and control the target system, these parameters being modeled as <strong>state variables</strong>.</p>
+<p>State variables are classified in two categories :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>observation variables</dt>
+<dd>The are read-only and represent live values of measured parameters. They will most of the time been updated
+by readings received from deployed sensors.</dd>
+<dt>control variables</dt>
+<dd>They are changed by the application layer and monitored by the hardware abstraction layer (which the
+<cite>statevars</cite> package is part of) to send the appropriate commands the the involved physical equipments.</dd>
+</dl>
+</div></blockquote>
+<p>State variable are <strong>semantically typed</strong>, which means that their definition specifies the semantic type
+(a temperature, a pressure, a voltage, a count,...) they are an instance of. In addition, the definition of a given
+variable specifies which units (among the valid ones for the underlying semantic type) it uses for its value, and can
+specify a set of validity rules, such as absolute bounds, variation bounds, derivative bounds,... or any other custom
+rule which can be defined by the application and attached to the variable.</p>
+<p>Semantic types are themselves predefined, to specified shared properties such as acceptable units, validity domain
+of the values,...</p>
+<p>The state variable management package is composed of several modules, documented hereafter:</p>
+<blockquote>
+<div><ul class="simple">
+<li>core : the core definitions</li>
+<li>mgr : the manager layer, built on top of core</li>
+</ul>
+</div></blockquote>
+<div class="section" id="statevars-core">
+<h2>statevars.core<a class="headerlink" href="#statevars-core" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="statevars-mgr">
+<h2>statevars.mgr<a class="headerlink" href="#statevars-mgr" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -221,10 +205,10 @@ since storage file is defined at instanciation time (see constructor).</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cron.html" class="btn btn-neutral float-right" title="cron - CSTBox crontab management" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sysutils.html" class="btn btn-neutral float-right" title="sysutils - CSTBox system level utilities" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cli.html" class="btn btn-neutral" title="cli - Command line interface helpers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="service.html" class="btn btn-neutral" title="service - Fundation classes for services implementation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

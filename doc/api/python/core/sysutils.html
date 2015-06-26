@@ -1,92 +1,484 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sysutils - CSTBox system level utilities &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>sysutils - CSTBox system level utilities &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Core system" href="../core.html"/>
+        <link rel="next" title="Extensions" href="../extensions.html"/>
+        <link rel="prev" title="statemgr - State variables management" href="statemgr.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
-    <link rel="up" title="Core system" href="../core.html" />
-    <link rel="next" title="Extensions" href="../extensions.html" />
-    <link rel="prev" title="service - Fundation classes for services implementation" href="service.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>sysutils - CSTBox system level utilities</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../core.html">Core system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hal.html">hal - Hardware Abstraction Layer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="service.html">service - Fundation classes for services implementation</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="../extensions.html">Extensions</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../core.html">Core system</a> &raquo;</li>
+      
+    <li>sysutils - CSTBox system level utilities</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="module-pycstbox.sysutils">
 <span id="sysutils-cstbox-system-level-utilities"></span><h1>sysutils - CSTBox system level utilities<a class="headerlink" href="#module-pycstbox.sysutils" title="Permalink to this headline">¶</a></h1>
 <p>CSTBox system level utilities.</p>
+<dl class="function">
+<dt id="pycstbox.sysutils.str_2_bool">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">str_2_bool</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.str_2_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a boolean value provided as a string and returns it.</p>
+<p>Accepted values for True:</p>
+<blockquote>
+<div>true, t, yes, y, 1</div></blockquote>
+<p>Any other value is converted as False</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.parse_period">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">parse_period</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.parse_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a period provided as a string and returns the equivalent
+number of seconds.</p>
+<p>The accepted format is:</p>
+<blockquote>
+<div>&lt;nn&gt; [ &#8216;s&#8217; | &#8216;m&#8217; | &#8216;h&#8217; ]</div></blockquote>
+<p>with:</p>
+<blockquote>
+<div>&lt;nn&gt; : a positive integer value</div></blockquote>
+<p>The suffix (if provided) indicates the units, with the following
+convention:</p>
+<blockquote>
+<div>&#8216;s&#8217; : seconds
+&#8216;m&#8217; : minutes
+&#8216;h&#8217; : hours</div></blockquote>
+<p>If not provided, units are defaulted to seconds.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the corresponding number of seconds. If the parameter is None or an empty string, 0 is return.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if input string is not valid</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.sysutils.LocalTimeUnits">
+<em class="property">class </em><code class="descclassname">pycstbox.sysutils.</code><code class="descname">LocalTimeUnits</code><span class="sig-paren">(</span><em>hour</em>, <em>minute</em>, <em>second</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.LocalTimeUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="pycstbox.sysutils.LocalTimeUnits.hour">
+<code class="descname">hour</code><a class="headerlink" href="#pycstbox.sysutils.LocalTimeUnits.hour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.LocalTimeUnits.minute">
+<code class="descname">minute</code><a class="headerlink" href="#pycstbox.sysutils.LocalTimeUnits.minute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.sysutils.LocalTimeUnits.second">
+<code class="descname">second</code><a class="headerlink" href="#pycstbox.sysutils.LocalTimeUnits.second" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.human_friendly_delay_format">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">human_friendly_delay_format</code><span class="sig-paren">(</span><em>secs</em>, <em>lang='en'</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.human_friendly_delay_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a human friendly formatted string corresponding to the number of seconds.</p>
+<p>Multiples (minutes, hours,...) will be used to render the value the friendliest possible.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>secs</strong> (<em>int</em>) &#8211; the delay in seconds</li>
+<li><strong>lang</strong> (<em>str</em>) &#8211; language code</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a string such as &#8220;2 hours 12 minutes 5 seconds&#8221;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.parse_time_of_day">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">parse_time_of_day</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.parse_time_of_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a string representing a (possibly abbreviated) time of day and returns the corresponding
+<cite>datetime.time</cite> instance.</p>
+<p>Parsed string must be expressed in 24 hours format, and must contains at least hours and minutes. If not
+present, seconds are defaulted to 0. Fields are separated by colons.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> (<em>str</em>) &#8211; the string to be parsed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the corresponding time of day</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">datetime.time</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raise:</th><td class="field-body">ValueError if the parsed string is not a valid time of day</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.time_in_span">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">time_in_span</code><span class="sig-paren">(</span><em>t</em>, <em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.time_in_span" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if a given time of day is in the span defined by two bounds.</p>
+<p>The following rule are applied, depending on t0 is before or after t1 :
+* t0 &lt; t1 : returns True if t0 &lt;= t &lt;= t1
+* t0 &gt; t1 : returns True if t &gt;+ t0 or t &lt;= t1</p>
+<p>The second case corresponds to an overnight time span.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>t</strong> (<em>datetime.time</em>) &#8211; tested time of day</li>
+<li><strong>start</strong> (<em>datetime.time</em>) &#8211; span starting time of day</li>
+<li><strong>end</strong> (<em>datetime.time</em>) &#8211; span ending time of day</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if t in the time span</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">boolean</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if any of the parameters is invalid of of t0 == t1</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.to_milliseconds">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">to_milliseconds</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.to_milliseconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the milliseconds equivalent of a given time stamp.</p>
+<p>If the parameter is a datetime instance, the result is the number of milliseconds elapsed
+from the epoch. The passed datetime is supposed to be naive or UTC.</p>
+<p>If it is provided as an integer, it is just returned as is since supposed to be already converted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ts</strong> (<em>datetime.datetime</em>) &#8211; time stamp</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">equivalent milliseconds from Epoch</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">long</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.tod_to_num">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">tod_to_num</code><span class="sig-paren">(</span><em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.tod_to_num" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a numeric version of a time of day, using the formula :
+result = 10000 * hour + 100 * minute + second + microsecond / 1000000.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dt</strong> &#8211; a datetime of time</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the numeric &#8220;equivalent&#8221; of the time of day</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.day_start_time">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">day_start_time</code><span class="sig-paren">(</span><em>day</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.day_start_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the naive datetime of the beginning of a given day (i.e. hour, minute,... set to 0)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>day</strong> (<em>datetime.date</em>) &#8211; the day for which we want the start time</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the very first moment of the given day (as a UTC date time)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">datetime</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.day_end_time">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">day_end_time</code><span class="sig-paren">(</span><em>day</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.day_end_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the naive datetime of the beginning of a given day (i.e. 1 epsilon time before the beginning
+of next day)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>day</strong> (<em>datetime.date</em>) &#8211; the day for which we want the end time</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the very last second of the given day (as a naive date time)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">datetime.datetime</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.day_bounds">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">day_bounds</code><span class="sig-paren">(</span><em>day</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.day_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>day</strong> (<em>datetime.date</em>) &#8211; the day for which we want the bounds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a tuple containing the start and end times of the given day as naive datetime</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple of [datetime.datetime]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.ts_to_datetime">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">ts_to_datetime</code><span class="sig-paren">(</span><em>msecs</em>, <em>tz=&lt;UTC&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ts_to_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a non naive datetime from the equivalent milliseconds count.</p>
+<p>If not specified, the time zone is set to UTC.</p>
+<p>The function is tolerant and accepts an already converted datetime or date.
+If it is not naive, it is adjusted to the requested time zone. If it is naive,
+its time zone is set to the supplied one.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>msecs</strong> (<em>int</em>) &#8211; input time, supposed to be a number of milliseconds</li>
+<li><strong>datetime.tzinfo</strong> &#8211; the timezone of the returned datetime</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the equivalent UTC datetime</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">datetime.datetime</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.string_to_lines">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">string_to_lines</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.string_to_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a string containing lines separated by newlines, returns
+the equivalent list of strings, stripping the spaces in excess at
+both ends.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> (<em>str</em>) &#8211; the concatenated lines as a string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the concatenated lines as a list</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list of [str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="class">
 <dt id="pycstbox.sysutils.ServiceInformation">
-<em class="property">class </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServiceInformation</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.sysutils.</code><code class="descname">ServiceInformation</code><span class="sig-paren">(</span><em>descr</em>, <em>core</em>, <em>running</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Service descriptor namedtuple.</p>
 <dl class="attribute">
 <dt id="pycstbox.sysutils.ServiceInformation.descr">
-<tt class="descname">descr</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.descr" title="Permalink to this definition">¶</a></dt>
+<code class="descname">descr</code><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.descr" title="Permalink to this definition">¶</a></dt>
 <dd><p>service short description</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycstbox.sysutils.ServiceInformation.core">
-<tt class="descname">core</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.core" title="Permalink to this definition">¶</a></dt>
+<code class="descname">core</code><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.core" title="Permalink to this definition">¶</a></dt>
 <dd><p>flag telling if it is a core service (not user manageable) or not</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycstbox.sysutils.ServiceInformation.running">
-<tt class="descname">running</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.running" title="Permalink to this definition">¶</a></dt>
+<code class="descname">running</code><a class="headerlink" href="#pycstbox.sysutils.ServiceInformation.running" title="Permalink to this definition">¶</a></dt>
 <dd><p>flag telling if the service is currently active or not</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
-<tt class="descname">core</tt></dt>
+<code class="descname">core</code></dt>
 <dd><p>Alias for field number 1</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
-<tt class="descname">descr</tt></dt>
+<code class="descname">descr</code></dt>
 <dd><p>Alias for field number 0</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
-<tt class="descname">running</tt></dt>
+<code class="descname">running</code></dt>
 <dd><p>Alias for field number 2</p>
 </dd></dl>
 
@@ -94,18 +486,18 @@
 
 <dl class="class">
 <dt id="pycstbox.sysutils.ServiceProperties">
-<em class="property">class </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServiceProperties</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.sysutils.</code><code class="descname">ServiceProperties</code><span class="sig-paren">(</span><em>descr</em>, <em>core</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Service properties namedtuple.</p>
-<p>Is a subset of <a class="reference internal" href="#pycstbox.sysutils.ServiceInformation" title="pycstbox.sysutils.ServiceInformation"><tt class="xref py py-class docutils literal"><span class="pre">ServiceInformation</span></tt></a></p>
+<p>Is a subset of <a class="reference internal" href="#pycstbox.sysutils.ServiceInformation" title="pycstbox.sysutils.ServiceInformation"><code class="xref py py-class docutils literal"><span class="pre">ServiceInformation</span></code></a></p>
 <dl class="attribute">
 <dt id="pycstbox.sysutils.ServiceProperties.core">
-<tt class="descname">core</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties.core" title="Permalink to this definition">¶</a></dt>
+<code class="descname">core</code><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties.core" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for field number 1</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pycstbox.sysutils.ServiceProperties.descr">
-<tt class="descname">descr</tt><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties.descr" title="Permalink to this definition">¶</a></dt>
+<code class="descname">descr</code><a class="headerlink" href="#pycstbox.sysutils.ServiceProperties.descr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for field number 0</p>
 </dd></dl>
 
@@ -113,54 +505,28 @@
 
 <dl class="class">
 <dt id="pycstbox.sysutils.ServicesManager">
-<em class="property">class </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServicesManager</tt><a class="headerlink" href="#pycstbox.sysutils.ServicesManager" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.sysutils.</code><code class="descname">ServicesManager</code><a class="headerlink" href="#pycstbox.sysutils.ServicesManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mimics what is provided by the Linux &#8216;service&#8217; command, applied to the
 CSTBox context.</p>
 <dl class="attribute">
-<dt id="pycstbox.sysutils.ServicesManager.INIT_SCRIPTS_DIR">
-<tt class="descname">INIT_SCRIPTS_DIR</tt><em class="property"> = '/etc/init.d'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.INIT_SCRIPTS_DIR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.sysutils.ServicesManager.INIT_SCRIPT_FORMAT">
-<tt class="descname">INIT_SCRIPT_FORMAT</tt><em class="property"> = 'cstbox-%s'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.INIT_SCRIPT_FORMAT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.sysutils.ServicesManager.INIT_SCRIPT_PATTERN">
-<tt class="descname">INIT_SCRIPT_PATTERN</tt><em class="property"> = 'cstbox-(.*)'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.INIT_SCRIPT_PATTERN" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.sysutils.ServicesManager.PIDFILES_DIR">
-<tt class="descname">PIDFILES_DIR</tt><em class="property"> = '/var/run/cstbox'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.PIDFILES_DIR" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.sysutils.ServicesManager.PIDFILE_FORMAT">
-<tt class="descname">PIDFILE_FORMAT</tt><em class="property"> = 'cstbox-%s.pid'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.PIDFILE_FORMAT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.sysutils.ServicesManager.PIDFILE_PATTERN">
-<tt class="descname">PIDFILE_PATTERN</tt><em class="property"> = 'cstbox-(.*)\\.pid'</em><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.PIDFILE_PATTERN" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="pycstbox.sysutils.ServicesManager.application_layer_restart">
-<em class="property">static </em><tt class="descname">application_layer_restart</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.application_layer_restart" title="Permalink to this definition">¶</a></dt>
-<dd><p>Restarts only the application layer services.</p>
+<dt id="pycstbox.sysutils.ServicesManager.known_services">
+<code class="descname">known_services</code><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.known_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of services currently installed.</p>
+<p>Service names are returned in their shortened form, without the
+&#8220;cstbox-&#8221; prefix.</p>
 </dd></dl>
 
-<dl class="staticmethod">
-<dt id="pycstbox.sysutils.ServicesManager.cstbox_restart">
-<em class="property">static </em><tt class="descname">cstbox_restart</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.cstbox_restart" title="Permalink to this definition">¶</a></dt>
-<dd><p>Restarts all CSTBox services, including the core ones.</p>
+<dl class="method">
+<dt id="pycstbox.sysutils.ServicesManager.running_services">
+<code class="descname">running_services</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.running_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of currently running CSTBox services.</p>
+<p>Same remark as for known_services() method applies here with respect
+to the returned names.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pycstbox.sysutils.ServicesManager.get_service_info">
-<tt class="descname">get_service_info</tt><big>(</big><em>svc_name=None</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.get_service_info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_service_info</code><span class="sig-paren">(</span><em>svc_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.get_service_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the information about a given service, or about all
 installed services.</p>
 <p>The returned information are packed in a ServiceInformation named tuple,</p>
@@ -184,25 +550,9 @@ dictionary ServiceInformation instances for a parameterless call</td>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pycstbox.sysutils.ServicesManager.known_services">
-<tt class="descname">known_services</tt><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.known_services" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the list of services currently installed.</p>
-<p>Service names are returned in their shortened form, without the
-&#8220;cstbox-&#8221; prefix.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.sysutils.ServicesManager.running_services">
-<tt class="descname">running_services</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.running_services" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the list of currently running CSTBox services.</p>
-<p>Same remark as for known_services() method applies here with respect
-to the returned names.</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="pycstbox.sysutils.ServicesManager.start">
-<tt class="descname">start</tt><big>(</big><em>svc_name</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.start" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start</code><span class="sig-paren">(</span><em>svc_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts a given service.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -219,7 +569,7 @@ to the returned names.</p>
 
 <dl class="method">
 <dt id="pycstbox.sysutils.ServicesManager.stop">
-<tt class="descname">stop</tt><big>(</big><em>svc_name</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.stop" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stop</code><span class="sig-paren">(</span><em>svc_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops a given service.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -228,29 +578,52 @@ to the returned names.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>svc_name</strong> (<em>str</em>) &#8211; the name of the service</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Raises ServicesManagerError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if the &#8216;service stops&#8217; command fails</td>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if the &#8216;service stop&#8217; command fails</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.sysutils.ServicesManager.restart">
+<code class="descname">restart</code><span class="sig-paren">(</span><em>svc_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restarts a given service.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>svc_name</strong> (<em>str</em>) &#8211; the name of the service</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ServicesManagerError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if the &#8216;service restart&#8217; command fails</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="staticmethod">
+<dt id="pycstbox.sysutils.ServicesManager.application_layer_restart">
+<em class="property">static </em><code class="descname">application_layer_restart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.application_layer_restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restarts only the application layer services.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycstbox.sysutils.ServicesManager.cstbox_restart">
+<em class="property">static </em><code class="descname">cstbox_restart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.cstbox_restart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restarts all CSTBox services, including the core ones.</p>
+</dd></dl>
+
+<dl class="staticmethod">
 <dt id="pycstbox.sysutils.ServicesManager.system_reboot">
-<em class="property">static </em><tt class="descname">system_reboot</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.system_reboot" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">system_reboot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.ServicesManager.system_reboot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reboots the whole Linux system.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="exception">
-<dt id="pycstbox.sysutils.ServicesManagerError">
-<em class="property">exception </em><tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">ServicesManagerError</tt><a class="headerlink" href="#pycstbox.sysutils.ServicesManagerError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Specializec error for CSTBox services management.</p>
-</dd></dl>
-
 <dl class="function">
 <dt id="pycstbox.sysutils.get_services_manager">
-<tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">get_services_manager</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.sysutils.get_services_manager" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">get_services_manager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.get_services_manager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Poor man&#8217;s singleton implementation, since it does not forbid to
 use ServicesManager() in your code.</p>
 <p>But we are all adults here, and the ServicesManager is not intended to be
@@ -258,66 +631,92 @@ used by application integrators. Don&#8217;t go with over-design if we can do
 without ;)</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pycstbox.sysutils.parse_period">
-<tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">parse_period</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.parse_period" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses a period provided as a string and returns the equivalent
-number of seconds.</p>
-<dl class="docutils">
-<dt>The accepted format is:</dt>
-<dd>&lt;nn&gt; [ &#8216;s&#8217; | &#8216;m&#8217; | &#8216;h&#8217; ]</dd>
-<dt>with:</dt>
-<dd>&lt;nn&gt; : a positive integer value</dd>
-</dl>
-<p>The suffix (if provided) indicates the units, with the following
-convention:</p>
-<blockquote>
-<div>&#8216;s&#8217; : seconds
-&#8216;m&#8217; : minutes
-&#8216;h&#8217; : hours</div></blockquote>
-<p>If not provided, units are defaulted to seconds.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the corresponding number of seconds. If the parameter is None or an empty string, 0 is return.</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">if input string is not valid</td>
-</tr>
-</tbody>
-</table>
+<dl class="exception">
+<dt id="pycstbox.sysutils.ServicesManagerError">
+<em class="property">exception </em><code class="descclassname">pycstbox.sysutils.</code><code class="descname">ServicesManagerError</code><a class="headerlink" href="#pycstbox.sysutils.ServicesManagerError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specialized error for CSTBox services management.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="pycstbox.sysutils.str_2_bool">
-<tt class="descclassname">pycstbox.sysutils.</tt><tt class="descname">str_2_bool</tt><big>(</big><em>s</em><big>)</big><a class="headerlink" href="#pycstbox.sysutils.str_2_bool" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses a boolean value provided as a string and returns it.</p>
-<dl class="docutils">
-<dt>Accepted values for True:</dt>
-<dd>true, t, yes, y, 1</dd>
-</dl>
-<p>Any other value is converted as False</p>
+<dt id="pycstbox.sysutils.checked_dir">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">checked_dir</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.checked_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal helper for checking if the given path exists and is a
+directory.</p>
+<p>If not, raises a ValueError exception. If yes, return the corresponding
+absolute path.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycstbox.sysutils.to_unicode">
+<code class="descclassname">pycstbox.sysutils.</code><code class="descname">to_unicode</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.sysutils.to_unicode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a string to unicode if needed.</p>
 </dd></dl>
 
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="service.html">service - Fundation classes for services implementation</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="../extensions.html">Extensions</a>&#160;&#160;»
-        </p>
+        <a href="../extensions.html" class="btn btn-neutral float-right" title="Extensions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="statemgr.html" class="btn btn-neutral" title="statemgr - State variables management" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

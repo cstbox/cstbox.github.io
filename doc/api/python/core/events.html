@@ -1,52 +1,160 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>events - Basic definitions and tools related to CSTBox events &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>events - Basic definitions and tools related to CSTBox events &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Core system" href="../core.html"/>
+        <link rel="next" title="evtmgr - CSTBox Event manager service" href="evtmgr.html"/>
+        <link rel="prev" title="devcfg - Devices network configuration data access tools" href="devcfg.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
-    <link rel="up" title="Core system" href="../core.html" />
-    <link rel="next" title="evtdb - CSTBox Events Database access D-Bus service" href="evtdb.html" />
-    <link rel="prev" title="devcfg - Devices network configuration data access tools" href="devcfg.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>events - Basic definitions and tools related to CSTBox events</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../core.html">Core system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hal.html">hal - Hardware Abstraction Layer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="devcfg.html">devcfg - Devices network configuration data access tools</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../core.html">Core system</a> &raquo;</li>
+      
+    <li>events - Basic definitions and tools related to CSTBox events</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="module-pycstbox.events">
 <span id="events-basic-definitions-and-tools-related-to-cstbox-events"></span><h1>events - Basic definitions and tools related to CSTBox events<a class="headerlink" href="#module-pycstbox.events" title="Permalink to this headline">¶</a></h1>
 <p>Basic definitions and tools related to CSTBox events.</p>
@@ -79,10 +187,13 @@ exchanged on distinct channels. This is by the way coherent with respect to
 what variables represent. For instance, a temperature is always a temperature,
 no matter if it is the temperature of a given room returned by a sensor, or the
 set point for a temperature regulator.</p>
-<p>Variable names must be unique within the same type, and only the association
-(type, name) must be unique. For instance, on can have two variables named
-&#8220;livingroom&#8221;, one defined with the &#8220;temperature&#8221; type, and the other with the
-&#8220;movement&#8221; one.</p>
+<p>Although not a good practice, variable names must be unique within the same type,
+and only the association (type, name) must be unique. For instance, on can have
+two variables named &#8220;living_room&#8221;, one defined with the &#8220;temperature&#8221; type, and
+the other with the &#8220;movement&#8221; one.</p>
+<p><strong>BEWARE:</strong> since this can lead to unclear configurations, this behaviour is subject
+to be modified in the future to adopt the approach commonly used for programming
+languages (ie identifiers uniqueness)</p>
 <p>At implementation level, events are conveniently manipulated as tuples, which
 components are the ones listed above. Python tuples are an efficient and
 light weight representation allowing to manipulate data as a structured and
@@ -91,62 +202,65 @@ immutable entity.</p>
 name of the event components, and ensuring that the components sequence is
 respected in the tuple.</p>
 <dl class="class">
+<dt id="pycstbox.events.VarTypes">
+<em class="property">class </em><code class="descclassname">pycstbox.events.</code><code class="descname">VarTypes</code><a class="headerlink" href="#pycstbox.events.VarTypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Common variable types used in events.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.events.DataKeys">
+<em class="property">class </em><code class="descclassname">pycstbox.events.</code><code class="descname">DataKeys</code><a class="headerlink" href="#pycstbox.events.DataKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Common key names used in the data part of events.</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="pycstbox.events.BasicEvent">
-<em class="property">class </em><tt class="descclassname">pycstbox.events.</tt><tt class="descname">BasicEvent</tt><a class="headerlink" href="#pycstbox.events.BasicEvent" title="Permalink to this definition">¶</a></dt>
-<dd><p>BasicEvent(var_type, var_name, data)</p>
-<dl class="attribute">
-<dt id="pycstbox.events.BasicEvent.data">
-<tt class="descname">data</tt><a class="headerlink" href="#pycstbox.events.BasicEvent.data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 2</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.events.BasicEvent.var_name">
-<tt class="descname">var_name</tt><a class="headerlink" href="#pycstbox.events.BasicEvent.var_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.events.BasicEvent.var_type">
-<tt class="descname">var_type</tt><a class="headerlink" href="#pycstbox.events.BasicEvent.var_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
-
+<em class="property">class </em><code class="descclassname">pycstbox.events.</code><code class="descname">BasicEvent</code><a class="headerlink" href="#pycstbox.events.BasicEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Undated event conveying a state or value change of a given variable.</p>
+<dl class="docutils">
+<dt>Contained attributes:</dt>
+<dd><ul class="first last simple">
+<li>var_type: (str) semantic type of the associated variable</li>
+<li>var_name: (str) associated variable name</li>
+<li>data: (dict) dictionary containing the variable properties, including its value, its units if any,....</li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="class">
 <dt id="pycstbox.events.TimedEvent">
-<em class="property">class </em><tt class="descclassname">pycstbox.events.</tt><tt class="descname">TimedEvent</tt><a class="headerlink" href="#pycstbox.events.TimedEvent" title="Permalink to this definition">¶</a></dt>
-<dd><p>TimedEvent(timestamp, var_type, var_name, data)</p>
-<dl class="attribute">
-<dt id="pycstbox.events.TimedEvent.data">
-<tt class="descname">data</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 3</p>
+<em class="property">class </em><code class="descclassname">pycstbox.events.</code><code class="descname">TimedEvent</code><a class="headerlink" href="#pycstbox.events.TimedEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time stamped event, extending the BasicEvent type.</p>
+<p>The timestamp is stored as a UTC datetime.datetime.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pycstbox.events.TimedEvent.timestamp">
-<tt class="descname">timestamp</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.timestamp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.events.TimedEvent.var_name">
-<tt class="descname">var_name</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.var_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 2</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.events.TimedEvent.var_type">
-<tt class="descname">var_type</tt><a class="headerlink" href="#pycstbox.events.TimedEvent.var_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
-
+<dl class="function">
+<dt id="pycstbox.events.make_data">
+<code class="descclassname">pycstbox.events.</code><code class="descname">make_data</code><span class="sig-paren">(</span><em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.events.make_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the data dictionary of an event, handling common items such as
+the variable value and units if provided.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> &#8211; the variable value to be integrated in the resulting dictionary</li>
+<li><strong>units</strong> (<em>str</em>) &#8211; the variable units to be integrated in the resulting dictionary</li>
+<li><strong>kwargs</strong> &#8211; optional named parameters to be added to the dictionary</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the dictionary containing the passed information</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="pycstbox.events.make_basic_event">
-<tt class="descclassname">pycstbox.events.</tt><tt class="descname">make_basic_event</tt><big>(</big><em>var_type</em>, <em>var_name</em>, <em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.events.make_basic_event" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycstbox.events.</code><code class="descname">make_basic_event</code><span class="sig-paren">(</span><em>var_type</em>, <em>var_name</em>, <em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.events.make_basic_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a BasicEvent built with the provided pieces.</p>
 <p>The return event is used to signal a value change of a variable, or to
 control an equipment by sending it the new setting of one of its control
@@ -172,38 +286,17 @@ variables.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="pycstbox.events.make_data">
-<tt class="descclassname">pycstbox.events.</tt><tt class="descname">make_data</tt><big>(</big><em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.events.make_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Builds the data dictionary of an event, handling common items such as
-the variable value and units if provided.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>value</strong> &#8211; the variable value to be integrated in the resulting dictionary</li>
-<li><strong>units</strong> (<em>str</em>) &#8211; the variable units to be integrated in the resulting dictionary</li>
-<li><strong>kwargs</strong> &#8211; optional named parameters to be added to the dictionary</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the dictionary containing the passed information</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
 <dt id="pycstbox.events.make_timed_event">
-<tt class="descclassname">pycstbox.events.</tt><tt class="descname">make_timed_event</tt><big>(</big><em>ts</em>, <em>var_type</em>, <em>var_name</em>, <em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#pycstbox.events.make_timed_event" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">pycstbox.events.</code><code class="descname">make_timed_event</code><span class="sig-paren">(</span><em>ts</em>, <em>var_type</em>, <em>var_name</em>, <em>value=None</em>, <em>units=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.events.make_timed_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Same as make_basic_event, but for a TimedEvent.</p>
+<p>The accepted timestamp can be either a datetime.datetime or a msecs count
+(such as in raw D-Bus transported events).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ts</strong> (<em>datetime.datetime</em>) &#8211; the event timestamp
-(see <a class="reference internal" href="#pycstbox.events.make_basic_event" title="pycstbox.events.make_basic_event"><tt class="xref py py-func docutils literal"><span class="pre">make_basic_event()</span></tt></a> for the other parameters)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ts</strong> &#8211; the event timestamp
+(see <a class="reference internal" href="#pycstbox.events.make_basic_event" title="pycstbox.events.make_basic_event"><code class="xref py py-func docutils literal"><span class="pre">make_basic_event()</span></code></a> for the other parameters)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the corresponding TimeEvent instance</td>
 </tr>
@@ -214,21 +307,68 @@ the variable value and units if provided.</p>
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="devcfg.html">devcfg - Devices network configuration data access tools</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a>&#160;&#160;»
-        </p>
+        <a href="evtmgr.html" class="btn btn-neutral float-right" title="evtmgr - CSTBox Event manager service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="devcfg.html" class="btn btn-neutral" title="devcfg - Devices network configuration data access tools" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

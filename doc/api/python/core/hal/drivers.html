@@ -1,56 +1,166 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>drivers - Network device drivers sub-package &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>drivers - Network device drivers sub-package &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="hal - Hardware Abstraction Layer package" href="../hal.html"/>
+        <link rel="next" title="c_serial - Serial port base network coordinator" href="c_serial.html"/>
+        <link rel="prev" title="hal - Hardware Abstraction Layer package" href="../hal.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../../index.html" />
-    <link rel="up" title="hal - Hardware Abstraction Layer package" href="../hal.html" />
-    <link rel="next" title="c_serial - Serial port base network coordinator" href="c_serial.html" />
-    <link rel="prev" title="hal - Hardware Abstraction Layer package" href="../hal.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>drivers - Network device drivers sub-package</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../core.html">Core system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../hal.html">hal - Hardware Abstraction Layer package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions.html">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="../hal.html">hal - Hardware Abstraction Layer package</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="c_serial.html">c_serial - Serial port base network coordinator</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../../core.html">Core system</a> &raquo;</li>
+      
+          <li><a href="../hal.html">hal - Hardware Abstraction Layer package</a> &raquo;</li>
+      
+    <li>drivers - Network device drivers sub-package</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="drivers-network-device-drivers-sub-package">
 <span id="hal-drivers"></span><h1>drivers - Network device drivers sub-package<a class="headerlink" href="#drivers-network-device-drivers-sub-package" title="Permalink to this headline">¶</a></h1>
 <p>Drivers are provided as external modules deployed in this sub-package.
-The documentation related to available drivers is compiled in the <a class="reference internal" href="../../extensions.html#extensions"><em>Extensions</em></a> section of this documentation.</p>
+The documentation related to available drivers is compiled in the <a class="reference internal" href="../../extensions.html#extensions"><span>Extensions</span></a> section of this documentation.</p>
 <div class="section" id="driver-automatic-discovery-and-registering">
 <h2>Driver automatic discovery and registering<a class="headerlink" href="#driver-automatic-discovery-and-registering" title="Permalink to this headline">¶</a></h2>
 <p>They are automatically registered by an introspection mechanism of included modules,
@@ -70,30 +180,72 @@ identifiers carefully so that name clashes have almost no chance to occur, for
 instance by prefixing them by the maker name (ex: worldcompany.motionsensor).</p>
 <p>However, since the modules are loaded by name order, one can take advantage of
 this behavior to replace an existing device by a new version.</p>
-<dl class="function">
-<dt id="pycstbox.hal.drivers.get_hal_device_classes">
-<tt class="descclassname">pycstbox.hal.drivers.</tt><tt class="descname">get_hal_device_classes</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.hal.drivers.get_hal_device_classes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </div>
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="../hal.html">hal - Hardware Abstraction Layer package</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="c_serial.html">c_serial - Serial port base network coordinator</a>&#160;&#160;»
-        </p>
+        <a href="c_serial.html" class="btn btn-neutral float-right" title="c_serial - Serial port base network coordinator" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../hal.html" class="btn btn-neutral" title="hal - Hardware Abstraction Layer package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

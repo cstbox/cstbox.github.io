@@ -1,133 +1,166 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>export - Events data export &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>export - Events data export &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html"/>
+        <link rel="up" title="Core system" href="../core.html"/>
+        <link rel="next" title="flags - Notification flags management" href="flags.html"/>
+        <link rel="prev" title="evtmgr - CSTBox Event manager service" href="evtmgr.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../index.html" />
-    <link rel="up" title="Core system" href="../core.html" />
-    <link rel="next" title="flags - Notification flags management" href="flags.html" />
-    <link rel="prev" title="evtmgr - CSTBox Event manager service" href="evtmgr.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>export - Events data export</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../core.html">Core system</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hal.html">hal - Hardware Abstraction Layer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions.html">Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#devices-support-extensions">Devices support extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="evtmgr.html">evtmgr - CSTBox Event manager service</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="flags.html">flags - Notification flags management</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../core.html">Core system</a> &raquo;</li>
+      
+    <li>export - Events data export</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="module-pycstbox.export">
 <span id="export-events-data-export"></span><h1>export - Events data export<a class="headerlink" href="#module-pycstbox.export" title="Permalink to this headline">¶</a></h1>
 <p>Base classes for defining events export jobs and process chains.</p>
 <dl class="class">
-<dt id="pycstbox.export.Backlog">
-<em class="property">class </em><tt class="descclassname">pycstbox.export.</tt><tt class="descname">Backlog</tt><big>(</big><em>name</em>, <em>root=None</em><big>)</big><a class="headerlink" href="#pycstbox.export.Backlog" title="Permalink to this definition">¶</a></dt>
-<dd><p>A jobs backlog, implemented as a container and backed by a file based
-storage.</p>
-<p>A backlog manages information related to jobs which need to be re-run later.
-This implementation uses a separate directory for each named backlog, the
-directory name being the same as the backlog one. These directories are
-created under a root which path is provided when creating the instance.</p>
-<p>The default implementation uses pickle for persisting the data, but one can
-switch to any other format by overriding the methods _store() and _load().</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>name</strong> (<em>str</em>) &#8211; the name of the backlog. It must be a valid filename on the target OS</li>
-<li><strong>root</strong> (<em>str</em>) &#8211; path of the root directory under which the backlog are stored.
-Each backlog uses a sub-directory
-If not specified, uses a sub-directory of DEFAULT_LOCATION_ROOT
-and which name is the backlog one. The directory (and its parents)
-is created if not yet existing</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if path does not comply with above constraints</p>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="pycstbox.export.Backlog.DEFAULT_LOCATION_ROOT">
-<tt class="descname">DEFAULT_LOCATION_ROOT</tt><em class="property"> = '/var/spool/cstbox/export'</em><a class="headerlink" href="#pycstbox.export.Backlog.DEFAULT_LOCATION_ROOT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.export.Backlog.FILE_EXTENSION">
-<tt class="descname">FILE_EXTENSION</tt><em class="property"> = '.blog'</em><a class="headerlink" href="#pycstbox.export.Backlog.FILE_EXTENSION" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.export.Backlog.clear">
-<tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.export.Backlog.clear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clears all backlog items.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.export.Backlog.delete">
-<tt class="descname">delete</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.export.Backlog.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes the backlog directory.</p>
-<p>The backlog can no more be used afterwards, and any operation will
-raise an exception.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises IOError:</th><td class="field-body">if not empty.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.export.Backlog.is_empty">
-<tt class="descname">is_empty</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.export.Backlog.is_empty" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.export.Backlog.iteritems">
-<tt class="descname">iteritems</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.export.Backlog.iteritems" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="pycstbox.export.EventsExportJob">
-<em class="property">class </em><tt class="descclassname">pycstbox.export.</tt><tt class="descname">EventsExportJob</tt><big>(</big><em>jobname</em>, <em>jobid</em>, <em>parms</em>, <em>logger=None</em><big>)</big><a class="headerlink" href="#pycstbox.export.EventsExportJob" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pycstbox.export.</code><code class="descname">EventsExportJob</code><span class="sig-paren">(</span><em>jobname</em>, <em>jobid</em>, <em>parms</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.EventsExportJob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base abstract class for defining an export job.</p>
 <p>The export job is the unit of work responsible for extracting the data,
 transforming them according to the target system specification and sending
@@ -163,99 +196,17 @@ Must be unique and allow sorting a job list and reflect their chronology</li>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
-<dt id="pycstbox.export.EventsExportJob.ERR_EXPORT_EVENTS">
-<tt class="descname">ERR_EXPORT_EVENTS</tt><em class="property"> = 200</em><a class="headerlink" href="#pycstbox.export.EventsExportJob.ERR_EXPORT_EVENTS" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.export.EventsExportJob.ERR_NONE">
-<tt class="descname">ERR_NONE</tt><em class="property"> = 0</em><a class="headerlink" href="#pycstbox.export.EventsExportJob.ERR_NONE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.export.EventsExportJob.ERR_PREPARE">
-<tt class="descname">ERR_PREPARE</tt><em class="property"> = 100</em><a class="headerlink" href="#pycstbox.export.EventsExportJob.ERR_PREPARE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.export.EventsExportJob.ERR_SEND">
-<tt class="descname">ERR_SEND</tt><em class="property"> = 300</em><a class="headerlink" href="#pycstbox.export.EventsExportJob.ERR_SEND" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.export.EventsExportJob.cleanup">
-<tt class="descname">cleanup</tt><big>(</big><em>error=None</em><big>)</big><a class="headerlink" href="#pycstbox.export.EventsExportJob.cleanup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Final cleaning optional callback.</p>
-<p>Invoked at the very end of the process, whatever is the result of
-previous steps.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>error</strong> &#8211; error encountered in processing if any</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pycstbox.export.EventsExportJob.export_events">
-<tt class="descname">export_events</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.export.EventsExportJob.export_events" title="Permalink to this definition">¶</a></dt>
-<dd><p>Events export mandatory callback.</p>
-<p>Export the events in whatever form is suited for the process. Called
-just after the &#8220;prepare&#8221; step.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the number of exported events</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Raises ExportError:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">in case of error</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.export.EventsExportJob.job_id">
-<tt class="descname">job_id</tt><a class="headerlink" href="#pycstbox.export.EventsExportJob.job_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="pycstbox.export.EventsExportJob.last_error">
-<tt class="descname">last_error</tt><a class="headerlink" href="#pycstbox.export.EventsExportJob.last_error" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="staticmethod">
 <dt id="pycstbox.export.EventsExportJob.make_jobid">
-<em class="property">static </em><tt class="descname">make_jobid</tt><big>(</big><em>ts=datetime.datetime(2014</em>, <em>3</em>, <em>8</em>, <em>17</em>, <em>38</em>, <em>44</em>, <em>489574)</em><big>)</big><a class="headerlink" href="#pycstbox.export.EventsExportJob.make_jobid" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">make_jobid</code><span class="sig-paren">(</span><em>ts=datetime.datetime(2015</em>, <em>6</em>, <em>19</em>, <em>17</em>, <em>7</em>, <em>36</em>, <em>658131)</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.EventsExportJob.make_jobid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a job id based on a given timestamp, formatted as YYMMDDHHMMSS.</p>
 <p>If not specified, the current UTC date and time is used.</p>
 <p>Can be overridden if an other kind of id is needed.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycstbox.export.EventsExportJob.prepare">
-<tt class="descname">prepare</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.export.EventsExportJob.prepare" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialization of the job optional callback.</p>
-<p>Called at the very beginning of the job, before anything else being done. Can be
-overridden by sub-classes if they need to do something special at this step.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Raises ExportError:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">in case of error</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="pycstbox.export.EventsExportJob.run">
-<tt class="descname">run</tt><big>(</big><em>max_try=1</em>, <em>retry_delay=10</em><big>)</big><a class="headerlink" href="#pycstbox.export.EventsExportJob.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><em>max_try=1</em>, <em>retry_delay=10</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.EventsExportJob.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Job main line process.</p>
 <p>This method handles automatic retries in case of data transmission
 error. If max_try is provided and set to a value greater than 1, the
@@ -291,11 +242,11 @@ for later access.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pycstbox.export.EventsExportJob.send_data">
-<tt class="descname">send_data</tt><big>(</big><big>)</big><a class="headerlink" href="#pycstbox.export.EventsExportJob.send_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Export data sending mandatory callback.</p>
-<p>Responsible for transmitting the exported data to the target system.
-Called if <a class="reference internal" href="#pycstbox.export.EventsExportJob.export_events" title="pycstbox.export.EventsExportJob.export_events"><tt class="xref py py-meth docutils literal"><span class="pre">export_events()</span></tt></a> method returns a not null event count.</p>
+<dt id="pycstbox.export.EventsExportJob.prepare">
+<code class="descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.EventsExportJob.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialization of the job optional callback.</p>
+<p>Called at the very beginning of the job, before anything else being done. Can be
+overridden by sub-classes if they need to do something special at this step.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -307,36 +258,180 @@ Called if <a class="reference internal" href="#pycstbox.export.EventsExportJob.e
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="pycstbox.export.EventsExportJob.export_events">
+<code class="descname">export_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.EventsExportJob.export_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Events export mandatory callback.</p>
+<p>Export the events in whatever form is suited for the process. Called
+just after the &#8220;prepare&#8221; step.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the number of exported events</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ExportError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">in case of error</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="exception">
-<dt id="pycstbox.export.ExportError">
-<em class="property">exception </em><tt class="descclassname">pycstbox.export.</tt><tt class="descname">ExportError</tt><big>(</big><em>msg</em>, <em>subcode=0</em><big>)</big><a class="headerlink" href="#pycstbox.export.ExportError" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="pycstbox.export.ExportError.subcode">
-<tt class="descname">subcode</tt><a class="headerlink" href="#pycstbox.export.ExportError.subcode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="pycstbox.export.EventsExportJob.send_data">
+<code class="descname">send_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.EventsExportJob.send_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export data sending mandatory callback.</p>
+<p>Responsible for transmitting the exported data to the target system.
+Called if <a class="reference internal" href="#pycstbox.export.EventsExportJob.export_events" title="pycstbox.export.EventsExportJob.export_events"><code class="xref py py-meth docutils literal"><span class="pre">export_events()</span></code></a> method returns a not null event count.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Raises ExportError:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">in case of error</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.export.EventsExportJob.cleanup">
+<code class="descname">cleanup</code><span class="sig-paren">(</span><em>error=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.EventsExportJob.cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Final cleaning optional callback.</p>
+<p>Invoked at the very end of the process, whatever is the result of
+previous steps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>error</strong> &#8211; error encountered in processing if any</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.export.Backlog">
+<em class="property">class </em><code class="descclassname">pycstbox.export.</code><code class="descname">Backlog</code><span class="sig-paren">(</span><em>name</em>, <em>root=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.Backlog" title="Permalink to this definition">¶</a></dt>
+<dd><p>A jobs backlog, implemented as a container and backed by a file based
+storage.</p>
+<p>A backlog manages information related to jobs which need to be re-run later.
+This implementation uses a separate directory for each named backlog, the
+directory name being the same as the backlog one. These directories are
+created under a root which path is provided when creating the instance.</p>
+<p>The default implementation uses pickle for persisting the data, but one can
+switch to any other format by overriding the methods _store() and _load().</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) &#8211; the name of the backlog. It must be a valid filename on the target OS</li>
+<li><strong>root</strong> (<em>str</em>) &#8211; path of the root directory under which the backlog are stored.
+Each backlog uses a sub-directory
+If not specified, uses a sub-directory of DEFAULT_LOCATION_ROOT
+and which name is the backlog one. The directory (and its parents)
+is created if not yet existing</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Raises ValueError:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">if path does not comply with above constraints</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycstbox.export.Backlog.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.Backlog.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears all backlog items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.export.Backlog.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.export.Backlog.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the backlog directory.</p>
+<p>The backlog can no more be used afterwards, and any operation will
+raise an exception.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises IOError:</th><td class="field-body">if not empty.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="evtmgr.html">evtmgr - CSTBox Event manager service</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="flags.html">flags - Notification flags management</a>&#160;&#160;»
-        </p>
+        <a href="flags.html" class="btn btn-neutral float-right" title="flags - Notification flags management" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="evtmgr.html" class="btn btn-neutral" title="evtmgr - CSTBox Event manager service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

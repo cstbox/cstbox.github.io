@@ -1,91 +1,597 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SOLEA products drivers &mdash; CSTBox 1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
     
-    <title>SOLEA products drivers &mdash; CSTBox 1.0 documentation</title>
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="CSTBox 1.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Extensions" href="../../../extensions.html"/>
+        <link rel="next" title="webui - CSTBox Web based user interface" href="../../../extensions/webui.html"/>
+        <link rel="prev" title="onewire - 1-Wire devices support extension" href="../../../extensions/onewire.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-    <link rel="stylesheet" href="../../../_static/cstbox_doc.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <link rel="top" title="CSTBox 1.0 documentation" href="../../../index.html" />
-    <link rel="up" title="Extensions" href="../../../extensions.html" />
-    <link rel="next" title="webui - CSTBox Web based user interface" href="../../../extensions/webui.html" />
-    <link rel="prev" title="onewire - 1-Wire devices support extension" href="../../../extensions/onewire.html" /> 
-  </head>
-  <body>
-      <div class="header"><h1 class="heading"><a href="../../../index.html">
-          <span>CSTBox 1.0 documentation</span></a></h1>
-        <h2 class="heading"><span>SOLEA products drivers</span></h2>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../../index.html" class="icon icon-home"> CSTBox
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
       </div>
-      <div class="topnav">
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api.html">CSTBox API documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../core.html">Core system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cfgbroker.html">cfgbroker - Device network configuration access service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cli.html">cli - Command line interface helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html">config - System wide configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cron.html">cron - CSTBox crontab management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dbuslib.html">dbuslib - D-Bus helpers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../devcfg.html">devcfg - Devices network configuration data access tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../events.html">events - Basic definitions and tools related to CSTBox events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../evtmgr.html">evtmgr - CSTBox Event manager service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../export.html">export - Events data export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../flags.html">flags - Notification flags management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hal.html">hal - Hardware Abstraction Layer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../hal.html#sub-package-content">Sub-package content</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../log.html">log - Customized logging system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../service.html">service - Fundation classes for services implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../statemgr.html">statemgr - State variables management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../statemgr.html#module-pycstbox.statemgr.core">statemgr.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../statemgr.html#module-pycstbox.statemgr.mgr">statemgr.mgr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../statemgr.html#module-pycstbox.statemgr.dbus_binding">statemgr.dbus_binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sysutils.html">sysutils - CSTBox system level utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../extensions.html">Extensions</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../extensions.html#devices-support-extensions">Devices support extensions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../extensions.html#protocol-enablers">Protocol enablers</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../../extensions.html#products-drivers">Products drivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../extensions.html#optional-services">Optional services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../extensions/webui.html">webui - CSTBox Web based user interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../extensions/evtdb.html">evtdb - CSTBox Events Database access D-Bus service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../extensions/mqtt.html">mqtt - MQTT gateway extension</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
-        <p>
-        «&#160;&#160;<a href="../../../extensions/onewire.html">onewire - 1-Wire devices support extension</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../../../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="../../../extensions/webui.html">webui - CSTBox Web based user interface</a>&#160;&#160;»
-        </p>
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">CSTBox</a>
+      </nav>
 
-      </div>
-      <div class="content">
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../api.html">CSTBox API documentation</a> &raquo;</li>
+      
+          <li><a href="../../../extensions.html">Extensions</a> &raquo;</li>
+      
+    <li>SOLEA products drivers</li>
+      <li class="wy-breadcrumbs-aside">
         
+          
         
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
   <div class="section" id="solea-products-drivers">
 <h1>SOLEA products drivers<a class="headerlink" href="#solea-products-drivers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="solea-support-library">
 <h2>SOLEA support library<a class="headerlink" href="#solea-support-library" title="Permalink to this headline">¶</a></h2>
-<p>Modules inside the <tt class="docutils literal"><span class="pre">pycstbox.solea</span></tt> package provide classes and helpers to handle
+<p>Modules inside the <code class="docutils literal"><span class="pre">pycstbox.solea</span></code> package provide classes and helpers to handle
 communications with supported products, even outside the CSTBox context.</p>
-<div class="section" id="ad12b">
-<h3>AD12B<a class="headerlink" href="#ad12b" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-pycstbox.solea.ad12b">
+<span id="ad12b"></span><h3>AD12B<a class="headerlink" href="#module-pycstbox.solea.ad12b" title="Permalink to this headline">¶</a></h3>
+<p>ModBus version of the Solea AD12B multi-parameters sensor.</p>
+<p>This modules provides a sub-class of  minimalmodbus.Instrument which
+is specialized in talking to the AD12B sensor.</p>
+<dl class="docutils">
+<dt>Depends on Jonas Berg&#8217;s minimalmodbus Python library :</dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/MinimalModbus/">https://pypi.python.org/pypi/MinimalModbus/</a>
+Version in date of writing: 0.4</dd>
+</dl>
+<dl class="class">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument">
+<em class="property">class </em><code class="descclassname">pycstbox.solea.ad12b.</code><code class="descname">AD12BInstrument</code><span class="sig-paren">(</span><em>port</em>, <em>unit_id</em>, <em>u_range</em>, <em>i_range</em>, <em>ti_loops=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solea AD12B multi-parameters module Modbus instrument model.</p>
+<p>The supported model is the RTU RS485 one, the RS485 bus being connected
+via a USB.RS485 interface.</p>
+<p>See : <a class="reference external" href="http://solea-webshop.com/fr/mesure-multi-parametres-ac-dc/1-solea-ad12-transducteur-mesure-electrique-dc.html">http://solea-webshop.com/fr/mesure-multi-parametres-ac-dc/1-solea-ad12-transducteur-mesure-electrique-dc.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>port</strong> (<em>str</em>) &#8211; serial port on which the RS485 interface is connected</li>
+<li><strong>unit_id</strong> (<em>int</em>) &#8211; the address of the device</li>
+<li><strong>u_range</strong> (<em>float</em>) &#8211; real values range for voltage</li>
+<li><strong>i_range</strong> (<em>float</em>) &#8211; real values range for intensity</li>
+<li><strong>ti_loops</strong> (<em>int</em>) &#8211; number of wiring loops in TI (acts as current amplification factor)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.OutputValues">
+<em class="property">class </em><code class="descname">OutputValues</code><span class="sig-paren">(</span><em>U</em>, <em>I</em>, <em>P</em>, <em>W</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.OutputValues" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.OutputValues.I">
+<code class="descname">I</code><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.OutputValues.I" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.OutputValues.P">
+<code class="descname">P</code><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.OutputValues.P" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.OutputValues.U">
+<code class="descname">U</code><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.OutputValues.U" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.OutputValues.W">
+<code class="descname">W</code><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.OutputValues.W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.RawToReal">
+<code class="descclassname">AD12BInstrument.</code><code class="descname">RawToReal</code><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.RawToReal" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Raw_to_real</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.poll">
+<code class="descclassname">AD12BInstrument.</code><code class="descname">poll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.poll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the registers holding the polled parameters and returns the
+values as a named tuple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.solea.ad12b.AD12BInstrument.reset_energy_counters">
+<code class="descclassname">AD12BInstrument.</code><code class="descname">reset_energy_counters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.ad12b.AD12BInstrument.reset_energy_counters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets all the energy counters.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="aj12b">
-<h3>AJ12B<a class="headerlink" href="#aj12b" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-pycstbox.solea.aj12b">
+<span id="aj12b"></span><h3>AJ12B<a class="headerlink" href="#module-pycstbox.solea.aj12b" title="Permalink to this headline">¶</a></h3>
+<p>ModBus version of the Solea AJ12B multi-parameters sensor.</p>
+<p>This modules provides a sub-class of  minimalmodbus.Instrument which
+is specialized in talking to the AJ12B sensor.</p>
+<dl class="docutils">
+<dt>Depends on Jonas Berg&#8217;s minimalmodbus Python library :</dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/MinimalModbus/">https://pypi.python.org/pypi/MinimalModbus/</a>
+Version in date of writing: 0.4</dd>
+</dl>
+<dl class="class">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument">
+<em class="property">class </em><code class="descclassname">pycstbox.solea.aj12b.</code><code class="descname">AJ12BInstrument</code><span class="sig-paren">(</span><em>port</em>, <em>unit_id</em>, <em>u_range</em>, <em>i_range</em>, <em>ti_loops=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solea AJ12B multi-parameters module Modbus instrument model.</p>
+<p>The supported model is the RTU RS485 one, the RS485 bus being connected
+via a USB.RS485 interface.</p>
+<p>See : <a class="reference external" href="http://www.solea.biz/P505-solea-aj12--transducteur-multiparametres--monophase-ac-.html">http://www.solea.biz/P505-solea-aj12&#8211;transducteur-multiparametres&#8211;monophase-ac-.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>port</strong> (<em>str</em>) &#8211; serial port on which the RS485 interface is connected</li>
+<li><strong>unit_id</strong> (<em>int</em>) &#8211; the address of the device</li>
+<li><strong>u_range</strong> (<em>float</em>) &#8211; real values range for voltage</li>
+<li><strong>i_range</strong> (<em>float</em>) &#8211; real values range for intensity</li>
+<li><strong>ti_loops</strong> (<em>int</em>) &#8211; number of wiring loops in TI (acts as current amplification factor)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues">
+<em class="property">class </em><code class="descname">OutputValues</code><span class="sig-paren">(</span><em>U</em>, <em>I</em>, <em>P</em>, <em>Q</em>, <em>cos_phi</em>, <em>F</em>, <em>Wa</em>, <em>Wr</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Namedtuple modeling values produced by the device.</p>
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.F">
+<code class="descname">F</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.F" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.I">
+<code class="descname">I</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.I" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.P">
+<code class="descname">P</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.P" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.Q">
+<code class="descname">Q</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.U">
+<code class="descname">U</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.U" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.Wa">
+<code class="descname">Wa</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.Wa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.Wr">
+<code class="descname">Wr</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.Wr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.cos_phi">
+<code class="descname">cos_phi</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.OutputValues.cos_phi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.RawToReal">
+<code class="descclassname">AJ12BInstrument.</code><code class="descname">RawToReal</code><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.RawToReal" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Raw_to_real</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.poll">
+<code class="descclassname">AJ12BInstrument.</code><code class="descname">poll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.poll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the registers holding the polled parameters and returns the
+values as a named tuple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.solea.aj12b.AJ12BInstrument.reset_energy_counters">
+<code class="descclassname">AJ12BInstrument.</code><code class="descname">reset_energy_counters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj12b.AJ12BInstrument.reset_energy_counters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets all the energy counters.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="aj42">
-<h3>AJ42<a class="headerlink" href="#aj42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-pycstbox.solea.aj42">
+<span id="aj42"></span><h3>AJ42<a class="headerlink" href="#module-pycstbox.solea.aj42" title="Permalink to this headline">¶</a></h3>
+<p>ModBus version of the Solea AJ42 multi-parameters sensor.</p>
+<p>This modules provides a sub-class of  minimalmodbus.Instrument which
+is specialized in talking to the AJ42 sensor.</p>
+<dl class="docutils">
+<dt>Depends on Jonas Berg&#8217;s minimalmodbus Python library :</dt>
+<dd><a class="reference external" href="https://pypi.python.org/pypi/MinimalModbus/">https://pypi.python.org/pypi/MinimalModbus/</a>
+Version in date of writing: 0.4</dd>
+</dl>
+<dl class="class">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument">
+<em class="property">class </em><code class="descclassname">pycstbox.solea.aj42.</code><code class="descname">AJ42BInstrument</code><span class="sig-paren">(</span><em>port</em>, <em>unit_id</em>, <em>u_range</em>, <em>i_range</em>, <em>ti_loops=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solea AJ42 tri-phases multi-parameters module Modbus instrument model.</p>
+<p>The supported model is the RTU RS485 one, the RS485 bus being connected
+via a USB.RS485 interface.</p>
+<p>Constructor</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd><dl class="first last docutils">
+<dt>port:</dt>
+<dd>serial port on which the RS485 interface is connected</dd>
+<dt>unit_id:</dt>
+<dd>the address of the device</dd>
+<dt>u_range:</dt>
+<dd>real values range for voltage</dd>
+<dt>i_range:</dt>
+<dd>real values range for intensity</dd>
+<dt>ti_loops:</dt>
+<dd>number of wiring loops in TI (acts as current
+amplification factor)</dd>
+</dl>
+</dd>
+</dl>
+<dl class="class">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues">
+<em class="property">class </em><code class="descname">OutputValues</code><span class="sig-paren">(</span><em>U_a</em>, <em>I_a</em>, <em>U_b</em>, <em>I_b</em>, <em>U_c</em>, <em>I_c</em>, <em>P</em>, <em>Q</em>, <em>cos_phi</em>, <em>F</em>, <em>Wa</em>, <em>Wr</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.F">
+<code class="descname">F</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.F" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 9</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.I_a">
+<code class="descname">I_a</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.I_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.I_b">
+<code class="descname">I_b</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.I_b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.I_c">
+<code class="descname">I_c</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.I_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.P">
+<code class="descname">P</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.P" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.Q">
+<code class="descname">Q</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.Q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.U_a">
+<code class="descname">U_a</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.U_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.U_b">
+<code class="descname">U_b</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.U_b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.U_c">
+<code class="descname">U_c</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.U_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.Wa">
+<code class="descname">Wa</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.Wa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 10</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.Wr">
+<code class="descname">Wr</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.Wr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 11</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.OutputValues.cos_phi">
+<code class="descname">cos_phi</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.OutputValues.cos_phi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 8</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.RawToReal">
+<code class="descclassname">AJ42BInstrument.</code><code class="descname">RawToReal</code><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.RawToReal" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Raw_to_real</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.poll">
+<code class="descclassname">AJ42BInstrument.</code><code class="descname">poll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.poll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the registers holding the polled parameters and returns the
+values as a named tuple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycstbox.solea.aj42.AJ42BInstrument.reset_energy_counters">
+<code class="descclassname">AJ42BInstrument.</code><code class="descname">reset_energy_counters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.solea.aj42.AJ42BInstrument.reset_energy_counters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets all the energy counters.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 <div class="section" id="solea-products-integration">
 <h2>SOLEA products integration<a class="headerlink" href="#solea-products-integration" title="Permalink to this headline">¶</a></h2>
-<p>This module provides the integration of the products modeled in <tt class="docutils literal"><span class="pre">pycstbox.solea</span></tt> in the
+<p>This module provides the integration of the products modeled in <code class="docutils literal"><span class="pre">pycstbox.solea</span></code> in the
 CSTBox framework architecture.</p>
+<span class="target" id="module-pycstbox.hal.drivers.solea"></span><p>HAL interface classes for SOLEA supported products.</p>
+<dl class="class">
+<dt id="pycstbox.hal.drivers.solea.AD12B">
+<em class="property">class </em><code class="descclassname">pycstbox.hal.drivers.solea.</code><code class="descname">AD12B</code><span class="sig-paren">(</span><em>coord</em>, <em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.drivers.solea.AD12B" title="Permalink to this definition">¶</a></dt>
+<dd><p>HAL device modeling the Solea AD12B module.</p>
+<p>DC multi-parameters module.</p>
+<p>The extension adds the support of polling requests and CSTBox events
+publishing on D-Bus.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.drivers.solea.AJ12B">
+<em class="property">class </em><code class="descclassname">pycstbox.hal.drivers.solea.</code><code class="descname">AJ12B</code><span class="sig-paren">(</span><em>coord</em>, <em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.drivers.solea.AJ12B" title="Permalink to this definition">¶</a></dt>
+<dd><p>HAL device modeling the Solea AJ12B module.</p>
+<p>Single phase AC multi-parameters module.</p>
+<p>The extension adds the support of polling requests and CSTBox events
+publishing on D-Bus.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.drivers.solea.AJ42B">
+<em class="property">class </em><code class="descclassname">pycstbox.hal.drivers.solea.</code><code class="descname">AJ42B</code><span class="sig-paren">(</span><em>coord</em>, <em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.drivers.solea.AJ42B" title="Permalink to this definition">¶</a></dt>
+<dd><p>HAL device modeling the Solea AJ42B module.</p>
+<p>Three phases AC multi-parameters module.</p>
+<p>The extension adds the support of polling requests and CSTBox events
+publishing on D-Bus.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycstbox.hal.drivers.solea.SCS">
+<em class="property">class </em><code class="descclassname">pycstbox.hal.drivers.solea.</code><code class="descname">SCS</code><span class="sig-paren">(</span><em>coord</em>, <em>cfg</em><span class="sig-paren">)</span><a class="headerlink" href="#pycstbox.hal.drivers.solea.SCS" title="Permalink to this definition">¶</a></dt>
+<dd><p>HAL device modeling the Solea SCS photo-voltaic module.</p>
+<p>The extension adds the support of polling requests and CSTBox events
+publishing on D-Bus.</p>
+</dd></dl>
+
 </div>
 </div>
 
 
-      </div>
-      <div class="bottomnav">
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <p>
-        «&#160;&#160;<a href="../../../extensions/onewire.html">onewire - 1-Wire devices support extension</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../../../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="../../../extensions/webui.html">webui - CSTBox Web based user interface</a>&#160;&#160;»
-        </p>
+        <a href="../../../extensions/webui.html" class="btn btn-neutral float-right" title="webui - CSTBox Web based user interface" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../../extensions/onewire.html" class="btn btn-neutral" title="onewire - 1-Wire devices support extension" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
       </div>
 
-    <div class="footer">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
-    </div>
-  </body>
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
