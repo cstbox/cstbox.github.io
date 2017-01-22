@@ -46,6 +46,56 @@
                     "media" : "img/mission_complete.png",
                     "caption" : "We did it"
                 }
+            },
+            {
+                "startDate" : "2015,06,01",
+                "endDate" : "2015,06,01",
+                "headline" : "CSTBox speaks MQTT",
+                "text" : "MQTT support added to inter-operating with cloud based services in the context of the WISDOM EU project",
+                "asset" : {
+                    "media" : "img/mqtt.png",
+                    "caption" : "MQTT"
+                }
+            },
+            {
+                "startDate" : "2015,11,01",
+                "endDate" : "2015,11,01",
+                "headline" : "CSTBox on Intel's Edison",
+                "text" : "A CSTBox based application is developed for the Edison module, which will be deployed in the context of the WISDOM EU project for capturing the water usages in homes",
+                "asset" : {
+                    "media" : "img/edison.png",
+                    "caption" : "Intel's Edison"
+                }
+            },
+            {
+                "startDate" : "2016,02,01",
+                "endDate" : "2016,02,01",
+                "headline" : "Z-Wave support added",
+                "text" : "First set of supported products : Fibaro smart plug, Fibarp opening sensor, Fibaro multi-function motion detector (aka Sauron's Eye), Fortrezz Mimo pulse counter",
+                "asset" : {
+                    "media" : "img/zwave-logo.png",
+                    "caption" : "ZWave"
+                }
+            },
+            {
+                "startDate" : "2016,03,01",
+                "endDate" : "2016,03,01",
+                "headline" : "WISDOM instrumentation is operational",
+                "text" : "A multi-protocol and multi-maker extensive instrumentation is deployed in a home in the context of the WISDOM EU project. In addition to local water usage analysis, leak detection and profile learning, it forwards data and indicators to a clound based aggregation service, using MQTT as transport protocol.",
+                "asset" : {
+                    "media" : "img/wisdom-logo.png",
+                    "caption" : "WISDOM EU project"
+                }
+            },
+            {
+                "startDate" : "2016,08,01",
+                "endDate" : "2016,08,01",
+                "headline" : "CSTBox speaks OBIX",
+                "text" : "OBIX support addd for inter-opérability with an existing BEMS in the context of the PERFORMER EU project.",
+                "asset" : {
+                    "media" : "img/obix.png",
+                    "caption" : "OBIX"
+                }
             }       
         ] 
     }
