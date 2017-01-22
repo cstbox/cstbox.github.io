@@ -71,7 +71,7 @@
                 "startDate" : "2016,02,01",
                 "endDate" : "2016,02,01",
                 "headline" : "Z-Wave support added",
-                "text" : "First set of supported products : Fibaro smart plug, Fibarp opening sensor, Fibaro multi-function motion detector (aka Sauron's Eye), Fortrezz Mimo pulse counter",
+                "text" : "First set of supported products : Fibaro smart plug, Fibaro opening sensor, Fibaro multi-function motion detector (aka Sauron's Eye), Fortrezz Mimo pulse counter",
                 "asset" : {
                     "media" : "img/zwave-logo.png",
                     "caption" : "ZWave"
@@ -81,7 +81,7 @@
                 "startDate" : "2016,03,01",
                 "endDate" : "2016,03,01",
                 "headline" : "WISDOM instrumentation is operational",
-                "text" : "A multi-protocol and multi-maker extensive instrumentation is deployed in a home in the context of the WISDOM EU project. In addition to local water usage analysis, leak detection and profile learning, it forwards data and indicators to a clound based aggregation service, using MQTT as transport protocol.",
+                "text" : "A multi-protocol and multi-maker extensive instrumentation is deployed in a home in the context of the WISDOM EU project. In addition to local water usage analysis, leak detection and profile learning, it forwards data and indicators to a cloud based aggregation service, using MQTT as transport protocol.",
                 "asset" : {
                     "media" : "img/wisdom-logo.png",
                     "caption" : "WISDOM EU project"
