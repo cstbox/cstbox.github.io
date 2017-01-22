@@ -96,6 +96,16 @@
                     "media" : "img/obix.png",
                     "caption" : "OBIX"
                 }
+            },
+            {
+                "startDate" : "2016,10,01",
+                "endDate" : "2016,10,01",
+                "headline" : "CSTBox computes energetical performances KPIs",
+                "text" : "Raspberry Pi based CSTBox deployed for building performances assessment in-situ computation. Done in the contexte of PERFORMER EU project.",
+                "asset" : {
+                    "media" : "img/performer-logo.png",
+                    "caption" : "PERFOMER EU project"
+                }
             }       
         ] 
     }
